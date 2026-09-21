@@ -121,7 +121,7 @@ def business_days(end, count):
 def daily_index_urls(days):
     for d in days:
         quarter = (d.month - 1) // 3 + 1
-        yield d, "%s/%d/QT%d/master.%s.idx" % (SEC_BASE, d.year, quarter, d.strftime("%Y%m%d"))
+        yield d, "%s/%d/QTR%d/master.%s.idx" % (SEC_BASE, d.year, quarter, d.strftime("%Y%m%d"))
 
 
 def collect_form4_paths(days):
