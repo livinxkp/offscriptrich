@@ -37,9 +37,12 @@ USER_AGENT = os.environ.get("TRACKER_UA", "Off-Script Rich tracker (contact@offs
 SEC_BASE = "https://www.sec.gov/Archives/edgar/daily-index"
 SEC_ARCHIVE = "https://www.sec.gov/Archives/"
 
+# Both free, no API key. Bargo covers House + Senate and is current; LuxAlgo is
+# a CC0 static dump on GitHub, used only if Bargo is down or returns nothing.
+# Entries are (source_label, url) — chamber now comes from the record itself.
 CONGRESS_SOURCES = [
-    ("house", "https://house-stock-watcher-data.s3-us-west-2.amazonaws.com/data/all_transactions.json"),
-    ("senate", "https://senate-stock-watcher-data.s3-us-west-2.amazonaws.com/aggregate/all_transactions.json"),
+    ("bargo", "https://www.bargo.ai/free-apis/congress/v1/trades?limit=500"),
+    ("luxalgo", "https://raw.githubusercontent.com/LuxAlgo/market-trackers-data/main/congress/trades/latest.json"),
 ]
 
 LOOKBACK_DAYS = 7           # trailing window for insider filings
@@ -315,53 +318,126 @@ def parse_date(text):
     return None
 
 
+def _cdate(v):
+    """Dates arrive as '2026-09-02' or '2026-09-02T14:11:00Z'. Trim and parse."""
+    if not v:
+        return None
+    return parse_date(str(v)[:10])
+
+
+def _dig(rec, *names, **kw):
+    """First non-empty value among several possible field names."""
+    for n in names:
+        if n in rec and rec[n] not in (None, ""):
+            return rec[n]
+    return kw.get("default")
+
+
+def _congress_records(data):
+    """Accept a bare array or an object wrapping the rows."""
+    if isinstance(data, list):
+        return data
+    if isinstance(data, dict):
+        for key in ("data", "trades", "results", "records", "items", "rows"):
+            v = data.get(key)
+            if isinstance(v, list):
+                return v
+    return []
+
+
+def _normalize_congress(rec, source):
+    """Flatten Bargo / LuxAlgo / legacy shapes into one flat dict."""
+    member = _dig(rec, "representative", "senator", "member", "name")
+    state = _dig(rec, "state", default="")
+    chamber = _dig(rec, "chamber", default="")
+    if isinstance(member, dict):                  # luxalgo nests the member
+        state = member.get("state") or state
+        member = member.get("name") or member.get("fullName") or "unknown"
+
+    amount = _dig(rec, "amount", "amount_range", "amountRange")
+    lo = hi = None
+    if isinstance(amount, dict):                  # luxalgo: {"min":.., "max":.., "text":..}
+        lo, hi = amount.get("min"), amount.get("max")
+        amount = amount.get("text") or amount.get("label")
+    if lo is None and hi is None:
+        lo, hi = _dig(rec, "amount_low"), _dig(rec, "amount_high")
+    if lo is None and hi is None and amount:
+        lo, hi = parse_amount_range(amount)
+
+    return {
+        "member": str(member or "unknown").strip(),
+        "chamber": str(chamber or source).strip().lower(),
+        "state": str(state or "").strip(),
+        "ticker": str(_dig(rec, "ticker", "symbol", default="") or "").strip().upper(),
+        "asset": str(_dig(rec, "asset_description", "asset", "assetDescription", default="") or "").strip(),
+        "type": str(_dig(rec, "type", "transaction_type", "side", "action", default="") or "").lower(),
+        "disclosed": _cdate(_dig(rec, "disclosure_date", "disclosed_date", "filedAt", "filed_at")),
+        "traded": _cdate(_dig(rec, "transaction_date", "transactedAt", "transacted_at", "traded_at")),
+        "amount_low": lo,
+        "amount_high": hi,
+    }
+
+
 def fetch_congress(today):
     cutoff = today - dt.timedelta(days=CONGRESS_WINDOW_DAYS)
-    out, any_ok = [], False
+    out, any_ok, seen = [], False, set()
 
-    for chamber, url in CONGRESS_SOURCES:
+    for source, url in CONGRESS_SOURCES:
         raw = get(url, timeout=60, retries=2, throttle=False)
         if not raw:
-            print("  congress source unavailable: %s" % chamber, file=sys.stderr)
+            print("  congress source unavailable: %s" % source, file=sys.stderr)
             continue
         try:
             data = json.loads(raw.decode("utf-8", errors="replace"))
         except ValueError:
-            print("  congress source unparseable: %s" % chamber, file=sys.stderr)
+            print("  congress source unparseable: %s" % source, file=sys.stderr)
+            continue
+
+        records = _congress_records(data)
+        if not records:
+            print("  congress source returned no rows: %s" % source, file=sys.stderr)
             continue
         any_ok = True
 
-        for rec in data:
+        kept = 0
+        for rec in records:
             if not isinstance(rec, dict):
                 continue
-            disclosed = parse_date(rec.get("disclosure_date") or rec.get("disclosure_year"))
-            traded = parse_date(rec.get("transaction_date"))
-            if not disclosed or disclosed < cutoff or disclosed > today:
+            r = _normalize_congress(rec, source)
+
+            if not r["disclosed"] or r["disclosed"] < cutoff or r["disclosed"] > today:
+                continue
+            if "purchase" not in r["type"] and "buy" not in r["type"]:
                 continue
 
-            ttype = str(rec.get("type") or rec.get("transaction_type") or "").lower()
-            if "purchase" not in ttype and "buy" not in ttype:
-                continue
-
-            lo, hi = parse_amount_range(rec.get("amount"))
-            member = rec.get("representative") or rec.get("senator") or rec.get("member") or "unknown"
-            ticker = (rec.get("ticker") or "").strip().upper()
+            ticker = r["ticker"]
             if ticker in ("--", "N/A", "NONE"):
                 ticker = ""
 
+            key = (r["member"].lower(), ticker,
+                   r["traded"].isoformat() if r["traded"] else "", r["amount_high"])
+            if key in seen:
+                continue
+            seen.add(key)
+
             out.append({
-                "member": str(member).strip(),
-                "chamber": chamber,
-                "state": (rec.get("state") or "").strip(),
+                "member": r["member"],
+                "chamber": r["chamber"],
+                "state": r["state"],
                 "ticker": ticker,
-                "company": (rec.get("asset_description") or ticker or "undisclosed asset").strip()[:70],
+                "company": (r["asset"] or ticker or "undisclosed asset")[:70],
                 "type": "purchase",
-                "amount_low": lo,
-                "amount_high": hi,
-                "transaction_date": traded.isoformat() if traded else None,
-                "disclosed_date": disclosed.isoformat(),
-                "lag_days": (disclosed - traded).days if traded else None,
+                "amount_low": r["amount_low"],
+                "amount_high": r["amount_high"],
+                "transaction_date": r["traded"].isoformat() if r["traded"] else None,
+                "disclosed_date": r["disclosed"].isoformat(),
+                "lag_days": (r["disclosed"] - r["traded"]).days if r["traded"] else None,
             })
+            kept += 1
+
+        print("  %s: %d records, %d purchases in window" % (source, len(records), kept), file=sys.stderr)
+        if kept:
+            break
 
     if not any_ok:
         return None
