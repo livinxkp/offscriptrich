@@ -359,7 +359,11 @@ def _ends_key(text):
 
 
 def load_roster():
-    """{name key: (canonical name, chamber, state)} for sitting members, or None."""
+    """{(name key, state): (canonical name, chamber, state)} for sitting members.
+
+    Keyed on name AND state deliberately. Name alone is far too loose — a
+    corporate insider sharing a surname with a member would pass.
+    """
     raw = get(ROSTER_URL, timeout=60, retries=2, throttle=False)
     if not raw:
         return None
@@ -378,17 +382,24 @@ def load_roster():
             continue
         term = terms[-1]
         chamber = "senate" if term.get("type") == "sen" else "house"
-        state = str(term.get("state") or "").upper()
-        canonical = name.get("official_full") or \
-            ("%s %s" % (name.get("first", ""), name.get("last", ""))).strip()
-        if not canonical:
+        state = str(term.get("state") or "").upper()[:2]
+        if not state:
             continue
-        for variant in (canonical,
-                        "%s %s" % (name.get("first", ""), name.get("last", "")),
-                        "%s %s" % (name.get("nickname", ""), name.get("last", ""))):
+        first = name.get("first") or ""
+        last = name.get("last") or ""
+        canonical = name.get("official_full") or ("%s %s" % (first, last)).strip()
+        if not canonical or not last:
+            continue
+
+        variants = [canonical, "%s %s" % (first, last)]
+        if name.get("nickname"):
+            variants.append("%s %s" % (name["nickname"], last))
+
+        for variant in variants:
             for key in (_name_key(variant), _ends_key(variant)):
-                if key and key not in roster:
-                    roster[key] = (canonical, chamber, state)
+                # A single word is a bare surname — far too weak to match on.
+                if key and " " in key and (key, state) not in roster:
+                    roster[(key, state)] = (canonical, chamber, state)
     return roster or None
 
 
@@ -415,7 +426,7 @@ def _normalize_congress(rec, source):
 
     amount = _dig(rec, "amount", "amount_range", "amountRange")
     lo = hi = None
-    if isinstance(amount, dict):                  # luxalgo: {"min":.., "max":.., "text":..}
+    if isinstance(amount, dict):
         lo, hi = amount.get("min"), amount.get("max")
         amount = amount.get("text") or amount.get("label")
     if lo is None and hi is None:
@@ -443,7 +454,7 @@ def fetch_congress(today):
 
     roster = load_roster()
     if roster:
-        print("  roster: %d name keys for sitting members" % len(roster), file=sys.stderr)
+        print("  roster: %d name+state keys for sitting members" % len(roster), file=sys.stderr)
     else:
         print("  roster unavailable — rows will NOT be verified this run", file=sys.stderr)
 
@@ -464,7 +475,7 @@ def fetch_congress(today):
             continue
         any_ok = True
 
-        kept = dropped = 0
+        kept, rejected = 0, []
         for rec in records:
             if not isinstance(rec, dict):
                 continue
@@ -475,17 +486,16 @@ def fetch_congress(today):
             if "purchase" not in r["type"] and "buy" not in r["type"]:
                 continue
 
-            # Not a sitting member of Congress = not a congressional disclosure.
-            # Corporate insiders leak into these feeds mislabelled as senators.
+            # Name AND state must both match a sitting member. Corporate
+            # insiders leak into these feeds mislabelled as senators.
             if roster is not None:
-                hit = roster.get(_name_key(r["member"])) or roster.get(_ends_key(r["member"]))
-                # House rows carry 'CA31', senate rows 'AR' — compare the state only.
                 row_state = re.sub(r"[^A-Z]", "", r["state"].upper())[:2]
-                if not hit or (row_state and hit[2] and row_state != hit[2]):
-                    dropped += 1
+                hit = (roster.get((_name_key(r["member"]), row_state))
+                       or roster.get((_ends_key(r["member"]), row_state)))
+                if not hit:
+                    rejected.append("%s (%s)" % (r["member"], row_state or "?"))
                     continue
-                r["member"], r["chamber"] = hit[0], hit[1]
-                r["state"] = r["state"] or hit[2]
+                r["member"], r["chamber"], r["state"] = hit[0], hit[1], r["state"] or hit[2]
 
             ticker = r["ticker"]
             if ticker in ("--", "N/A", "NONE"):
@@ -512,8 +522,10 @@ def fetch_congress(today):
             })
             kept += 1
 
-        print("  %s: %d records, %d kept, %d rejected as non-members"
-              % (source, len(records), kept, dropped), file=sys.stderr)
+        print("  %s: %d records, %d kept, %d rejected"
+              % (source, len(records), kept, len(rejected)), file=sys.stderr)
+        if rejected:
+            print("  rejected names: %s" % ", ".join(sorted(set(rejected))[:10]), file=sys.stderr)
         if kept:
             break
 
