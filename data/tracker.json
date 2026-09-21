@@ -1,6 +1,6 @@
 {
  "status": "live",
- "generated_at": "2026-09-21T07:48:07+00:00",
+ "generated_at": "2026-09-21T08:32:43+00:00",
  "period": {
   "from": "2026-09-11",
   "to": "2026-09-21"
@@ -347,7 +347,7 @@
  ],
  "congress_trades": [
   {
-   "member": "Gilbert Cisneros",
+   "member": "Gilbert Ray Cisneros, Jr.",
    "chamber": "house",
    "state": "CA31",
    "ticker": "PWR",
@@ -360,7 +360,7 @@
    "lag_days": 14
   },
   {
-   "member": "Gilbert Cisneros",
+   "member": "Gilbert Ray Cisneros, Jr.",
    "chamber": "house",
    "state": "CA31",
    "ticker": "ETN",
@@ -399,7 +399,7 @@
    "lag_days": 15
   },
   {
-   "member": "Scott Scott Franklin",
+   "member": "Scott Franklin",
    "chamber": "house",
    "state": "FL18",
    "ticker": "PEP",
@@ -412,7 +412,7 @@
    "lag_days": 22
   },
   {
-   "member": "Scott Scott Franklin",
+   "member": "Scott Franklin",
    "chamber": "house",
    "state": "FL18",
    "ticker": "NVO",
@@ -425,7 +425,7 @@
    "lag_days": 22
   },
   {
-   "member": "Scott Scott Franklin",
+   "member": "Scott Franklin",
    "chamber": "house",
    "state": "FL18",
    "ticker": "MCD",
@@ -438,7 +438,7 @@
    "lag_days": 22
   },
   {
-   "member": "Gilbert Cisneros",
+   "member": "Gilbert Ray Cisneros, Jr.",
    "chamber": "house",
    "state": "CA31",
    "ticker": "WMT",
@@ -451,7 +451,7 @@
    "lag_days": 15
   },
   {
-   "member": "Gilbert Cisneros",
+   "member": "Gilbert Ray Cisneros, Jr.",
    "chamber": "house",
    "state": "CA31",
    "ticker": "GS",
@@ -490,7 +490,7 @@
    "lag_days": 16
   },
   {
-   "member": "Thomas H. Kean Jr",
+   "member": "Thomas H. Kean, Jr.",
    "chamber": "house",
    "state": "NJ07",
    "ticker": "MTZ",
@@ -516,7 +516,7 @@
    "lag_days": 22
   },
   {
-   "member": "Gilbert Cisneros",
+   "member": "Gilbert Ray Cisneros, Jr.",
    "chamber": "house",
    "state": "CA31",
    "ticker": "HMN",
@@ -529,7 +529,7 @@
    "lag_days": 21
   },
   {
-   "member": "Gilbert Cisneros",
+   "member": "Gilbert Ray Cisneros, Jr.",
    "chamber": "house",
    "state": "CA31",
    "ticker": "CECO",
@@ -542,7 +542,7 @@
    "lag_days": 21
   },
   {
-   "member": "Gilbert Cisneros",
+   "member": "Gilbert Ray Cisneros, Jr.",
    "chamber": "house",
    "state": "CA31",
    "ticker": "ATRC",
@@ -555,7 +555,7 @@
    "lag_days": 21
   },
   {
-   "member": "Gilbert Cisneros",
+   "member": "Gilbert Ray Cisneros, Jr.",
    "chamber": "house",
    "state": "CA31",
    "ticker": "AORT",
@@ -568,7 +568,7 @@
    "lag_days": 21
   },
   {
-   "member": "Gilbert Cisneros",
+   "member": "Gilbert Ray Cisneros, Jr.",
    "chamber": "house",
    "state": "CA31",
    "ticker": "AGIO",
@@ -633,7 +633,7 @@
    "lag_days": 23
   },
   {
-   "member": "Gilbert Cisneros",
+   "member": "Gilbert Ray Cisneros, Jr.",
    "chamber": "house",
    "state": "CA31",
    "ticker": "CSGP",
@@ -646,7 +646,7 @@
    "lag_days": 22
   },
   {
-   "member": "Gilbert Cisneros",
+   "member": "Gilbert Ray Cisneros, Jr.",
    "chamber": "house",
    "state": "CA31",
    "ticker": "KMX",
