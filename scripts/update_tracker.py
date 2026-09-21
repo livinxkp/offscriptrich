@@ -318,6 +318,13 @@ def parse_date(text):
     return None
 
 
+# Every sitting member of Congress, free, no key, maintained daily.
+# Used to throw out rows that are not actually congressional disclosures.
+ROSTER_URL = "https://unitedstates.github.io/congress-legislators/legislators-current.json"
+
+_SUFFIXES = {"jr", "sr", "ii", "iii", "iv", "v"}
+
+
 def _cdate(v):
     """Dates arrive as '2026-09-02' or '2026-09-02T14:11:00Z'. Trim and parse."""
     if not v:
@@ -331,6 +338,58 @@ def _dig(rec, *names, **kw):
         if n in rec and rec[n] not in (None, ""):
             return rec[n]
     return kw.get("default")
+
+
+def _name_key(text):
+    """Lowercase, drop punctuation and suffixes, collapse doubled words.
+    'Scott Scott Franklin' and 'Thomas H. Kean Jr' both normalise cleanly."""
+    words = re.findall(r"[a-z]+", str(text or "").lower())
+    words = [w for w in words if w not in _SUFFIXES]
+    out = []
+    for w in words:
+        if not out or out[-1] != w:
+            out.append(w)
+    return " ".join(out)
+
+
+def _ends_key(text):
+    """First and last word only, so 'Thomas H Kean' matches 'Thomas Kean'."""
+    words = _name_key(text).split()
+    return (words[0] + " " + words[-1]) if len(words) >= 2 else ""
+
+
+def load_roster():
+    """{name key: (canonical name, chamber, state)} for sitting members, or None."""
+    raw = get(ROSTER_URL, timeout=60, retries=2, throttle=False)
+    if not raw:
+        return None
+    try:
+        people = json.loads(raw.decode("utf-8", errors="replace"))
+    except ValueError:
+        return None
+
+    roster = {}
+    for p in people:
+        if not isinstance(p, dict):
+            continue
+        name = p.get("name") or {}
+        terms = p.get("terms") or []
+        if not terms:
+            continue
+        term = terms[-1]
+        chamber = "senate" if term.get("type") == "sen" else "house"
+        state = str(term.get("state") or "").upper()
+        canonical = name.get("official_full") or \
+            ("%s %s" % (name.get("first", ""), name.get("last", ""))).strip()
+        if not canonical:
+            continue
+        for variant in (canonical,
+                        "%s %s" % (name.get("first", ""), name.get("last", "")),
+                        "%s %s" % (name.get("nickname", ""), name.get("last", ""))):
+            for key in (_name_key(variant), _ends_key(variant)):
+                if key and key not in roster:
+                    roster[key] = (canonical, chamber, state)
+    return roster or None
 
 
 def _congress_records(data):
@@ -382,6 +441,12 @@ def fetch_congress(today):
     cutoff = today - dt.timedelta(days=CONGRESS_WINDOW_DAYS)
     out, any_ok, seen = [], False, set()
 
+    roster = load_roster()
+    if roster:
+        print("  roster: %d name keys for sitting members" % len(roster), file=sys.stderr)
+    else:
+        print("  roster unavailable — rows will NOT be verified this run", file=sys.stderr)
+
     for source, url in CONGRESS_SOURCES:
         raw = get(url, timeout=60, retries=2, throttle=False)
         if not raw:
@@ -399,7 +464,7 @@ def fetch_congress(today):
             continue
         any_ok = True
 
-        kept = 0
+        kept = dropped = 0
         for rec in records:
             if not isinstance(rec, dict):
                 continue
@@ -410,12 +475,22 @@ def fetch_congress(today):
             if "purchase" not in r["type"] and "buy" not in r["type"]:
                 continue
 
+            # Not a sitting member of Congress = not a congressional disclosure.
+            # Corporate insiders leak into these feeds mislabelled as senators.
+            if roster is not None:
+                hit = roster.get(_name_key(r["member"])) or roster.get(_ends_key(r["member"]))
+                if not hit:
+                    dropped += 1
+                    continue
+                r["member"], r["chamber"] = hit[0], hit[1]
+                r["state"] = r["state"] or hit[2]
+
             ticker = r["ticker"]
             if ticker in ("--", "N/A", "NONE"):
                 ticker = ""
 
             key = (r["member"].lower(), ticker,
-                   r["traded"].isoformat() if r["traded"] else "", r["amount_high"])
+                   r["traded"].isoformat() if r["traded"] else "")
             if key in seen:
                 continue
             seen.add(key)
@@ -435,7 +510,8 @@ def fetch_congress(today):
             })
             kept += 1
 
-        print("  %s: %d records, %d purchases in window" % (source, len(records), kept), file=sys.stderr)
+        print("  %s: %d records, %d kept, %d rejected as non-members"
+              % (source, len(records), kept, dropped), file=sys.stderr)
         if kept:
             break
 
