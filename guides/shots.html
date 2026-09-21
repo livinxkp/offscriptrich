@@ -1,0 +1,231 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>six prompts for linkedin headshots</title>
+<meta name="description" content="six copy-paste prompts, colour palettes included, that turn a few phone photos into a linkedin headshot. works in any image model.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@87..100,400..800&family=DM+Mono:wght@400;500&family=Public+Sans:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="../assets/style.css">
+<style>
+  .hero { padding-block: 40px 20px; }
+  .hero .row { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; margin-bottom: 14px; }
+  .hero h1 { margin-bottom: 16px; }
+
+  .opener {
+    border: 1px solid var(--line); border-left: 3px solid var(--brass);
+    border-radius: 3px; background: var(--surface);
+    padding: 18px 20px; font-size: 15px; line-height: 1.6; color: var(--text-dim);
+    max-width: 68ch; margin-bottom: 40px;
+  }
+  .opener b { color: var(--text); font-weight: 600; }
+
+  section.block { margin-bottom: 44px; }
+  section.block > h2 { margin-bottom: 14px; }
+
+  .steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1px; background: var(--line); border: 1px solid var(--line); border-radius: 3px; overflow: hidden; }
+  .step { background: var(--surface); padding: 18px; display: flex; flex-direction: column; gap: 7px; }
+  .step .n { font-family: var(--mono); font-size: 11px; letter-spacing: 0.1em; color: var(--brass); }
+  .step h3 { font-size: 16px; }
+  .step p { font-size: 13.5px; color: var(--text-dim); line-height: 1.5; }
+  .step a { color: var(--brass); }
+
+  .promptcard { border: 1px solid var(--line); border-radius: 3px; background: var(--surface); overflow: hidden; margin-bottom: 18px; }
+  .promptcard .head { display: flex; align-items: center; justify-content: space-between; gap: 10px; padding: 12px 14px; border-bottom: 1px solid var(--line); }
+  .promptcard .head h3 { font-size: 15px; }
+  .promptcard .head .n { font-family: var(--mono); font-size: 11px; letter-spacing: 0.1em; color: var(--brass); margin-right: 8px; }
+  .promptcard .head .title-wrap { display: flex; align-items: baseline; min-width: 0; }
+  .promptcard pre {
+    margin: 0; padding: 16px 14px; font-family: var(--mono); font-size: 13px;
+    line-height: 1.65; color: var(--text); white-space: pre-wrap; word-wrap: break-word;
+    max-height: 420px; overflow-y: auto;
+  }
+  .copybtn {
+    font-family: var(--mono); font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase;
+    background: transparent; color: var(--text-dim); border: 1px solid var(--line);
+    border-radius: 2px; padding: 5px 10px; cursor: pointer; white-space: nowrap;
+  }
+  .copybtn:hover { color: var(--text); border-color: var(--brass); }
+  .copybtn[data-done="1"] { color: var(--buy); border-color: var(--buy); }
+
+  .notes { border: 1px solid var(--line); border-radius: 3px; background: var(--surface); padding: 18px 20px; }
+  .notes ul { margin: 0; padding-left: 18px; display: flex; flex-direction: column; gap: 9px; color: var(--text-dim); font-size: 14px; }
+  .notes li b { color: var(--text); font-weight: 600; }
+
+  .cta { margin-top: 44px; border: 1px solid var(--line); border-left: 3px solid var(--brass); border-radius: 3px; background: var(--surface); padding: 22px; display: flex; flex-direction: column; gap: 10px; }
+  .cta p { color: var(--text-dim); font-size: 14.5px; max-width: 58ch; }
+</style>
+</head>
+<body>
+
+<header class="masthead">
+  <div class="wrap masthead-in">
+    <a class="wordmark" href="../index.html"><span class="off">OFF-SCRIPT</span>&nbsp;<span class="rich">RICH</span></a>
+    <nav class="navlinks">
+      <a href="index.html">guides</a>
+      <a href="stocks.html">the tape</a>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <div class="hero">
+    <div class="row">
+      <span class="keyword">SHOTS</span>
+      <span class="chip" data-pillar="ai">ai</span>
+    </div>
+    <h1>six prompts for linkedin headshots</h1>
+  </div>
+
+  <p class="opener">
+    hey, it's KP. <b>you commented SHOTS</b>, so here it is. the six prompts from the reel, in full, with the colour palettes that came with them. copy one, paste it into whatever image tool you already use, swap the bracket for yourself. about ten minutes for all six.
+  </p>
+
+  <section class="block">
+    <h2>why this matters</h2>
+    <div class="prose">
+      <p>your profile picture is the one image of you that anyone looking you up will definitely see, and it is the only one on the page you completely control. everything else &mdash; your title, your company, who you know &mdash; is either true or it isn't. the photo is a choice you make.</p>
+      <p>until recently the choice was pay a photographer, or crop yourself out of a wedding photo and hope. there is a third option now, and the gap between an ai headshot that passes and one that looks like a mannequin is almost entirely the prompt. vague in, plastic out. the prompts that work are specific about the boring things: where the light is coming from, what the fabric is doing, how far away the camera is, what colours are allowed in the frame.</p>
+      <p>that is what these six are. each one is long on purpose.</p>
+    </div>
+  </section>
+
+  <section class="block">
+    <h2>the setup</h2>
+    <div class="steps">
+      <div class="step"><span class="n">01</span><h3>pick your tool</h3><p>any image model that lets you attach a reference photo. use whichever you already have open. these prompts are written in plain description, so nothing here depends on one tool's syntax.</p></div>
+      <div class="step"><span class="n">02</span><h3>feed it your face</h3><p>three to five clear photos of you. front-on, daylight, no sunglasses, no heavy filter, slightly different angles. bad references are the single biggest reason outputs come back looking like someone else.</p></div>
+      <div class="step"><span class="n">03</span><h3>swap the bracket</h3><p>every prompt opens with <b>[a South Asian man in his late twenties]</b>. replace what's inside the brackets with you, brackets and all. leave the rest alone &mdash; the detail is what's doing the work.</p></div>
+    </div>
+  </section>
+
+  <section class="block">
+    <h2>the prompts</h2>
+
+    <div class="promptcard">
+      <div class="head">
+        <div class="title-wrap"><span class="n">01</span><h3>the monochrome stool look</h3></div>
+        <button class="copybtn" type="button">copy</button>
+      </div>
+      <pre>A straight-on medium shot of [a South Asian man in his late twenties], styled in a monochromatic high-fashion editorial setting for a magazine shoot. He sits on a simple wooden stool, one forearm resting across his thigh, the other hand on his knee. His facial expression is neutral, conveying seriousness and sophistication. He wears a ribbed fitted dark crewneck sweater over an oversized crisp white collared shirt, paired with loosely tailored gray textured trousers and dark leather boots, creating striking contrast between the knit, the lightweight cotton, and the heavier weave of the trousers. Background is a seamless soft white studio setup, devoid of clutter. Lighting is soft, diffuse and even, minimizing shadows and emphasizing the contours of his face and the layered clothing textures. Dominant hues are grayscale, producing an elegant neutral palette and a timeless, minimalist mood. Captured digitally with a high-resolution camera, sharply rendered with deep depth of field keeping both subject and outfit details in focus. Clean, editorial, sophisticated.
+HEX: #d9dde0 #d3d4d7 #cccdcf #1c1d1f #101113 #727073 #666568 #c3c3c5 #4b4c4e #292a2c #393a3c</pre>
+    </div>
+
+    <div class="promptcard">
+      <div class="head">
+        <div class="title-wrap"><span class="n">02</span><h3>bold suit, sharp shadow</h3></div>
+        <button class="copybtn" type="button">copy</button>
+      </div>
+      <pre>A straight-on, leveled medium shot of [a South Asian man in his late twenties] posed confidently against a smooth cool-toned blue-gray studio backdrop, illuminated predominantly by a single hard light source casting a distinctive sharp shadow along the wall behind him. He wears an oversized, matte-textured deep purple men's suit with a boxy cut — exaggeratedly tailored blazer and matching trousers, dark shirt underneath, no tie. His hair is dark, slicked back. Minimal accessories: a thin gold chain. The light source is set slightly off-center, creating a chiaroscuro effect across his face and body, sharply defining the facial planes and creating a somber, regal ambiance. The palette is dominated by rich purple accented by his warm skin tone and the backdrop's slate blue. Captured digitally with smooth gradients and clean lines — crisp, modern, editorial, suggesting high fashion, composure, and understated strength.
+HEX: #110f25 #48677c #1b1733 #3c5768 #415f73 #04060a #314454 #506d82 #d4e1ed #b0c8da #7351ae</pre>
+    </div>
+
+    <div class="promptcard">
+      <div class="head">
+        <div class="title-wrap"><span class="n">03</span><h3>gray blazer beside the desk</h3></div>
+        <button class="copybtn" type="button">copy</button>
+      </div>
+      <pre>A soft daylight medium portrait depicts [a South Asian man in his late twenties] with a poised, confident demeanor, shown from the upper torso up and turned slightly to one side. His dark hair is neatly styled back, with light stubble. He wears a matte gray tailored blazer over a neutral-tone shirt, top button open, no tie. The backdrop is a blurred minimalist office environment featuring a modern light wood desk and a laptop, bathed in strong sunlight casting pronounced shadows on a pale wall adorned with geometric artwork. Lighting generates subtle specular highlights and even illumination bringing out his medium-brown skin tone. Palette dominated by neutral grays and taupes, complemented by pale cream accents. Shallow depth of field for a creamy bokeh background, professional digital portrait lens, crisp with minimal grain. Business editorial composition, professionalism and calm assurance.
+HEX: #8e8e8c #99a1a4 #eae4da #1b1a17 #2b2d2f #6e6a65 #4b4a49 #060505 #ada196 #4e3221 #f1c6a4 #a87958</pre>
+    </div>
+
+    <div class="promptcard">
+      <div class="head">
+        <div class="title-wrap"><span class="n">04</span><h3>black-and-white spotlight on the stool</h3></div>
+        <button class="copybtn" type="button">copy</button>
+      </div>
+      <pre>A straight-on studio portrait captures [a South Asian man in his late 20s to early 30s], seated on a metal stool. He wears a fine-gauge black turtleneck and tailored dark trousers with polished leather boots. His pose is relaxed and poised — one forearm rests on his knee, leaning slightly forward. His hair is swept back, sleek. The background is a seamless studio backdrop; lighting consists of dramatic key spot illumination creating a circular vignette, producing strong sculptural highlights and deep shadows while emphasizing his facial structure and jawline. The image is black and white, grayscale palette highlighting skin tone and fabric texture, no visible branding or text. Composition and pose are elegant with careful attention to posture. High-resolution digital capture, free from noise or compression, crisp and detailed — sophisticated, polished, classic, reminiscent of old Hollywood glamour portraiture.
+HEX: #0c0c0c #2d2d2d #353535 #3e3e3e #212121 #272727 #494949 #e0e0e0 #d1d1d1 #c4c4c4 #5b5b5b</pre>
+    </div>
+
+    <div class="promptcard">
+      <div class="head">
+        <div class="title-wrap"><span class="n">05</span><h3>oversized suit and the striped tie</h3></div>
+        <button class="copybtn" type="button">copy</button>
+      </div>
+      <pre>A straight-on full-body fashion portrait of [a South Asian man in his late twenties], standing with one hand in his oversized trouser pocket against a simple light gray wall. He wears an exaggeratedly oversized black wool suit jacket — broad shoulders, sleeves extending past the wrists — paired with dramatically wide-leg pleated suit trousers that pool around sleek pointed-toe black shoes. His crisp white button-down shirt is tucked at the waist, accented with an angular black-and-white striped tie worn slightly askew. His dark hair is worn back with a few loose strands, and he wears angular thin-framed black glasses. The scene is lit with soft diffuse overhead light, creating minimal hard shadows and a subtle even glow while introducing faint desaturated blue tones to the palette. Captured with a high-resolution digital camera, crisp and editorial — formal, nonchalant, self-possessed.
+HEX: #95a4bf #eff2fc #dce1ef #8996ae #a2b1cb #ced5e9 #c1c9e0 #273341 #afbed7 #101318 #19202a #728095 #546275 #3d4856</pre>
+    </div>
+
+    <div class="promptcard">
+      <div class="head">
+        <div class="title-wrap"><span class="n">06</span><h3>the calendar-page collage</h3></div>
+        <button class="copybtn" type="button">copy</button>
+      </div>
+      <pre>A straight-on medium shot captures [a South Asian man in his late twenties] dressed in formal business attire — a tailored black blazer with gold buttons — seated at a desk. He holds a vintage telephone receiver to his ear with his right hand, wearing sleek angular black eyeglasses, gazing thoughtfully to the side with a subtle neutral expression. His dark hair is styled back, light stubble. The scene is staged over a bright, digitally composited white calendar page for the month, with legible numbers and stylized handwriting across the dates. Surrounding him are modern design elements: a deep burgundy leather briefcase with gold hardware on the right, a white envelope filled with magazines at the bottom left, a linen tote bag in the upper right, and a magnifying glass icon beside a small header line at the top. The palette is clean — crisp whites, deep blacks, muted reds, with cream and tan accents. Smooth, well-lit digital quality with no harsh shadows. Editorial, hypermodern, aspirational.
+HEX: #ffffff #050808 #f0f2f2 #cbcdce #ded0be #bcb9b0 #dfe3e2 #1c1c1a #725b51 #433935</pre>
+    </div>
+
+  </section>
+
+  <section class="block">
+    <h2>good to know</h2>
+    <div class="notes">
+      <ul>
+        <li><b>the bracket isn't the only thing describing you</b> &mdash; several of these also say dark hair, light stubble, medium-brown skin. if that isn't you, edit those words too, or the model will quietly drift back toward the description instead of your reference photos.</li>
+        <li><b>check the hands and the glasses</b> &mdash; fingers and lens reflections are still where image models fall over. generate three or four per prompt and bin the broken ones. it costs you nothing but a minute.</li>
+        <li><b>the hex codes are a steer, not a law</b> &mdash; they nudge the palette toward the look from the reel. some tools respect them closely, some barely notice. if your output ignores them entirely, that's the tool, not the prompt.</li>
+        <li><b>the one most people get wrong</b> &mdash; they let it make them better looking instead of better lit. if someone who has met you wouldn't recognise you from the photo, it has failed at the only job it had. regenerate.</li>
+      </ul>
+    </div>
+  </section>
+
+  <div class="cta">
+    <p class="eyebrow">the rest of the library</p>
+    <p>new guide every week, one per pillar. they are all free and none of them are gated.</p>
+    <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:4px">
+      <a class="btn btn-primary" href="https://instagram.com/livinxkp" rel="noopener">follow on instagram</a>
+      <a class="btn" href="index.html">all free guides</a>
+    </div>
+  </div>
+
+  <footer class="foot">
+    <span>OFF-SCRIPT RICH</span>
+    <a href="index.html">guides</a>
+    <a href="https://instagram.com/livinxkp" rel="noopener">@livinxkp</a>
+    <span style="margin-left:auto">new guides every week</span>
+  </footer>
+
+</main>
+
+<script>
+(function () {
+  "use strict";
+  document.querySelectorAll(".promptcard").forEach(function (card) {
+    var btn = card.querySelector(".copybtn");
+    var pre = card.querySelector("pre");
+    if (!btn || !pre) return;
+    btn.addEventListener("click", function () {
+      var text = pre.textContent;
+      var done = function () {
+        btn.textContent = "copied";
+        btn.setAttribute("data-done", "1");
+        setTimeout(function () { btn.textContent = "copy"; btn.removeAttribute("data-done"); }, 1800);
+      };
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(text).then(done, function () { fallback(text, done); });
+      } else {
+        fallback(text, done);
+      }
+    });
+  });
+
+  function fallback(text, done) {
+    var ta = document.createElement("textarea");
+    ta.value = text;
+    ta.setAttribute("readonly", "");
+    ta.style.position = "fixed";
+    ta.style.top = "-1000px";
+    document.body.appendChild(ta);
+    ta.select();
+    try { document.execCommand("copy"); done(); } catch (e) { /* clipboard unavailable */ }
+    document.body.removeChild(ta);
+  }
+})();
+</script>
+
+</body>
+</html>
