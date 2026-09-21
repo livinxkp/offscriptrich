@@ -1,0 +1,442 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>The Insider Tape</title>
+<meta name="description" content="Every insider and congressional stock purchase filed last week, pulled straight from SEC and STOCK Act disclosures. Updated weekly, free.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@87..100,400..800&family=DM+Mono:wght@400;500&family=Public+Sans:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="../assets/style.css">
+<style>
+  .hero { padding-block: 44px 28px; }
+  .hero h1 { margin-block: 12px 14px; }
+
+  .stampline {
+    display: flex; flex-wrap: wrap; gap: 8px 14px; align-items: center;
+    font-family: var(--mono); font-size: 12px; color: var(--text-faint);
+    padding-block: 10px; border-block: 1px solid var(--line-soft);
+  }
+  .stampline .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--buy); display: inline-block; }
+  .stampline .live { color: var(--buy); }
+
+  .banner {
+    display: flex; gap: 10px; align-items: flex-start;
+    border: 1px solid color-mix(in srgb, var(--brass) 45%, transparent);
+    background: var(--brass-soft); border-radius: 3px;
+    padding: 12px 14px; font-size: 13.5px; color: var(--text);
+    margin-block: 20px;
+  }
+  .banner b { font-weight: 600; }
+
+  /* three figures — the page's headline numbers */
+  .figures {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px;
+    background: var(--line); border: 1px solid var(--line);
+    border-radius: 3px; overflow: hidden; margin-block: 24px 40px;
+  }
+  .fig { background: var(--surface); padding: 18px 16px 16px; display: flex; flex-direction: column; gap: 4px; }
+  .fig .k { font-family: var(--mono); font-size: 10px; letter-spacing: 0.13em; text-transform: uppercase; color: var(--text-faint); }
+  .fig .v {
+    font-family: var(--display); font-weight: 800; font-stretch: 88%;
+    font-size: clamp(24px, 4.4vw, 36px); letter-spacing: -0.03em;
+    font-variant-numeric: tabular-nums; line-height: 1;
+  }
+  .fig .s { font-size: 12.5px; color: var(--text-dim); line-height: 1.35; }
+  @media (max-width: 620px) {
+    .figures { grid-template-columns: 1fr; }
+  }
+
+  section.block { margin-block: 0 44px; }
+  .block-head { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; flex-wrap: wrap; margin-bottom: 6px; }
+  .block-note { font-size: 13.5px; color: var(--text-dim); max-width: 60ch; margin-bottom: 16px; }
+
+  .tablewrap { overflow-x: auto; border: 1px solid var(--line); border-radius: 3px; background: var(--surface); }
+  table { border-collapse: collapse; width: 100%; min-width: 620px; }
+  thead th {
+    text-align: left; font-family: var(--mono); font-weight: 500;
+    font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--text-faint); padding: 11px 14px;
+    border-bottom: 1px solid var(--line); white-space: nowrap;
+  }
+  tbody td { padding: 13px 14px; border-bottom: 1px solid var(--line-soft); vertical-align: top; font-size: 14px; }
+  tbody tr:last-child td { border-bottom: 0; }
+  tbody tr:hover { background: var(--surface-2); }
+
+  td.dir { padding: 0; width: 3px; }
+  td.dir span { display: block; width: 3px; height: 100%; min-height: 48px; background: var(--buy); }
+  tr[data-dir="sell"] td.dir span { background: var(--sell); }
+
+  .co { font-weight: 600; letter-spacing: -0.01em; }
+  .tick { font-family: var(--mono); font-size: 12px; color: var(--text-faint); letter-spacing: 0.04em; }
+  .who { font-size: 13.5px; }
+  .role { font-size: 12px; color: var(--text-faint); }
+  .amt { font-family: var(--mono); font-variant-numeric: tabular-nums; font-weight: 500; white-space: nowrap; }
+  .amt.buy { color: var(--buy); }
+  .amt.sell { color: var(--sell); }
+  .dt { font-family: var(--mono); font-size: 12.5px; color: var(--text-dim); white-space: nowrap; font-variant-numeric: tabular-nums; }
+  .lag { font-family: var(--mono); font-size: 11px; color: var(--text-faint); }
+  .lag.slow { color: var(--sell); }
+
+
+  /* On a phone the value is the whole point, so it must not sit behind a
+     horizontal scroll. Drop the least load-bearing date column instead:
+     insiders lose "filed" (the trade date matters more), congress loses
+     "traded" (the lag column already encodes it). */
+  @media (max-width: 640px) {
+    table { min-width: 0; }
+    thead th, tbody td { padding-inline: 10px; }
+    #tInsider tr > *:nth-child(6),
+    #tCongress tr > *:nth-child(5) { display: none; }
+    .co { font-size: 13.5px; }
+    .who { font-size: 13px; }
+  }
+
+  .empty { padding: 28px 16px; text-align: center; color: var(--text-faint); font-size: 14px; }
+
+  .how { border: 1px solid var(--line); border-radius: 3px; padding: 20px; background: var(--surface); }
+  .how ul { margin: 12px 0 0; padding-left: 18px; display: flex; flex-direction: column; gap: 9px; color: var(--text-dim); font-size: 14px; }
+  .how li b { color: var(--text); font-weight: 600; }
+  .how a { color: var(--brass); }
+
+  .disclaim { font-size: 12.5px; color: var(--text-faint); line-height: 1.55; max-width: 72ch; margin-top: 22px; }
+
+  .cta {
+    margin-top: 40px; border: 1px solid var(--line); border-left: 3px solid var(--brass);
+    border-radius: 3px; background: var(--surface); padding: 22px;
+    display: flex; flex-direction: column; gap: 10px;
+  }
+  .cta p { color: var(--text-dim); font-size: 14.5px; max-width: 58ch; }
+</style>
+</head>
+<body>
+
+<header class="masthead">
+  <div class="wrap masthead-in">
+    <a class="wordmark" href="../index.html"><span class="off">OFF-SCRIPT</span>&nbsp;<span class="rich">RICH</span></a>
+    <nav class="navlinks">
+      <a href="index.html">guides</a>
+      <a href="stocks.html" aria-current="page">the tape</a>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <div class="hero">
+    <p class="eyebrow">sec form 4 &middot; stock act disclosures &middot; updated weekly</p>
+    <h1>the insider tape</h1>
+    <p class="lede">every stock purchase filed by a company insider or a member of congress in the last seven days. straight from the filings, nothing added, nothing recommended.</p>
+  </div>
+
+  <div class="stampline">
+    <span class="dot" id="statusdot"></span>
+    <span id="statustext" class="live">loading</span>
+    <span>&middot;</span>
+    <span>window <span id="period">—</span></span>
+    <span>&middot;</span>
+    <span>next refresh monday morning</span>
+  </div>
+
+  <div class="banner" id="srcbanner" hidden>
+    <span>&#9888;</span>
+    <span id="srcbannertext"></span>
+  </div>
+
+  <div class="banner" id="samplebanner" hidden>
+    <span>&#9888;</span>
+    <span><b>sample data.</b> these rows are placeholders with invented companies and names, shown so the layout is visible before the first real pull. the scheduled job replaces all of it with actual filings on its first run.</span>
+  </div>
+
+  <div class="figures">
+    <div class="fig">
+      <span class="k">insider buying, 7 days</span>
+      <span class="v" id="figTotal">—</span>
+      <span class="s">open-market purchases only. sales excluded.</span>
+    </div>
+    <div class="fig">
+      <span class="k">purchase filings</span>
+      <span class="v" id="figCount">—</span>
+      <span class="s">form 4s with a code P transaction.</span>
+    </div>
+    <div class="fig">
+      <span class="k">largest single buy</span>
+      <span class="v" id="figMax">—</span>
+      <span class="s" id="figMaxWho">—</span>
+    </div>
+  </div>
+
+  <section class="block">
+    <div class="block-head">
+      <h2>insiders bought</h2>
+      <span class="eyebrow">form 4 &middot; code p</span>
+    </div>
+    <p class="block-note">executives and directors buying their own company's stock on the open market. they have to file within two business days, so this is close to real time.</p>
+    <div class="tablewrap">
+      <table id="tInsider">
+        <thead>
+          <tr>
+            <th aria-label="direction"></th>
+            <th>company</th>
+            <th>insider</th>
+            <th>value</th>
+            <th>traded</th>
+            <th>filed</th>
+          </tr>
+        </thead>
+        <tbody id="insiderBody">
+          <tr><td colspan="6" class="empty">loading filings</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section class="block">
+    <div class="block-head">
+      <h2>congress bought</h2>
+      <span class="eyebrow">stock act &middot; periodic transaction reports</span>
+    </div>
+    <p class="block-note">members of the house and senate have 45 days to disclose a trade. the lag column is how long they actually took.</p>
+    <div class="tablewrap">
+      <table id="tCongress">
+        <thead>
+          <tr>
+            <th aria-label="direction"></th>
+            <th>member</th>
+            <th>company</th>
+            <th>size</th>
+            <th>traded</th>
+            <th>lag</th>
+          </tr>
+        </thead>
+        <tbody id="congressBody">
+          <tr><td colspan="6" class="empty">loading disclosures</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section class="block">
+    <h2 style="margin-bottom:14px">where this comes from</h2>
+    <div class="how">
+      <ul>
+        <li><b>insider trades</b> — SEC Form 4, filed within two business days of the trade. pulled from the EDGAR daily index. <a href="https://www.sec.gov/edgar/search/" rel="noopener">edgar full-text search</a></li>
+        <li><b>congressional trades</b> — periodic transaction reports required by the STOCK Act. <a href="https://disclosures-clerk.house.gov/PublicDisclosure/FinancialDisclosure" rel="noopener">house clerk</a> and <a href="https://efdsearch.senate.gov/search/" rel="noopener">senate efd</a></li>
+        <li><b>what counts as a buy</b> — only transaction code P, an open-market purchase with the insider's own money. option exercises, grants and gifts are filtered out because they are compensation, not conviction.</li>
+        <li><b>refresh</b> — a scheduled job re-pulls every monday morning and rewrites this page. if the timestamp above is stale, the job failed and the numbers are old.</li>
+      </ul>
+      <p class="disclaim">this page reports public regulatory filings and nothing else. it is not investment advice, not a recommendation, and not a suggestion that you copy anyone's trade. an insider buying their own stock is a data point with a mixed track record, not a signal. filings contain errors, amendments and late reports. i am not a licensed financial adviser. for decisions about your own money, talk to one.</p>
+    </div>
+  </section>
+
+  <div class="cta">
+    <p class="eyebrow">get it in your dms</p>
+    <p>this page updates on its own every monday. comment <b style="color:var(--brass);font-family:var(--mono)">STOCKS</b> on any of my videos and the automation sends you the link, so it lands in your dms instead of you having to remember to check.</p>
+    <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:4px">
+      <a class="btn btn-primary" href="https://instagram.com/livinxkp" rel="noopener">follow on instagram</a>
+      <a class="btn" href="index.html">all free guides</a>
+    </div>
+  </div>
+
+  <footer class="foot">
+    <span>OFF-SCRIPT RICH</span>
+    <a href="index.html">guides</a>
+    <a href="https://instagram.com/livinxkp" rel="noopener">@livinxkp</a>
+    <span style="margin-left:auto">public filings, not advice</span>
+  </footer>
+
+</main>
+
+<script>
+(function () {
+  "use strict";
+
+  // Shown only until the scheduled job writes real data. Invented issuers and
+  // names on purpose so nothing here can be mistaken for a real filing.
+  var SAMPLE = {
+    generated_at: null,
+    status: "sample",
+    period: { from: "2026-09-13", to: "2026-09-20" },
+    totals: { insider_buy_value: 48250000, form4_purchase_filings: 61, largest_buy: { value: 12400000, who: "placeholder name, ceo, sample industrials" } },
+    insider_buys: [
+      { ticker: "XMPL", company: "Sample Industrials", insider: "Placeholder Name", role: "chief executive officer", value: 12400000, transaction_date: "2026-09-16", filed_date: "2026-09-17", direction: "buy" },
+      { ticker: "DEMO", company: "Demo Semiconductor", insider: "Placeholder Name", role: "director", value: 6100000, transaction_date: "2026-09-15", filed_date: "2026-09-16", direction: "buy" },
+      { ticker: "TEST", company: "Testco Energy", insider: "Placeholder Name", role: "chief financial officer", value: 3350000, transaction_date: "2026-09-17", filed_date: "2026-09-18", direction: "buy" },
+      { ticker: "SMPL", company: "Sample Health Group", insider: "Placeholder Name", role: "evp, operations", value: 1180000, transaction_date: "2026-09-14", filed_date: "2026-09-15", direction: "buy" },
+      { ticker: "PLCH", company: "Placeholder Retail", insider: "Placeholder Name", role: "director", value: 742000, transaction_date: "2026-09-18", filed_date: "2026-09-18", direction: "buy" }
+    ],
+    congress_trades: [
+      { member: "Placeholder Member", chamber: "house", ticker: "XMPL", company: "Sample Industrials", type: "purchase", amount_low: 100001, amount_high: 250000, transaction_date: "2026-08-12", disclosed_date: "2026-09-16", lag_days: 35 },
+      { member: "Placeholder Member", chamber: "senate", ticker: "DEMO", company: "Demo Semiconductor", type: "purchase", amount_low: 15001, amount_high: 50000, transaction_date: "2026-08-04", disclosed_date: "2026-09-15", lag_days: 42 },
+      { member: "Placeholder Member", chamber: "house", ticker: "TEST", company: "Testco Energy", type: "purchase", amount_low: 1001, amount_high: 15000, transaction_date: "2026-09-02", disclosed_date: "2026-09-17", lag_days: 15 }
+    ]
+  };
+
+  var $ = function (id) { return document.getElementById(id); };
+
+  function money(n) {
+    if (n === null || n === undefined || isNaN(n)) return "—";
+    if (n >= 1e9) return "$" + (n / 1e9).toFixed(1).replace(/\.0$/, "") + "B";
+    if (n >= 1e6) return "$" + (n / 1e6).toFixed(1).replace(/\.0$/, "") + "M";
+    if (n >= 1e3) return "$" + Math.round(n / 1e3) + "K";
+    return "$" + n;
+  }
+
+  function range(lo, hi) {
+    if (!lo && !hi) return "—";
+    return money(lo) + "–" + money(hi);
+  }
+
+  function shortDate(s) {
+    if (!s) return "—";
+    var p = String(s).slice(0, 10).split("-");
+    if (p.length !== 3) return s;
+    var m = ["jan", "feb", "mar", "apr", "may", "jun", "jul", "aug", "sep", "oct", "nov", "dec"];
+    return m[parseInt(p[1], 10) - 1] + " " + parseInt(p[2], 10);
+  }
+
+  function el(tag, cls, text) {
+    var n = document.createElement(tag);
+    if (cls) n.className = cls;
+    if (text !== undefined && text !== null) n.textContent = text;
+    return n;
+  }
+
+  function cell(parent, cls, build) {
+    var td = el("td", cls);
+    build(td);
+    parent.appendChild(td);
+    return td;
+  }
+
+  function stripe(tr, dir) {
+    var td = el("td", "dir");
+    td.appendChild(el("span"));
+    tr.appendChild(td);
+    tr.setAttribute("data-dir", dir || "buy");
+  }
+
+  function renderInsiders(rows, failed) {
+    var body = $("insiderBody");
+    body.textContent = "";
+    if (!rows || !rows.length) {
+      var tr = el("tr");
+      var td = el("td", "empty", failed
+        ? "the sec feed did not respond on the last run. this is not zero filings, it is no data."
+        : "no open-market insider purchases filed in this window. that happens, usually around earnings blackouts.");
+      td.colSpan = 6;
+      tr.appendChild(td);
+      body.appendChild(tr);
+      return;
+    }
+    rows.forEach(function (r) {
+      var tr = el("tr");
+      stripe(tr, r.direction);
+      cell(tr, null, function (td) {
+        td.appendChild(el("div", "co", r.company || r.ticker));
+        td.appendChild(el("div", "tick", r.ticker || ""));
+      });
+      cell(tr, null, function (td) {
+        td.appendChild(el("div", "who", r.insider || "—"));
+        td.appendChild(el("div", "role", r.role || ""));
+      });
+      cell(tr, null, function (td) {
+        td.appendChild(el("span", "amt " + (r.direction === "sell" ? "sell" : "buy"), money(r.value)));
+      });
+      cell(tr, "dt", function (td) { td.textContent = shortDate(r.transaction_date); });
+      cell(tr, "dt", function (td) { td.textContent = shortDate(r.filed_date); });
+      body.appendChild(tr);
+    });
+  }
+
+  function renderCongress(rows, failed) {
+    var body = $("congressBody");
+    body.textContent = "";
+    if (!rows || !rows.length) {
+      var tr = el("tr");
+      var td = el("td", "empty", failed
+        ? "the disclosure feed did not respond on the last run. this is not zero trades, it is no data."
+        : "no congressional purchases disclosed in this window.");
+      td.colSpan = 6;
+      tr.appendChild(td);
+      body.appendChild(tr);
+      return;
+    }
+    rows.forEach(function (r) {
+      var tr = el("tr");
+      stripe(tr, r.type === "sale" ? "sell" : "buy");
+      cell(tr, null, function (td) {
+        td.appendChild(el("div", "who", r.member || "—"));
+        td.appendChild(el("div", "role", (r.chamber || "") + (r.state ? " · " + r.state : "")));
+      });
+      cell(tr, null, function (td) {
+        td.appendChild(el("div", "co", r.company || r.ticker));
+        td.appendChild(el("div", "tick", r.ticker || ""));
+      });
+      cell(tr, null, function (td) {
+        td.appendChild(el("span", "amt " + (r.type === "sale" ? "sell" : "buy"), range(r.amount_low, r.amount_high)));
+      });
+      cell(tr, "dt", function (td) { td.textContent = shortDate(r.transaction_date); });
+      cell(tr, null, function (td) {
+        var d = r.lag_days;
+        td.appendChild(el("span", "lag" + (d >= 30 ? " slow" : ""), d === null || d === undefined ? "—" : d + "d"));
+      });
+      body.appendChild(tr);
+    });
+  }
+
+  function render(d) {
+    var isSample = d.status === "sample" || !d.generated_at;
+    $("samplebanner").hidden = !isSample;
+
+    var dot = $("statusdot"), txt = $("statustext");
+    if (isSample) {
+      dot.style.background = "var(--brass)";
+      txt.style.color = "var(--brass)";
+      txt.textContent = "awaiting first pull";
+    } else {
+      var age = (Date.now() - new Date(d.generated_at).getTime()) / 86400000;
+      var stale = age > 9;
+      dot.style.background = stale ? "var(--sell)" : "var(--buy)";
+      txt.style.color = stale ? "var(--sell)" : "var(--buy)";
+      txt.textContent = (stale ? "stale — last updated " : "updated ") + shortDate(d.generated_at);
+    }
+
+    if (d.period) $("period").textContent = shortDate(d.period.from) + " – " + shortDate(d.period.to);
+
+    var t = d.totals || {};
+    $("figTotal").textContent = money(t.insider_buy_value);
+    $("figCount").textContent = t.form4_purchase_filings === undefined ? "—" : t.form4_purchase_filings;
+    $("figMax").textContent = money(t.largest_buy && t.largest_buy.value);
+    $("figMaxWho").textContent = (t.largest_buy && t.largest_buy.who) || "—";
+
+    var src = d.sources || {};
+    var down = [];
+    if (src.insider === "failed") down.push("sec form 4");
+    if (src.congress === "failed") down.push("congressional disclosures");
+    var sb = $("srcbanner");
+    if (down.length && !isSample) {
+      $("srcbannertext").textContent = "the " + down.join(" and ") + " feed did not respond on the last refresh, so that section is empty rather than complete. it retries automatically next monday.";
+      sb.hidden = false;
+    } else {
+      sb.hidden = true;
+    }
+
+    renderInsiders(d.insider_buys, src.insider === "failed");
+    renderCongress(d.congress_trades, src.congress === "failed");
+  }
+
+  render(SAMPLE);
+
+  // Real data replaces the sample only once the scheduled job has produced a
+  // live payload. An empty live payload is still live and must be shown.
+  fetch("../data/tracker.json", { cache: "no-store" })
+    .then(function (r) { if (!r.ok) throw new Error(r.status); return r.json(); })
+    .then(function (d) { if (d && d.status && d.status !== "sample") render(d); })
+    .catch(function () { /* keep the sample render; banner already explains it */ });
+})();
+</script>
+
+</body>
+</html>

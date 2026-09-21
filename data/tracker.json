@@ -1,0 +1,22 @@
+{
+ "status": "sample",
+ "generated_at": null,
+ "period": {
+  "from": "2026-09-13",
+  "to": "2026-09-20"
+ },
+ "sources": {
+  "insider": "sample",
+  "congress": "sample"
+ },
+ "totals": {
+  "insider_buy_value": 0,
+  "form4_purchase_filings": 0,
+  "largest_buy": {
+   "value": null,
+   "who": null
+  }
+ },
+ "insider_buys": [],
+ "congress_trades": []
+}

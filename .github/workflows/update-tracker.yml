@@ -1,0 +1,47 @@
+name: Update the insider tape
+
+on:
+  schedule:
+    # 11:00 UTC every Monday — 7am ET in summer, 6am ET in winter.
+    # GitHub's scheduler can run late under load. That is fine, the page
+    # shows its own last-updated stamp.
+    - cron: "0 11 * * 1"
+  workflow_dispatch: {}   # lets you trigger a run by hand from the Actions tab
+
+permissions:
+  contents: write
+
+concurrency:
+  group: tracker
+  cancel-in-progress: false
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Pull filings and rebuild tracker.json
+        env:
+          # Set this repo secret to "Your Name (your@email.com)".
+          # The SEC blocks requests without a contact in the User-Agent.
+          TRACKER_UA: ${{ secrets.TRACKER_UA }}
+        run: python3 scripts/update_tracker.py
+
+      - name: Commit if anything changed
+        run: |
+          git config user.name "tracker-bot"
+          git config user.email "actions@github.com"
+          if git diff --quiet -- data/tracker.json; then
+            echo "no change this week"
+            exit 0
+          fi
+          git add data/tracker.json
+          git commit -m "tracker: refresh $(date -u +%Y-%m-%d)"
+          git push

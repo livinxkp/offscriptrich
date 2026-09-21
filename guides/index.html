@@ -1,0 +1,200 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Off-Script Rich Guides</title>
+<meta name="description" content="Every tool, tracker and prompt pack I have given away, in one place. All free, all copy-paste.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@87..100,400..800&family=DM+Mono:wght@400;500&family=Public+Sans:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="../assets/style.css">
+<style>
+  .hero { padding-block: 44px 24px; }
+  .hero h1 { margin-block: 12px 14px; }
+
+  .filterbar {
+    display: flex; flex-wrap: wrap; gap: 8px; align-items: center;
+    padding-block: 18px; border-block: 1px solid var(--line-soft); margin-bottom: 4px;
+  }
+  .filterbar .lbl { font-family: var(--mono); font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--text-faint); margin-right: 4px; }
+  .fbtn {
+    font-family: var(--body); font-size: 13px; font-weight: 500;
+    background: transparent; color: var(--text-dim);
+    border: 1px solid var(--line); border-radius: 2px;
+    padding: 6px 12px; cursor: pointer;
+  }
+  .fbtn:hover { color: var(--text); border-color: var(--text-faint); }
+  .fbtn[aria-pressed="true"] { background: var(--text); color: var(--ink); border-color: var(--text); font-weight: 600; }
+
+  .count { font-family: var(--mono); font-size: 12px; color: var(--text-faint); padding-block: 14px 18px; }
+
+  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(290px, 1fr)); gap: 1px; background: var(--line); border: 1px solid var(--line); border-radius: 3px; overflow: hidden; }
+
+  .card {
+    background: var(--surface); padding: 20px 18px;
+    display: flex; flex-direction: column; gap: 10px;
+    text-decoration: none; color: inherit; min-height: 168px;
+  }
+  a.card:hover { background: var(--surface-2); }
+  .card .top { display: flex; align-items: center; justify-content: space-between; gap: 8px; }
+  .card h3 { line-height: 1.22; }
+  .card .desc { font-size: 13.5px; color: var(--text-dim); line-height: 1.5; }
+  .card .bottom { margin-top: auto; display: flex; align-items: center; justify-content: space-between; gap: 8px; padding-top: 6px; }
+  .card .go { font-family: var(--mono); font-size: 12px; color: var(--brass); }
+  .card.soon { opacity: 0.62; }
+  .card.soon .go { color: var(--text-faint); }
+
+  .live-tag { font-family: var(--mono); font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--buy); display: inline-flex; align-items: center; gap: 5px; }
+  .live-tag::before { content: ""; width: 5px; height: 5px; border-radius: 50%; background: var(--buy); }
+
+  .noresults { padding: 40px 16px; text-align: center; color: var(--text-faint); font-size: 14px; }
+
+  .tip { margin-top: 28px; font-size: 13.5px; color: var(--text-dim); max-width: 62ch; }
+  .tip b { color: var(--text); font-weight: 600; }
+</style>
+</head>
+<body>
+
+<header class="masthead">
+  <div class="wrap masthead-in">
+    <a class="wordmark" href="../index.html"><span class="off">OFF-SCRIPT</span>&nbsp;<span class="rich">RICH</span></a>
+    <nav class="navlinks">
+      <a href="index.html" aria-current="page">guides</a>
+      <a href="stocks.html">the tape</a>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <div class="hero">
+    <p class="eyebrow">the whole library &middot; free, always</p>
+    <h1>free guides</h1>
+    <p class="lede">every tool, tracker and prompt pack i have given away, in one place. nothing gated, nothing for sale on this page. filter by what you are trying to do.</p>
+  </div>
+
+  <div class="filterbar" role="group" aria-label="filter guides by pillar">
+    <span class="lbl">filter</span>
+    <button class="fbtn" type="button" data-f="all" aria-pressed="true">all</button>
+    <button class="fbtn" type="button" data-f="money" aria-pressed="false">money</button>
+    <button class="fbtn" type="button" data-f="ai" aria-pressed="false">ai</button>
+    <button class="fbtn" type="button" data-f="life" aria-pressed="false">life</button>
+  </div>
+
+  <p class="count" id="count">showing 6 of 6 guides</p>
+
+  <div class="grid" id="grid"></div>
+  <p class="noresults" id="noresults" hidden>nothing in that pillar yet. new guides go up every week.</p>
+
+  <p class="tip">every guide has a keyword. <b>comment the keyword on the video it came from</b> and the automation sends you the link straight to your dms.</p>
+
+  <footer class="foot">
+    <span>OFF-SCRIPT RICH</span>
+    <a href="../index.html">home</a>
+    <a href="https://instagram.com/livinxkp" rel="noopener">@livinxkp</a>
+    <span style="margin-left:auto">new guides every week</span>
+  </footer>
+
+</main>
+
+<script>
+(function () {
+  "use strict";
+
+  // Adding a guide = one object here. Nothing else to touch.
+  var GUIDES = [
+    {
+      keyword: "STOCKS", pillar: "money", live: true, href: "stocks.html",
+      title: "the insider tape",
+      desc: "every stock purchase filed by a company insider or a member of congress last week, pulled from sec and stock act filings. rebuilds itself every monday."
+    },
+    {
+      keyword: "NUMBER", pillar: "money", live: false, href: "#",
+      title: "your freedom number",
+      desc: "your city, your burn, your savings rate. out comes the portfolio that covers your life permanently and how many years away it actually is."
+    },
+    {
+      keyword: "RATE", pillar: "life", live: false, href: "#",
+      title: "what to charge brands",
+      desc: "followers, views, engagement and deliverables in. a defensible rate range and a rate card you can paste into the email out."
+    },
+    {
+      keyword: "EXPOSED", pillar: "ai", live: false, href: "#",
+      title: "is ai coming for your job",
+      desc: "your tasks sorted into going first, safe for now, and getting more valuable. scored against published research, not vibes. ends with one move."
+    },
+    {
+      keyword: "SKILLS", pillar: "ai", live: false, href: "#",
+      title: "five paid skills you can learn free",
+      desc: "the skills worth real money right now, where to learn each one for nothing, and which fits what you already know."
+    },
+    {
+      keyword: "STACK", pillar: "ai", live: false, href: "#",
+      title: "build your own ai assistant",
+      desc: "one evening, no code. the setup that actually knows your context instead of starting from zero every time you open it."
+    }
+  ];
+
+  var grid = document.getElementById("grid");
+  var countEl = document.getElementById("count");
+  var noResults = document.getElementById("noresults");
+  var buttons = Array.prototype.slice.call(document.querySelectorAll(".fbtn"));
+  var active = "all";
+
+  function node(tag, cls, text) {
+    var n = document.createElement(tag);
+    if (cls) n.className = cls;
+    if (text) n.textContent = text;
+    return n;
+  }
+
+  function card(g) {
+    var isLive = g.live;
+    var a = document.createElement(isLive ? "a" : "div");
+    a.className = "card" + (isLive ? "" : " soon");
+    if (isLive) a.href = g.href;
+
+    var top = node("div", "top");
+    top.appendChild(node("span", "keyword", g.keyword));
+    top.appendChild(node("span", "chip", g.pillar)).setAttribute("data-pillar", g.pillar);
+    a.appendChild(top);
+
+    a.appendChild(node("h3", null, g.title));
+    a.appendChild(node("p", "desc", g.desc));
+
+    var bottom = node("div", "bottom");
+    if (isLive) {
+      bottom.appendChild(node("span", "live-tag", "live"));
+      bottom.appendChild(node("span", "go", "open →"));
+    } else {
+      bottom.appendChild(node("span", "eyebrow", "in build"));
+      bottom.appendChild(node("span", "go", "soon"));
+    }
+    a.appendChild(bottom);
+    return a;
+  }
+
+  function draw() {
+    var rows = active === "all" ? GUIDES : GUIDES.filter(function (g) { return g.pillar === active; });
+    grid.textContent = "";
+    rows.forEach(function (g) { grid.appendChild(card(g)); });
+    grid.hidden = rows.length === 0;
+    noResults.hidden = rows.length !== 0;
+    countEl.textContent = "showing " + rows.length + " of " + GUIDES.length + " guides";
+  }
+
+  buttons.forEach(function (b) {
+    b.addEventListener("click", function () {
+      active = b.getAttribute("data-f");
+      buttons.forEach(function (o) { o.setAttribute("aria-pressed", String(o === b)); });
+      draw();
+    });
+  });
+
+  draw();
+})();
+</script>
+
+</body>
+</html>
