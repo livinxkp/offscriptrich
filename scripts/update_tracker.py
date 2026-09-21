@@ -479,7 +479,9 @@ def fetch_congress(today):
             # Corporate insiders leak into these feeds mislabelled as senators.
             if roster is not None:
                 hit = roster.get(_name_key(r["member"])) or roster.get(_ends_key(r["member"]))
-                if not hit:
+                # House rows carry 'CA31', senate rows 'AR' — compare the state only.
+                row_state = re.sub(r"[^A-Z]", "", r["state"].upper())[:2]
+                if not hit or (row_state and hit[2] and row_state != hit[2]):
                     dropped += 1
                     continue
                 r["member"], r["chamber"] = hit[0], hit[1]
