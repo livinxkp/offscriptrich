@@ -82,7 +82,7 @@
     <button class="fbtn" type="button" data-f="life" aria-pressed="false">life</button>
   </div>
 
-  <p class="count" id="count">showing 6 of 6 guides</p>
+  <p class="count" id="count">showing 24 of 24 guides</p>
 
   <div class="grid" id="grid"></div>
   <p class="noresults" id="noresults" hidden>nothing in that pillar yet. new guides go up every week.</p>
@@ -120,11 +120,6 @@
       desc: "your city, your burn, your savings rate. out comes the portfolio that covers your life permanently and how many years away it actually is."
     },
     {
-      keyword: "RATE", pillar: "life", live: false, href: "#",
-      title: "what to charge brands",
-      desc: "followers, views, engagement and deliverables in. a defensible rate range and a rate card you can paste into the email out."
-    },
-    {
       keyword: "EXPOSED", pillar: "ai", live: false, href: "#",
       title: "is ai coming for your job",
       desc: "your tasks sorted into going first, safe for now, and getting more valuable. scored against published research, not vibes. ends with one move."
@@ -144,7 +139,7 @@
     { keyword: "BOOMER", pillar: "ai", live: true, href: "boomer.html", title: "buy the business, bring the ai", desc: "the roadmap for buying a small business as its owner retires and using AI to run it better — real multiples, real SBA terms, and what to automate first." },
     { keyword: "BUILD", pillar: "ai", live: true, href: "build.html", title: "steal the craft, not the content", desc: "the exact setup, the capture step everyone skips, and the prompts that make Claude Code check its own work against the original." },
     { keyword: "DEAL", pillar: "money", live: true, href: "deal.html", title: "score the deal before you answer", desc: "a 100-point scorecard for brand deals — rate, usage, exclusivity, fit, payment terms and creative control — with a hard cut-off and five auto-fails." },
-    { keyword: "ENERGY", pillar: "money", live: true, href: "energy.html", title: "the power constraint, in filings", desc: "Why power is the physical limit on AI datacentres, what the announced nuclear deals actually buy, and the exact dates and filings to watch." },
+    { keyword: "ENERGY", pillar: "money", live: true, href: "energy.html", title: "the power constraint, in filings", desc: "why power is the physical limit on AI datacentres, what the announced nuclear deals actually buy, and the exact dates and filings to watch." },
     { keyword: "ENOUGH", pillar: "life", live: true, href: "enough.html", title: "hold both or lose both", desc: "how to run gratitude and ambition at the same time without one eating the other — two exercises, a weekly ledger, and a five-question check." },
     { keyword: "ETF", pillar: "money", live: true, href: "etf.html", title: "the boring method, with numbers", desc: "the boring method most retail investors skip, with the real SPIVA and SEC numbers on what picking and paying cost you over twenty years." },
     { keyword: "EVIL", pillar: "life", live: true, href: "evil.html", title: "admit it before they find it", desc: "the psychology of saying the damaging thing first: what the research actually calls it, the one variable that decides if it works, and four scripts." },
@@ -160,7 +155,7 @@
     { keyword: "SLOWDOWN", pillar: "money", live: true, href: "slowdown.html", title: "how to check it yourself, monthly", desc: "the five indicators people cite for an AI bubble, what each one measures, the filing it lives in, and the honest bull and bear reading of each." },
     { keyword: "SMART", pillar: "life", live: true, href: "smart.html", title: "smart people usually do know", desc: "what the research actually says about whether intelligent people know it — plus a calibration test that tells you how accurate your self-read really is." },
     { keyword: "STEPS", pillar: "money", live: true, href: "steps.html", title: "four steps, in the order that works", desc: "the four steps to financial stability in the order that actually works, the reason for that order, and a worksheet where you fill in your own numbers." },
-    { keyword: "TRAVEL", pillar: "ai", live: true, href: "travel.html", title: "how to actually use all three", desc: "Flight price tracking, points pricing and hotel booking in Google's AI Mode — the exact prompts, the real partner list, and where each one stops." }
+    { keyword: "TRAVEL", pillar: "ai", live: true, href: "travel.html", title: "how to actually use all three", desc: "flight price tracking, points pricing and hotel booking in Google's AI Mode — the exact prompts, the real partner list, and where each one stops." }
   ];
 
   var grid = document.getElementById("grid");
@@ -203,12 +198,14 @@
   }
 
   function draw() {
-    var rows = active === "all" ? GUIDES : GUIDES.filter(function (g) { return g.pillar === active; });
+    var shown = GUIDES.filter(function (g) { return g.live !== false; });
+    var rows = active === "all" ? shown : shown.filter(function (g) { return g.pillar === active; });
+    var total = shown.length;
     grid.textContent = "";
     rows.forEach(function (g) { grid.appendChild(card(g)); });
     grid.hidden = rows.length === 0;
     noResults.hidden = rows.length !== 0;
-    countEl.textContent = "showing " + rows.length + " of " + GUIDES.length + " guides";
+    countEl.textContent = "showing " + rows.length + " of " + total + " guides";
   }
 
   buttons.forEach(function (b) {
