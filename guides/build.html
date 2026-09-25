@@ -1,0 +1,198 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Rebuild a Site You Love With Claude Code · Off-Script Rich</title>
+<meta name="description" content="the exact setup, the capture step everyone skips, and the prompts that make Claude Code check its own work against the original.">
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+
+<header class="masthead">
+  <div class="masthead-in wrap">
+    <a class="wordmark" href="/"><span class="off">OFF-SCRIPT</span> <span class="rich">RICH</span></a>
+    <nav class="navlinks">
+      <a href="/guides/" aria-current="page">guides</a>
+      <a href="/guides/stocks.html">the tape</a>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap stack">
+
+  <p class="eyebrow"><span class="chip" data-pillar="ai">ai</span> <span class="keyword">BUILD</span></p>
+
+  <h1>steal the craft, not the content</h1>
+
+  <p class="lede">hey, it's KP. you commented <strong>BUILD</strong>, so here it is. the reel gave you the shape. this is the actual setup, the capture step that decides whether the whole thing works, the prompts i use word for word, and the parts it still gets wrong.</p>
+
+  <section class="prose">
+    <h2>who this is for</h2>
+    <p>you, if you've got a site you keep screenshotting because the type and the spacing are just <em>right</em>, and you want that level for your own thing. skip this if you want a one-click site builder — this is a terminal, and the first hour is admin.</p>
+  </section>
+
+  <section class="prose">
+    <h2>why this matters</h2>
+    <p>most people's websites look bad for one boring reason: they picked a template and then changed things at random. the sites you love aren't better because of taste you don't have. they're better because <strong>someone made a hundred small decisions about type scale, spacing and contrast</strong> and held them consistently across every page.</p>
+    <p>you can lift that decision set — the rhythm — without touching a single word, image or logo that belongs to them. that's the difference between inspiration and a rip-off, and it's also the difference between a site that looks expensive and one that doesn't.</p>
+  </section>
+
+  <section class="prose">
+    <h2>what you need before you touch anything</h2>
+    <p><strong>ten minutes of setup, and one cost nobody mentions on camera.</strong></p>
+    <p>Claude Code runs in a terminal, not a browser. you need a code editor to look at what it writes — VS Code is free and fine. and the part people leave out of the reels: <strong>Claude Code requires a paid Claude plan</strong>. Pro, Max, Team, Enterprise, or a Console account. the free claude.ai tier does not include it. know that before you start.</p>
+<pre><code># macOS, Linux, WSL
+curl -fsSL https://claude.ai/install.sh | bash
+
+# Windows PowerShell
+irm https://claude.ai/install.ps1 | iex
+
+# then check it landed
+claude --version
+claude doctor</code></pre>
+    <p>now make an empty folder for your site, open a terminal inside it, and type <code>claude</code>. first thing you run is <code>/init</code>, which writes a <code>CLAUDE.md</code> file — a set of standing instructions it reads at the start of every session. that file is how you stop repeating yourself on day three.</p>
+  </section>
+
+  <section class="prose">
+    <h2>capture the site properly</h2>
+    <p><strong>this is the step that decides the result. one screenshot is not enough input.</strong></p>
+    <p>a full-page screenshot tells it the layout. it does not tell it the font stack, the exact greys, the line height or the spacing scale — and those are the things that make a site feel designed. so you give it both: the picture <em>and</em> the numbers.</p>
+    <ol>
+      <li>open the site, open devtools, open the command menu with <strong>Cmd+Shift+P</strong> (Mac) or <strong>Ctrl+Shift+P</strong> (Windows/Linux), type <code>screenshot</code> and take the full-size capture.</li>
+      <li>take a second, tighter screenshot of just the hero and just one card or list item, so it can see the small stuff.</li>
+      <li>then run this in the devtools console to pull the real computed values:</li>
+    </ol>
+<pre><code>const rows = new Set();
+for (const el of document.querySelectorAll('body *')) {
+  if (!el.textContent.trim()) continue;
+  const s = getComputedStyle(el);
+  rows.add([
+    el.tagName.toLowerCase(),
+    s.fontFamily, s.fontSize, s.fontWeight, s.lineHeight,
+    s.letterSpacing, s.color, s.backgroundColor
+  ].join(' | '));
+}
+copy([...rows].slice(0, 250).join('\n'));</code></pre>
+    <p>that copies a plain text dump of every distinct text style on the page straight to your clipboard. paste it into a file called <code>reference-styles.txt</code> in your project folder.</p>
+    <p>to get the images into Claude Code: drag and drop them into the window, or paste with <strong>Ctrl+V</strong> (<strong>Alt+V</strong> on Windows and WSL), or just give it the file path. don't use Cmd+V on Mac — that's your system paste, not the terminal's.</p>
+  </section>
+
+  <section class="prose">
+    <h2>the rebuild prompt</h2>
+    <p><strong>vague brief, generic site. this one names the thing you actually want copied.</strong></p>
+    <p>before you send it, press <strong>Shift+Tab</strong> until the status bar shows plan mode on, or start the session with <code>claude --permission-mode plan</code>. in plan mode it reads and proposes but writes nothing to disk until you approve. for a first build that's the difference between reviewing a plan and reviewing forty files.</p>
+<pre><code>I'm building my own site. Attached is a full-page screenshot of a
+site whose design I want to learn from, two detail shots, and
+@reference-styles.txt which is a dump of its real computed styles.
+
+Rebuild the LAYOUT SYSTEM and VISUAL RHYTHM of that reference in
+plain HTML and CSS. Specifically match:
+- the type scale and the ratio between heading sizes
+- line height and max line length for body text
+- the vertical spacing scale between sections
+- the grid: column count, gutter, max content width
+- contrast levels between text, background and accent
+
+Do NOT reuse any of their copy, images, logo, icons, brand name
+or colour identity. Every word and every image is mine and is
+listed in @content.md. Pick a different accent colour.
+
+Build it as:
+- index.html, one stylesheet, no framework, no build step
+- CSS custom properties on :root for every colour and size, so I
+  can retheme it by editing one block
+- mobile first, working at 360px with no horizontal scroll
+- semantic HTML, real heading order, alt text on every image
+
+Before you write anything, list the type scale and spacing scale
+you extracted as numbers, and tell me the three decisions you're
+least sure about.</code></pre>
+    <p>that last line is the highest-value sentence in the prompt. it forces the guesses into the open where you can correct them, instead of finding them baked into forty files an hour later.</p>
+  </section>
+
+  <section class="prose">
+    <h2>make it check its own work</h2>
+    <p><strong>the self-correcting loop is the actual trick, and it needs a browser to work.</strong></p>
+    <p>Claude Code can drive your browser. install the Claude in Chrome extension (v1.0.36 or higher), then start with <code>claude --chrome</code>, or run <code>/chrome</code> inside a session to connect and check status. it works in Chrome, Edge and other Chromium browsers — not in WSL. once it's connected, it can open your local build, screenshot it, and compare that screenshot to the reference you gave it.</p>
+<pre><code>Serve this folder locally and open it in the browser.
+Take a screenshot of the full page and save it to disk.
+
+Now compare that screenshot side by side with the reference
+screenshot I gave you at the start. Give me a numbered list of
+every difference you can see, most obvious first, in these
+categories only: type size, weight, spacing, alignment, contrast.
+
+Then fix the top five and repeat. Stop when your remaining list
+is only things a normal person wouldn't notice.</code></pre>
+    <p>run that two or three times. each pass it gets measurably closer. what it will not fix on its own is anything that moves — scroll-triggered reveals, parallax, hover transitions, sticky headers that shrink. it reads a still image, so motion is invisible to it. if you want those you have to describe them in words, one at a time, and accept a few rounds.</p>
+    <p>two commands worth knowing while you iterate: <code>/diff</code> shows you what changed in your working tree, and <code>/rewind</code> rolls code and conversation back to an earlier checkpoint when a pass makes things worse.</p>
+  </section>
+
+  <section class="prose">
+    <h2>make it yours, not theirs</h2>
+    <p><strong>the last twenty percent is where it stops being someone else's site.</strong></p>
+    <p>put your standing rules in <code>CLAUDE.md</code> at the project root so you never re-type them. it's read at the start of every session, so the corrections you make once stay made.</p>
+<pre><code># CLAUDE.md
+
+## what this project is
+A personal site. Plain HTML and CSS. No framework, no build step.
+
+## house rules
+- All colours and sizes are CSS custom properties on :root.
+  Never hardcode a hex or a px value anywhere else.
+- Mobile first. Everything must work at 360px wide.
+- Every image needs real alt text, not a filename.
+- No lorem ipsum, ever. If you need copy, ask me for it.
+- Don't add a library to solve something CSS already does.
+
+## voice
+Lowercase body text except proper nouns. Short sentences.
+Second person. No exclamation marks.
+
+## before you say you're done
+Check heading order, check it at 360px, check colour contrast.</code></pre>
+    <p>then swap in your own everything — your words, your photos, your name, a different accent colour, your own spacing where theirs doesn't fit what you're saying. what you keep is the discipline: one type scale, one spacing scale, held consistently. that's the part that was never theirs to begin with. build things that look like you can afford to care. that's Off-Script Rich.</p>
+  </section>
+
+  <section class="prose">
+    <h2>good to know</h2>
+    <ul>
+      <li><strong>animations are the wall, not a speed bump.</strong> it works from still images, so anything that only exists in motion — scroll reveals, easing curves, hover states — is invisible to it. budget two or three rounds of you describing them in words, or ship it static and add motion last.</li>
+      <li><strong>fonts are the second wall.</strong> the computed styles dump gives you the exact font stack, which is useful and also frequently a licensed font you can't use. check whether it's on Google Fonts before you fall in love; if it isn't, ask for the closest open alternative by name and accept that the feel shifts slightly.</li>
+      <li><strong>plan mode is not optional on the first build.</strong> without it you're reviewing forty finished files instead of one plan, and the fastest route to a site you don't understand is letting it write everything before you've agreed on the structure.</li>
+      <li><strong>the boring bit is what makes it look expensive.</strong> ask it explicitly to check heading order, colour contrast and behaviour at 360px wide. it will not volunteer any of that, and every one of them is visible to a normal visitor even when they can't name it.</li>
+      <li><strong>Chrome integration costs you context.</strong> enabling it by default loads browser tools into every session whether you need them or not. use the <code>--chrome</code> flag on the sessions where you're actually comparing screenshots, and leave it off the rest of the time.</li>
+    </ul>
+  </section>
+
+  <section class="prose">
+    <h2>proof</h2>
+    <ul>
+      <li><a href="https://code.claude.com/docs/en/setup">Claude Code docs — advanced setup</a> — the install commands, <code>claude --version</code>, <code>claude doctor</code>, and the paid-plan requirement</li>
+      <li><a href="https://code.claude.com/docs/en/common-workflows">Claude Code docs — common workflows</a> — dragging and pasting images (Ctrl+V, Alt+V on Windows/WSL), <code>@file</code> references, and plan mode via Shift+Tab or <code>--permission-mode plan</code></li>
+      <li><a href="https://code.claude.com/docs/en/chrome">Claude Code docs — use Claude Code with Chrome</a> — <code>--chrome</code>, <code>/chrome</code>, extension version 1.0.36+, saving screenshots to disk, no WSL support, and the context cost of enabling it by default</li>
+      <li><a href="https://code.claude.com/docs/en/memory">Claude Code docs — how Claude remembers your project</a> — <code>/init</code> and what <code>CLAUDE.md</code> does</li>
+      <li><a href="https://code.claude.com/docs/en/commands">Claude Code docs — built-in commands</a> — <code>/diff</code> and <code>/rewind</code></li>
+      <li><a href="https://developer.chrome.com/docs/devtools/command-menu">Chrome DevTools — run commands in the Command Menu</a> — Cmd+Shift+P / Ctrl+Shift+P and the screenshot commands</li>
+    </ul>
+  </section>
+
+
+
+  <section class="prose">
+    <h2>the rest of the library</h2>
+    <p>every guide is free and there's no email wall. take what you need.</p>
+    <p><a class="btn btn-primary" href="/guides/">all free guides</a></p>
+  </section>
+
+</main>
+
+<footer class="foot wrap">
+  <p><strong>Off-Script Rich.</strong> rich isn't the money. rich is the life the script said you couldn't have.</p>
+  <p><a href="/">home</a> · <a href="/guides/">guides</a> · <a href="https://instagram.com/livinxkp">@livinxkp</a></p>
+  <p class="mono">last checked 24 September 2026 · if something here has gone stale, comment BUILD again and i'll have fixed it</p>
+</footer>
+
+</body>
+</html>

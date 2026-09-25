@@ -1,0 +1,223 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>The 30-Day AI Plan, Day by Day · Off-Script Rich</title>
+<meta name="description" content="thirty named tasks, one a day, that take you from barely using AI to running your own agents. The full day-by-day, free.">
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+
+<header class="masthead">
+  <div class="masthead-in wrap">
+    <a class="wordmark" href="/"><span class="off">OFF-SCRIPT</span> <span class="rich">RICH</span></a>
+    <nav class="navlinks">
+      <a href="/guides/" aria-current="page">guides</a>
+      <a href="/guides/stocks.html">the tape</a>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap stack">
+
+  <p class="eyebrow"><span class="chip" data-pillar="ai">ai</span> <span class="keyword">MAXX</span></p>
+
+  <h1>thirty days, one task a day</h1>
+
+  <p class="lede">hey, it's KP. you commented <strong>MAXX</strong>, so here it is. the reel gave you four phases. this is all thirty days with a named task on each one, the templates for the days that need them, and the two days most people quit on.</p>
+
+  <section class="prose">
+    <h2>who this is for</h2>
+    <p>you, if you've been opening ChatGPT or Claude, asking it something, getting a mid answer and closing the tab. thirty days of that is still nothing. skip this if you already run agents in production — you'll find week one insulting and week four obvious.</p>
+  </section>
+
+  <section class="prose">
+    <h2>why this matters</h2>
+    <p>the gap between people who "use ai" and people who get paid for it isn't knowledge. it's that one group has <strong>a saved setup that runs</strong> and the other group has a chat history. a chat history is worth nothing on day 31.</p>
+    <p>so this plan is built backwards from one outcome: on day 30 you own one thing that works without you retyping it. everything before that exists to get you there.</p>
+  </section>
+
+  <section class="prose">
+    <h2>the rules before day 1</h2>
+    <p><strong>three decisions up front that decide whether this works.</strong></p>
+    <ol>
+      <li><strong>pick one assistant and stay with it for thirty days.</strong> switching tools is the most popular way to avoid getting good at one.</li>
+      <li><strong>everything lives in a project, not a chat.</strong> a project is a workspace with its own knowledge base and its own custom instructions, so you stop re-explaining yourself every morning. Claude gives free accounts up to five of them; ChatGPT has its own version on paid plans.</li>
+      <li><strong>one task a day, twenty minutes, then stop.</strong> the people who binge days 1–10 on a sunday are gone by day 14.</li>
+    </ol>
+    <p>day 2 is the highest-leverage day in the whole month. this is the file you write once and paste into every project's custom instructions forever:</p>
+<pre><code>WHO I AM
+- name, what i do, who pays me, how i make money
+- the three things i spend most of my week on
+
+HOW I WRITE
+- sentence length, words i never use, words i always use
+- one paragraph of my actual writing, pasted below
+
+WHO I'M TALKING TO
+- who reads/buys/hires, what they already know, what they don't
+
+WHAT GOOD LOOKS LIKE
+- one example of my own work i'd call an A
+- one example i'd call a C, and why it's a C
+
+DEFAULTS
+- always: [format you want]
+- never: [the thing it keeps doing that you hate]</code></pre>
+  </section>
+
+  <section class="prose">
+    <h2>days 1–7 · learn to actually talk to it</h2>
+    <p><strong>by sunday you stop writing questions and start writing briefs.</strong></p>
+<pre><code>day 1  pick your one assistant. create one project. name it.
+day 2  write the context file above. 400 words, no more.
+day 3  paste it into the project's custom instructions. test it.
+day 4  take your worst prompt from day 1 and rewrite it in five parts.
+day 5  examples day: paste 3 samples of your own work, ask it to
+       extract the rules you write by, then save those rules.
+day 6  structure day: rebuild one long prompt with XML tags around
+       each section so it stops mixing your data with your ask.
+day 7  reps: same task, three different prompts. keep the winner.
+       write down the one change that made it better.</code></pre>
+    <p>the five-part frame for day 4 is the shape Anthropic's own prompting guidance keeps pointing at: be clear and direct, explain <em>why</em>, show examples, use tags, give it a role.</p>
+<pre><code>ROLE: you are [specific role], working for [me/my business].
+TASK: [one sentence. one verb. what you want made.]
+CONTEXT: [why this exists, who sees it, what happens next.
+          motivation matters — tell it the reason for the rule.]
+FORMAT: [exact output shape. headings? length? tone?]
+CONSTRAINTS: [what to do instead of what not to do.]</code></pre>
+    <p>that last line is the one people get wrong. "don't be generic" does nothing. "short declarative sentences, second person, no adverbs" does the work.</p>
+  </section>
+
+  <section class="prose">
+    <h2>days 8–14 · make it useful in your actual life</h2>
+    <p><strong>this is the week it stops being a toy, because it starts touching your real data.</strong></p>
+<pre><code>day 8   connect one tool you already live in — calendar, drive,
+        or email. one. not five.
+day 9   build the friday brief: one prompt that reads that tool
+        and tells you what you actually did this week.
+day 10  build your first skill. one repeatable task, written once.
+day 11  run the skill on three real inputs. fix the description
+        until it fires when you expect it to.
+day 12  schedule something recurring so it runs without you opening
+        anything.
+day 13  the reply pass: it drafts in your voice, you send. never
+        the other way round.
+day 14  export your last 90 days of spending, hand it the file,
+        ask for the pattern you haven't noticed.</code></pre>
+    <p><strong>day 10 is the day the month turns.</strong> a skill is just a folder with a <code>skill.md</code> file in it. you zip the folder, upload it, and switch it on under Customize &rarr; Skills. the name maxes out at 64 characters and the description at 200, and that description is the whole ballgame — it's what the model reads to decide whether to use your skill at all. write it as <em>when</em>, not <em>what</em>.</p>
+<pre><code>---
+name: weekly client update
+description: Use when drafting the Friday update email to a
+  client. Pulls the week's delivered work into the standard
+  five-line format and flags anything blocked.
+---
+
+# weekly client update
+
+## when to use this
+The user asks for a client update, Friday email, or status note.
+
+## steps
+1. List what shipped this week, newest first.
+2. List what's blocked and who it's waiting on.
+3. Write it in five lines max, no adjectives, no apologies.
+
+## format
+Subject: [client] — week of [date]
+Shipped: ...
+Next: ...
+Waiting on you: ...</code></pre>
+    <p>day 12 has a real ceiling worth knowing before you plan around it: ChatGPT caps how many scheduled tasks you can have running at once — 3 on Free and Go, 5 on Plus, 10 on Business and Edu, 15 on Pro and Enterprise. on Free you also only get a one-off or a once-a-day recurring task. so pick the one job worth a slot.</p>
+  </section>
+
+  <section class="prose">
+    <h2>days 15–21 · point it at the job you actually do</h2>
+    <p><strong>generic ai skills are worth nothing. the money is in the version that only works for your specific job.</strong></p>
+<pre><code>day 15  the repeat list: every task you did twice or more this month.
+day 16  score each one — minutes × times per month × how much
+        judgement it needs. the top of that list is your target.
+day 17  write the SOP for the top task by hand. all of it. yes, by hand.
+day 18  turn the SOP into a prompt with three worked examples pasted in.
+day 19  run it against last month's real work. compare to what you
+        actually shipped. don't grade it kindly.
+day 20  fix the three places it was wrong. add each fix as a rule.
+day 21  hand it to one other person cold and watch where they stall.
+        that's your documentation gap, not their comprehension gap.</code></pre>
+    <p>day 15 decides what you own by day 30. do it as a dump, not a plan:</p>
+<pre><code>Here's a list of everything I did more than once in the last
+30 days. For each one, give me:
+- minutes it takes me, your best guess
+- how many times a month it happens
+- how much human judgement it genuinely needs, 1-5
+- whether the inputs are the same shape every time
+
+Then rank them by (minutes x frequency), but drop anything
+scoring 4 or 5 on judgement. I want the boring repeatable one,
+not the interesting hard one.
+
+[paste your list]</code></pre>
+    <p>the judgement filter is the point. everyone automates the interesting task first and it never holds. the boring one with identical inputs still works in march.</p>
+  </section>
+
+  <section class="prose">
+    <h2>days 22–30 · stack it, build it, keep one</h2>
+    <p><strong>you finish the month with something you'd let a stranger use.</strong></p>
+<pre><code>day 22  install Claude Code, open any folder, run /init.
+        read the CLAUDE.md it writes about your own project.
+day 23  rebuild one page you love, with your own content.
+day 24  put it somewhere public. a free host counts.
+day 25  chain two skills — the output of one feeds the next.
+day 26  add a trigger. something starts it that isn't you clicking.
+day 27  break it on purpose. feed it garbage. write down exactly
+        how it fails, because it will fail this way at 6am one day.
+day 28  write the handoff doc. one page. someone else could run it.
+day 29  price it. what would you charge to set this up for someone
+        who runs your job at another company?
+day 30  delete the other 29 experiments. keep one. that's the setup.</code></pre>
+    <p>one honest note on day 22: Claude Code needs a paid Claude plan — Pro, Max, Team, Enterprise or a Console account. the free claude.ai tier doesn't include it. if that's not where you are this month, swap day 22–24 for three more days on days 15–21 and build the specialised version deeper instead. the sequence still works.</p>
+    <p>day 27 is the one that separates a demo from a tool. anyone can show you a thing that worked once. knowing precisely how yours fails, and saying so out loud, is what makes someone trust you with theirs. that's Off-Script Rich.</p>
+  </section>
+
+  <section class="prose">
+    <h2>good to know</h2>
+    <ul>
+      <li><strong>the description field is the bug, not the prompt.</strong> when a skill doesn't fire, nine times out of ten the instructions are fine and the description is vague. rewrite it as "use when the user asks for X" and it starts working. you get 200 characters — spend them on <em>when</em>, not <em>what</em>.</li>
+      <li><strong>connecting five tools on day 8 will kill this.</strong> free Claude accounts are limited to one custom connector anyway, and that limit is doing you a favour. one connection you check every day beats five you forgot you authorised.</li>
+      <li><strong>long context has a shape.</strong> if you're pasting something big, put the document at the top and your actual question at the bottom. Anthropic's own guidance says that ordering can improve response quality by up to 30% on long inputs. most people do it backwards.</li>
+      <li><strong>days 11 and 19 are where everyone quits,</strong> because both are testing days with nothing new to show anyone. they're also the only two days that turn a demo into something that holds. if you're going to miss a day, miss day 25.</li>
+    </ul>
+  </section>
+
+  <section class="prose">
+    <h2>proof</h2>
+    <ul>
+      <li><a href="https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/claude-prompting-best-practices">Anthropic — prompting best practices</a> — the five-part frame, examples, XML tags, and the long-context ordering claim</li>
+      <li><a href="https://support.claude.com/en/articles/12512198-how-to-create-custom-skills">Claude Help Center — how to create custom skills</a> — <code>skill.md</code> format, 64/200 character limits, zip upload, Customize &rarr; Skills</li>
+      <li><a href="https://support.claude.com/en/articles/9517075-what-are-projects">Claude Help Center — what are projects</a> — projects on all plans, five-project limit on free accounts, custom instructions</li>
+      <li><a href="https://support.claude.com/en/articles/11176164-use-connectors-to-extend-claude-s-capabilities">Claude Help Center — connectors</a> — one custom connector on free accounts</li>
+      <li><a href="https://help.openai.com/en/articles/10291617-tasks-in-chatgpt">OpenAI Help Center — scheduled tasks in ChatGPT</a> — the 3 / 5 / 10 / 15 concurrent task caps and the free-plan schedule limit</li>
+      <li><a href="https://code.claude.com/docs/en/setup">Claude Code docs — advanced setup</a> — plan requirement for Claude Code, install and verify commands</li>
+      <li><a href="https://code.claude.com/docs/en/commands">Claude Code docs — built-in commands</a> — <code>/init</code></li>
+    </ul>
+  </section>
+
+
+
+  <section class="prose">
+    <h2>the rest of the library</h2>
+    <p>every guide is free and there's no email wall. take what you need.</p>
+    <p><a class="btn btn-primary" href="/guides/">all free guides</a></p>
+  </section>
+
+</main>
+
+<footer class="foot wrap">
+  <p><strong>Off-Script Rich.</strong> rich isn't the money. rich is the life the script said you couldn't have.</p>
+  <p><a href="/">home</a> · <a href="/guides/">guides</a> · <a href="https://instagram.com/livinxkp">@livinxkp</a></p>
+  <p class="mono">last checked 24 September 2026 · if something here has gone stale, comment MAXX again and i'll have fixed it</p>
+</footer>
+
+</body>
+</html>

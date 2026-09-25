@@ -1,0 +1,222 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>38 Ways To Find A Business Idea · Off-Script Rich</title>
+<meta name="description" content="the full 38-method list for finding a business idea, grouped by where the idea hides, plus the AI prompts i use to validate one before building.">
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+
+<header class="masthead">
+  <div class="masthead-in wrap">
+    <a class="wordmark" href="/"><span class="off">OFF-SCRIPT</span> <span class="rich">RICH</span></a>
+    <nav class="navlinks">
+      <a href="/guides/" aria-current="page">guides</a>
+      <a href="/guides/stocks.html">the tape</a>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap stack">
+
+  <p class="eyebrow"><span class="chip" data-pillar="ai">ai</span> <span class="keyword">IDEAS</span></p>
+
+  <h1>38 places a business idea hides</h1>
+
+  <p class="lede">hey, it's KP. you commented <strong>IDEAS</strong>, so here it is. all 38 methods, grouped by where the idea actually hides, plus the two prompts i run before i'd build any of them.</p>
+
+  <section class="prose">
+    <h2>who this is for</h2>
+    <p>this is for you if you can build or sell something but you're stuck on <em>what</em>. skip it if you already have a customer paying you — go talk to them instead, they'll hand you idea 39 for free.</p>
+  </section>
+
+  <section class="prose">
+    <h2>why this matters</h2>
+    <p>CB Insights read 111 startup post-mortems and 35% of those founders said the thing they built had no market need. that's the second most common cause of death, right behind running out of money — and the two are the same story told twice. you don't run out of money building something people want.</p>
+    <p>so the point of a list like this isn't volume. it's that every method below starts from a complaint, a payment or a gap that already exists in the world. you're not inventing demand. you're finding it and standing in front of it.</p>
+  </section>
+
+  <section class="prose">
+    <h2>read this before the list</h2>
+    <p><strong>an idea is only worth anything attached to a specific person who already has the problem.</strong> paul graham's 2012 essay on this says it plainly: the way to get startup ideas is not to try to think of startup ideas, it's to look for problems, preferably problems you have yourself. so as you go down this list, don't collect ideas. collect <em>people</em>. every method below should end with you able to name the exact human who's annoyed, what they currently do instead, and what they currently pay to do it. if you can't name them, you found a topic, not a business.</p>
+  </section>
+
+  <section class="prose">
+    <h2>1–8: complaints people already typed out</h2>
+    <p>the fastest ideas are already written down, publicly, by people who were annoyed enough to post.</p>
+    <ol>
+      <li>search a niche subreddit for the phrases <strong>"i wish there was"</strong>, <strong>"is there a tool that"</strong>, <strong>"so frustrating"</strong> and <strong>"i had to do this manually"</strong>.</li>
+      <li>read the <strong>3-star</strong> reviews of niche software on G2 and Capterra. 1-star is rage, 5-star is marketing, 3-star is a product spec.</li>
+      <li>same trick on Amazon: 2- and 3-star reviews on the category leader tell you what the next version is.</li>
+      <li>join a trade Facebook group — HVAC owners, salon owners, dental practice managers — and read three months of posts without saying a word.</li>
+      <li>mine App Store and Play Store reviews of the top three apps in one category.</li>
+      <li>find a big tool's help centre and look at which article is most linked to. the most-read support doc is the biggest unsolved pain.</li>
+      <li>hunt high-view questions on Stack Exchange or Quora that have no good answer.</li>
+      <li>search a Discord or Slack community for <strong>"workaround"</strong> and <strong>"manually"</strong>. every workaround is an unbuilt feature.</li>
+    </ol>
+    <p>here's the prompt i run once i've got a pile of raw complaints:</p>
+    <pre><code>you are a product researcher. below are raw complaints i pasted
+from [subreddit / review site / group].
+
+1. cluster them into at most 8 distinct underlying problems.
+   name each cluster in the complainer's own words, not marketing words.
+2. for each cluster tell me:
+   - who exactly has this problem (job title, company size, industry)
+   - what they currently do instead
+   - what they already pay for, if anything
+   - how often the problem happens (daily / weekly / yearly)
+3. rank the clusters by (frequency x how much it already costs them).
+4. flag any cluster that is really just "this software is expensive"
+   — that's a pricing complaint, not a product gap.
+
+complaints:
+"""
+[paste 50-200 complaints here]
+"""</code></pre>
+  </section>
+
+  <section class="prose">
+    <h2>9–15: attack software that already makes money</h2>
+    <p>an existing paid tool is proof the budget exists. you don't have to create the category, just take a slice of it.</p>
+    <ol start="9">
+      <li><strong>unbundle the all-in-one.</strong> find a bloated platform, work out the one module people actually log in for, and ship only that.</li>
+      <li><strong>productise the spreadsheet.</strong> find an industry running on one shared sheet passed between five people. that sheet is a v1 spec.</li>
+      <li><strong>price-tier arbitrage.</strong> find a tool whose entry plan starts at hundreds a month for one feature small operators genuinely need.</li>
+      <li><strong>the missing integration.</strong> two tools a niche uses every single day with no connector between them.</li>
+      <li><strong>the "talk to sales" feature.</strong> anything gated behind a demo call is a feature smaller buyers want and can't get.</li>
+      <li><strong>the dead changelog.</strong> a tool with real customers and no shipped update in a year is a market with an absent landlord.</li>
+      <li><strong>the churn thread.</strong> search a tool's own community for "cancelling" and read why.</li>
+    </ol>
+  </section>
+
+  <section class="prose">
+    <h2>16–22: follow money that's already moving</h2>
+    <p>spend is the only honest signal. surveys lie, invoices don't.</p>
+    <ol start="16">
+      <li>open the <strong>Meta Ad Library</strong> and filter for ads that have been running for months. a long-running ad is a working offer, because nobody funds a losing one for that long.</li>
+      <li>find an agency that's booked out. the service they can't scale is the software or the productised offer.</li>
+      <li>scan Upwork and Fiverr for categories with long queues and high prices — that's demand with no product behind it.</li>
+      <li>read job boards. one role posted over and over across dozens of companies is a repeatable process begging to be automated.</li>
+      <li>watch <strong>Google Trends</strong> for a breakout query where the top results are all forum threads and no real product.</li>
+      <li>find high-intent "how do i" searches where the best answer online is a 2019 blog post.</li>
+      <li>look at what a large incumbent just acquired. they validated the category for you and paid for the research.</li>
+    </ol>
+  </section>
+
+  <section class="prose">
+    <h2>23–29: your own life and your own job</h2>
+    <p>these are the ones with an unfair advantage baked in, because you already know the customer — you are them.</p>
+    <ol start="23">
+      <li>the task you do at work every week that you quietly hate.</li>
+      <li>the internal tool your company built for itself. ask whether anyone outside would pay for it.</li>
+      <li>your last 20 searches that returned nothing useful.</li>
+      <li>the thing you already pay a human to do for you.</li>
+      <li>the question your group chat keeps asking you.</li>
+      <li>the skill people keep trying to borrow from you for free.</li>
+      <li>the process <em>you</em> already run with AI in ten minutes that your whole industry still does by hand in three hours.</li>
+    </ol>
+  </section>
+
+  <section class="prose">
+    <h2>30–38: shifts, deadlines and arbitrage</h2>
+    <p>timing is the most underpriced edge there is. these are the ideas with a clock on them.</p>
+    <ol start="30">
+      <li>a platform or API that launched in the last six months — be the first decent tool on it.</li>
+      <li>a new regulation with a compliance deadline. deadlines create buyers with no choice.</li>
+      <li>an industry where the average owner is near retirement and nothing is digitised.</li>
+      <li>a service that costs very different amounts in two countries.</li>
+      <li>an offline process still running on paper, clipboards or a fax number.</li>
+      <li>something already working in another language market that nobody has brought over.</li>
+      <li>a high-trust market where you sell a small paid audit first and the real thing second.</li>
+      <li>a done-for-you version of a popular do-it-yourself thing.</li>
+      <li>anything AI just collapsed the cost of producing — then reprice it for a market that still pays the old rate.</li>
+    </ol>
+    <p>if you want a shortcut to what serious money thinks is open right now, Y Combinator publishes its Requests for Startups — the current Fall 2026 list runs from AI for an aging population to proving you're human to self-maintaining APIs. it's a free read of where the funding is pointed.</p>
+  </section>
+
+  <section class="prose">
+    <h2>how i'd validate any of these with ai</h2>
+    <p><strong>the goal of validation is to kill the idea fast, not to fall in love with it.</strong> AI is very good at agreeing with you, so you have to explicitly instruct it not to. this is the prompt i run before i write a line of code — and the rule is i go looking for the three sentences that would end the project, not the ten that flatter it.</p>
+    <pre><code>act as a sceptical investor who has seen this category fail before.
+your job is to kill this idea, not improve it.
+
+idea: [one sentence, in the customer's words]
+customer: [job title, company size, industry]
+what they do today: [the current workaround]
+what they pay today: [amount + who they pay it to]
+
+answer in this order, short and blunt:
+1. name 3 existing products that already do some of this. for each,
+   say what it costs and why the customer would or wouldn't switch.
+2. what is the single strongest reason this customer keeps their
+   current workaround instead of buying anything?
+3. what has to be TRUE about the world for this to work? list the
+   assumptions, and mark each one "checkable this week" or "not".
+4. what's the fastest, lowest-cost test that would prove assumption
+   #1 false in under 7 days, for under $200?
+5. give me the exact one-paragraph message i'd send to 10 of these
+   customers to find out. no pitch, just a question.
+6. finish with: "the strongest reason not to build this is ___".
+
+do not be encouraging. do not suggest pivots. do not add a summary.</code></pre>
+    <p>then run the seven-day test. not a survey. a real one.</p>
+    <pre><code>KILL CRITERIA — decide these BEFORE you run the test
+
+i will drop this idea if, after 7 days:
+[ ] fewer than 10 of the people i messaged reply at all
+[ ] nobody can name what they currently spend on this problem
+[ ] the problem happens less than once a month for most of them
+[ ] 3+ people say "we built something internal for this"
+[ ] zero people ask "when can i see it?" unprompted
+[ ] i can't get a single person on a 15-min call
+
+i will continue if:
+[ ] 3+ people describe the same workaround, unprompted
+[ ] at least 1 person asks about price before i mention it
+[ ] at least 1 person offers to pay for a manual version</code></pre>
+    <p>that last line is the whole game. deliver it manually for one person, badly, by hand, for money. do that before you automate anything. the version you'd have built from a brainstorm and the version they actually pay for are never the same product — and the gap between them is where most of the year goes.</p>
+    <p>you don't need a better idea. you need one real person and one honest week. that's Off-Script Rich.</p>
+  </section>
+
+  <section class="prose">
+    <h2>good to know</h2>
+    <ul>
+      <li>AI is close to useless at picking the idea and genuinely good at everything after — clustering complaints, summarising reviews, drafting the outreach message, arguing against you. use it as the research assistant, not the decider.</li>
+      <li>a "clever" idea nobody has done is usually a warning, not a moat. the boring ones with four competitors have a proven budget; the unique one often has none.</li>
+      <li>you will be tempted to build the tool from methods 9–15 because a competitor exists and it feels safe. the failure mode is shipping a slightly worse version of a funded product. pick one narrow customer they ignore, or don't go.</li>
+      <li>the CB Insights number is self-reported by founders after the fact, and those percentages don't add to 100 because most listed several causes. treat it as a direction, not a precise measurement.</li>
+      <li>most of this list produces the same handful of ideas for everyone who runs it. your edge is method 23–29 — the ones only you can see.</li>
+    </ul>
+  </section>
+
+  <section class="prose">
+    <h2>proof</h2>
+    <ul>
+      <li><a href="https://www.paulgraham.com/startupideas.html">Paul Graham, "How to Get Startup Ideas" (Nov 2012) — look for problems, preferably ones you have yourself</a></li>
+      <li><a href="https://www.cbinsights.com/reports/CB-Insights_Top-Reasons-Startups-Fail.pdf">CB Insights, "The Top 12 Reasons Startups Fail" (2021) — 111 post-mortems; 35% cited no market need</a></li>
+      <li><a href="https://www.ycombinator.com/rfs">Y Combinator, Requests for Startups — the current Fall 2026 category list</a></li>
+      <li><a href="https://transparency.meta.com/researchtools/ad-library-tools">Meta Transparency Center, Ad Library tools — the public ad search used in method 16</a></li>
+      <li><a href="https://support.google.com/trends/answer/4359550?hl=en">Google Trends Help, comparing search terms — the method behind idea 20</a></li>
+    </ul>
+  </section>
+
+
+
+  <section class="prose">
+    <h2>the rest of the library</h2>
+    <p>every guide is free and there's no email wall. take what you need.</p>
+    <p><a class="btn btn-primary" href="/guides/">all free guides</a></p>
+  </section>
+
+</main>
+
+<footer class="foot wrap">
+  <p><strong>Off-Script Rich.</strong> rich isn't the money. rich is the life the script said you couldn't have.</p>
+  <p><a href="/">home</a> · <a href="/guides/">guides</a> · <a href="https://instagram.com/livinxkp">@livinxkp</a></p>
+  <p class="mono">last checked 24 September 2026 · if something here has gone stale, comment IDEAS again and i'll have fixed it</p>
+</footer>
+
+</body>
+</html>
