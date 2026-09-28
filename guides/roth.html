@@ -1,0 +1,259 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>The Roth IRA, In Four Steps · Off-Script Rich</title>
+<meta name="description" content="the roth ira in four steps: who can open one, the 2026 limits, what to do with the money once it's in, and the withdrawal rule nobody explains. with a calculator for your own 2026 max.">
+<link rel="stylesheet" href="../assets/style.css">
+<style>
+  .calc { border: 1px solid var(--line); border-left: 3px solid var(--brass); border-radius: 3px; background: var(--surface); padding: 20px 18px; display: flex; flex-direction: column; gap: 14px; max-width: var(--readw); }
+  .calc h3 { font-size: 17px; }
+  .calc .row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  @media (max-width: 560px) { .calc .row { grid-template-columns: 1fr; } }
+  .calc label { display: flex; flex-direction: column; gap: 6px; font-family: var(--mono); font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-faint); }
+  .calc select, .calc input[type="number"] {
+    font-family: var(--body); font-size: 16px; color: var(--text); background: var(--ink);
+    border: 1px solid var(--line); border-radius: 3px; padding: 10px 11px; width: 100%; min-width: 0;
+  }
+  .calc select:focus, .calc input:focus { outline: none; border-color: var(--brass); }
+  .calc .check { flex-direction: row; align-items: center; gap: 9px; font-family: var(--body); font-size: 14px; letter-spacing: 0; text-transform: none; color: var(--text-dim); }
+  .calc .check input { width: 18px; height: 18px; accent-color: var(--brass); margin: 0; }
+  .calc .hint { font-family: var(--body); font-size: 12.5px; letter-spacing: 0; text-transform: none; color: var(--text-faint); line-height: 1.4; }
+  .result { border-top: 1px solid var(--line); padding-top: 14px; display: flex; flex-direction: column; gap: 6px; }
+  .result .big { font-family: var(--display); font-weight: 800; font-size: clamp(34px, 8vw, 46px); letter-spacing: -0.03em; line-height: 1; font-variant-numeric: tabular-nums; }
+  .result .sub { font-size: 14px; color: var(--text-dim); }
+  .result .why { font-family: var(--mono); font-size: 12.5px; color: var(--text-faint); line-height: 1.5; }
+  pre { background: var(--surface); border: 1px solid var(--line); border-radius: 3px; padding: 14px; overflow-x: auto; font-family: var(--mono); font-size: 12.5px; line-height: 1.55; color: var(--text-dim); max-width: var(--readw); }
+</style>
+</head>
+<body>
+
+<header class="masthead">
+  <div class="masthead-in wrap">
+    <a class="wordmark" href="/"><span class="off">OFF-SCRIPT</span> <span class="rich">RICH</span></a>
+    <nav class="navlinks">
+      <a href="/guides/" aria-current="page">guides</a>
+      <a href="/guides/stocks.html">the tape</a>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap stack">
+
+  <p class="eyebrow"><span class="chip" data-pillar="money">money</span> <span class="keyword">ROTH</span></p>
+
+  <h1>the roth ira, in four steps</h1>
+
+  <p class="lede">hey, it's KP. you commented <strong>ROTH</strong>, so here it is. no w-2 means nobody is handing me a 401k or a match, so the roth ira is the account i actually use. below are the four steps from the reel with the numbers checked against the IRS, a calculator for <strong>your</strong> 2026 max, and the full version of step four, the line nobody explains until you're already 60.</p>
+
+  <section class="prose">
+    <h2>who this is for</h2>
+    <p>you, if you earn money from work (a paycheck, freelance, your own business) and you've never opened a roth because it sounded like something for later. skip this if your income is well above the limits in step one. the regular route is closed to you and this page won't cover the workarounds.</p>
+  </section>
+
+  <section class="prose">
+    <h2>your 2026 max, calculated</h2>
+    <p>four inputs. it runs the same phase-out maths as the IRS worksheet, with the 2026 numbers. nothing you type leaves this page.</p>
+
+    <div class="calc" id="calc">
+      <h3>how much can i put in for 2026?</h3>
+      <div class="row">
+        <label>filing status
+          <select id="status">
+            <option value="single">single or head of household</option>
+            <option value="mfj">married filing jointly</option>
+            <option value="mfs">married filing separately</option>
+          </select>
+        </label>
+        <label>modified AGI (2026, estimate)
+          <input type="number" id="magi" inputmode="numeric" min="0" step="1000" placeholder="e.g. 85000">
+        </label>
+      </div>
+      <div class="row">
+        <label>earned income from work (2026)
+          <input type="number" id="comp" inputmode="numeric" min="0" step="500" placeholder="e.g. 60000">
+          <span class="hint">wages, or net earnings if you're self-employed. interest and dividends don't count.</span>
+        </label>
+        <label>already put in a traditional IRA (2026)
+          <input type="number" id="trad" inputmode="numeric" min="0" step="100" placeholder="0">
+          <span class="hint">the $7,500 is shared across all your IRAs.</span>
+        </label>
+      </div>
+      <label class="check"><input type="checkbox" id="fifty"> i'm 50 or older by the end of 2026</label>
+
+      <div class="result" aria-live="polite">
+        <div class="big" id="out">$—</div>
+        <div class="sub" id="outsub">fill in your income to see your number.</div>
+        <div class="why" id="outwhy"></div>
+      </div>
+    </div>
+    <p class="mono" style="font-size:12.5px;color:var(--text-faint)">an estimate, not a filing. the official version is Worksheet 2-2 in IRS Publication 590-A. married filing separately but lived apart all year? the IRS treats you as single for this, so pick single.</p>
+  </section>
+
+  <section class="prose">
+    <h2>step one: open it</h2>
+    <p><strong>you need earned income, and you need to be under the income limit.</strong></p>
+    <p>earned income means money from work. if you're self-employed like me, it's your net earnings from the business, not what came in the door. interest, dividends and rental income don't count, so a year with zero work income is a year you can't contribute, no matter how much is in the bank.</p>
+    <p>the limits for 2026 run on your <strong>modified AGI</strong>, not your salary. under <strong>$153,000</strong> single, or <strong>$242,000</strong> married filing jointly, and you can put in the full amount. between $153,000 and $168,000 single, or $242,000 and $252,000 joint, the amount shrinks (that's what the calculator does). above the top number, zero. married filing separately is $0 to $10,000, which closes it for almost everyone filing that way.</p>
+    <p>where to open it: any major brokerage. fidelity, vanguard, schwab, pick one, they're all fine. the brokerage sets any account minimum, and it decides whether you can buy fractions of a fund with a small amount, so check both before you pick.</p>
+  </section>
+
+  <section class="prose">
+    <h2>step two: put in money you've already paid tax on</h2>
+    <p><strong>straight out of checking. the 2026 cap is $7,500, or $8,600 if you're 50 or older.</strong></p>
+    <p>there's no tax deduction going in. that's the trade. you pay tax now so the growth isn't taxed later. two rules people trip on: the cap is the <strong>smaller</strong> of $7,500 or your earned income for the year, and it's <strong>one cap across every IRA you own</strong>, traditional and roth combined. go over and the excess is taxed 6% for every year it stays in.</p>
+    <p>you have until your tax-filing deadline the following spring (extensions don't count) to make a contribution for a given year. and you can start with fifty bucks, honestly. the amount matters less than step four's clock, which starts the first year you put anything in.</p>
+<pre><code>STEP TWO: the monthly number
+
+A. my 2026 max (from the calculator) ...... $______
+B. already in for 2026 .................... $______
+C. left to go (A - B) ..................... $______
+D. months left until i want it done ....... ______
+E. per month (C / D) ...................... $______
+
+F. automatic transfer, checking -> roth
+     amount $______   date: payday + 1
+     set up?  Y / N
+</code></pre>
+  </section>
+
+  <section class="prose">
+    <h2>step three: actually buy something with it</h2>
+    <p><strong>money sitting in a roth as cash does almost nothing. depositing is not investing.</strong></p>
+    <p>this is the step people miss. the transfer lands as a cash balance, and it stays cash until you place a buy. plenty of people contribute for years and find out later they owned nothing. after every deposit, log in and buy.</p>
+    <p>what i hold is broad index etfs, voo and vti. that's what i do, not a recommendation for you. if you want the checklist i'd use to judge any fund before buying it (cost, tracking, overlap, tax treatment), that's <a href="/guides/picks.html">PICKS</a>. for why the boring index approach tends to beat picking, that's <a href="/guides/etf.html">ETF</a>.</p>
+<pre><code>STEP THREE: after every deposit
+
+[ ] deposit landed ........................ date ______
+[ ] cash balance in the roth now .......... $______
+[ ] bought: ______________  amount $______
+[ ] cash balance after the buy ............ $______  (should be ~0)
+[ ] recurring buy switched on, if the
+    brokerage offers one .................. Y / N
+</code></pre>
+  </section>
+
+  <section class="prose">
+    <h2>step four: the line</h2>
+    <p><strong>what you put in can come back out at any time, at any age, with no tax and no penalty. the growth is what's locked.</strong></p>
+    <p>the IRS has ordering rules for roth withdrawals: your regular contributions come out first, then conversions and rollovers, then earnings. a withdrawal that's a return of your own contributions isn't counted as income and isn't hit with the 10% early-withdrawal tax. so if you've put in $12,000 over three years and it's grown to $15,000, the first $12,000 is reachable if life happens. that's why a roth is more flexible than it sounds.</p>
+    <p>the part the reel didn't have room for: <strong>the growth only comes out tax-free if two things are true.</strong> you're 59½ or older (or disabled, or it's up to $10,000 lifetime toward a first home, or it goes to your heirs), <strong>and</strong> it's been at least five tax years since the first year you contributed to any roth. that five-year clock starts on January 1 of the year you made your first contribution for, which is the whole reason to open one now with a small amount instead of later with a big one. take growth out before both are true and it can be taxed and penalised.</p>
+    <p>none of this works if you don't know your own number. the brokerage tracks it, but keep your own record too. it takes one line a year.</p>
+<pre><code>STEP FOUR: my contributions ledger (what can come back out)
+
+  tax year   put in      date(s)          running total
+  2026       $______     ____________     $______
+  2027       $______     ____________     $______
+  2028       $______     ____________     $______
+  2029       $______     ____________     $______
+  2030       $______     ____________     $______
+
+  first year i contributed for: ______
+  five-year clock done on: January 1, ______  (that year + 5)
+  age 59½ on: ______
+
+  REACHABLE ANY TIME, NO TAX, NO PENALTY = running total
+  (minus anything i've already taken back out)
+</code></pre>
+    <p>the script never mentions that part, because the script assumes somebody's handing you a pension. that's Off-Script Rich.</p>
+  </section>
+
+  <section class="prose">
+    <h2>good to know</h2>
+    <ul>
+      <li><strong>"no w-2" doesn't mean no 401k at all.</strong> if you run your own business with no employees, a one-participant (solo) 401k exists, with higher limits than an IRA. it's more paperwork, and it's its own guide. the roth is the simplest account to open today, which is why it's the one in this video.</li>
+      <li><strong>the income limit uses modified AGI, not what your offer letter says.</strong> Publication 590-A defines it. if you're anywhere near the phase-out, use the IRS worksheet, not a guess, because contributing when you're over the line costs you 6% a year until it's fixed.</li>
+      <li><strong>pulling contributions out is allowed, not free.</strong> no tax, no penalty, but money that comes out stops compounding tax-free. treat it as an emergency exit, not a savings account.</li>
+      <li><strong>every number on this page moves.</strong> the $7,500 cap and the phase-out ranges are 2026 figures and the IRS adjusts them most years. the mechanism holds, the numbers don't. the links are below so you can check them next year.</li>
+    </ul>
+  </section>
+
+  <section class="prose">
+    <h2>proof</h2>
+    <ul>
+      <li><a href="https://www.irs.gov/newsroom/401k-limit-increases-to-24500-for-2026-ira-limit-increases-to-7500">IRS — 401(k) limit increases to $24,500 for 2026, IRA limit increases to $7,500 (IR-2025-111)</a> — the $7,500 IRA limit, $1,100 catch-up at 50+, and the 2026 roth phase-outs: $153,000–$168,000 single and head of household, $242,000–$252,000 married filing jointly, $0–$10,000 married filing separately</li>
+      <li><a href="https://www.irs.gov/retirement-plans/plan-participant-employee/retirement-topics-ira-contribution-limits">IRS — Retirement topics: IRA contribution limits</a> — $7,500 ($8,600 at 50+) for 2026, or your taxable compensation if less; the limit covers all your traditional and roth IRAs combined; excess contributions taxed at 6% per year</li>
+      <li><a href="https://www.irs.gov/publications/p590a">IRS — Publication 590-A, Contributions to IRAs</a> — what counts as compensation (net earnings for the self-employed; not interest, dividends or rental income), the contribution deadline, and Worksheet 2-2 for the reduced roth limit</li>
+      <li><a href="https://www.irs.gov/publications/p590b">IRS — Publication 590-B, Distributions from IRAs</a> — qualified distributions (five-year period plus 59½, disability, death, or first home), the ordering rules (regular contributions first), and that a return of regular contributions isn't included in income</li>
+      <li><a href="https://www.irs.gov/retirement-plans/one-participant-401k-plans">IRS — One-participant 401(k) plans</a> — a 401(k) covering a business owner with no employees, or that person and their spouse</li>
+    </ul>
+  </section>
+
+  <section class="prose">
+    <h2>the boring but necessary part</h2>
+    <p>i'm not a financial adviser and this isn't personalised advice. it's what i've read, what i do, and where i got it from, all linked above so you can check my work. the calculator is an estimate from public IRS rules, not tax advice. what you do with your money is on you.</p>
+  </section>
+
+  <section class="prose">
+    <h2>the rest of the library</h2>
+    <p>every guide is free and there's no email wall. take what you need.</p>
+    <p><a class="btn btn-primary" href="/guides/">all free guides</a></p>
+  </section>
+
+</main>
+
+<footer class="foot wrap">
+  <p><strong>Off-Script Rich.</strong> rich isn't the money. rich is the life the script said you couldn't have.</p>
+  <p><a href="/">home</a> · <a href="/guides/">guides</a> · <a href="https://instagram.com/livinxkp">@livinxkp</a></p>
+  <p class="mono">last checked 28 September 2026 · 2026 limits · if something here has gone stale, comment ROTH again and i'll have fixed it</p>
+</footer>
+
+<script>
+(function () {
+  "use strict";
+  // 2026 figures, IRS IR-2025-111. phase-out maths follows Pub 590-A Worksheet 2-2.
+  var LIMIT = 7500, LIMIT_50 = 8600;
+  var RANGES = { single: [153000, 168000], mfj: [242000, 252000], mfs: [0, 10000] };
+
+  var $ = function (id) { return document.getElementById(id); };
+  var status = $("status"), magi = $("magi"), comp = $("comp"), trad = $("trad"), fifty = $("fifty");
+  var out = $("out"), outsub = $("outsub"), outwhy = $("outwhy");
+
+  function money(n) { return "$" + Math.round(n).toLocaleString("en-US"); }
+  function num(el) { var v = parseFloat(el.value); return isFinite(v) && v > 0 ? v : 0; }
+
+  function reduced(base, m, lo, hi) {
+    if (m < lo) return base;
+    if (m >= hi) return 0;
+    var r = base - base * (m - lo) / (hi - lo);
+    r = Math.ceil(r / 10) * 10;          // round up to the nearest $10
+    if (r > 0 && r < 200) r = 200;       // floor of $200 while still inside the range
+    return r;
+  }
+
+  function calc() {
+    var base = fifty.checked ? LIMIT_50 : LIMIT;
+    var rg = RANGES[status.value];
+    if (magi.value === "") {
+      out.textContent = "$—"; outsub.textContent = "fill in your income to see your number."; outwhy.textContent = ""; return;
+    }
+    var m = num(magi), c = num(comp), t = num(trad);
+    var phased = reduced(base, m, rg[0], rg[1]);
+    var shared = Math.max(0, base - t);
+    var byComp = comp.value === "" ? Infinity : Math.max(0, c - t);
+    var max = Math.max(0, Math.min(phased, shared, byComp));
+
+    out.textContent = money(max);
+    var why = [];
+    if (m < rg[0]) why.push("income under " + money(rg[0]) + ": full " + money(base) + " limit");
+    else if (m >= rg[1]) why.push("income at or over " + money(rg[1]) + ": phased out to $0");
+    else why.push("income inside the " + money(rg[0]) + "–" + money(rg[1]) + " phase-out: reduced to " + money(phased));
+    if (t > 0) why.push("minus " + money(t) + " already in a traditional IRA");
+    if (byComp < Math.min(phased, shared)) why.push("capped at your earned income");
+    if (comp.value === "") why.push("add earned income to check the income cap");
+
+    if (max > 0) outsub.textContent = "your 2026 roth max. that's " + money(Math.ceil(max / 12)) + " a month to hit it.";
+    else outsub.textContent = "no direct roth contribution for 2026 on these numbers.";
+    outwhy.textContent = why.join(" · ");
+  }
+
+  [status, magi, comp, trad, fifty].forEach(function (el) {
+    el.addEventListener("input", calc); el.addEventListener("change", calc);
+  });
+  calc();
+})();
+</script>
+
+</body>
+</html>
