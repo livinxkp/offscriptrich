@@ -1,0 +1,264 @@
+<!doctype html>
+<!--
+  KEYWORD ROUTER — offscriptrich.com/go
+  Every LinkDM flow sends this one link. The viewer types the word they
+  commented and lands on that guide. It reads /assets/guides.js, so a new
+  guide works here the moment it is added there. Nothing to edit in this file.
+
+  Also accepts ?k=WORD (e.g. /go/?k=STOCKS) and jumps straight to the guide.
+-->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Open your guide · Off-Script Rich</title>
+<meta name="description" content="Type the word you commented and your free guide opens.">
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@87..100,400..800&family=DM+Mono:wght@400;500&family=Public+Sans:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="/assets/style.css">
+<style>
+  .hero { padding-block: 40px 22px; max-width: 560px; }
+  .hero h1 { margin-block: 12px 12px; font-size: clamp(32px, 8vw, 50px); }
+
+  .box { max-width: 560px; }
+  .field { display: flex; gap: 8px; }
+  .field input {
+    flex: 1; min-width: 0;
+    font-family: var(--mono); font-size: 20px; font-weight: 500; letter-spacing: 0.08em;
+    text-transform: uppercase;
+    background: var(--surface); color: var(--text);
+    border: 1px solid var(--line); border-radius: 3px;
+    padding: 14px 14px;
+  }
+  .field input::placeholder { color: var(--text-faint); letter-spacing: 0.06em; text-transform: none; }
+  .field input:focus { outline: none; border-color: var(--brass); }
+  .field .btn { padding-inline: 18px; font-size: 15px; }
+
+  .status { min-height: 24px; margin-top: 12px; font-size: 14px; color: var(--text-dim); }
+  .status b { color: var(--text); font-weight: 600; }
+  .status.ok { color: var(--buy); }
+
+  .matches { display: flex; flex-direction: column; gap: 1px; margin-top: 6px; background: var(--line); border: 1px solid var(--line); border-radius: 3px; overflow: hidden; }
+  .match {
+    display: flex; align-items: center; gap: 12px;
+    background: var(--surface); padding: 14px 14px;
+    text-decoration: none; color: inherit;
+  }
+  .match:hover, .match:focus-visible { background: var(--surface-2); }
+  .match .t { flex: 1; min-width: 0; font-size: 14.5px; font-weight: 600; line-height: 1.3; }
+  .match .go { font-family: var(--mono); font-size: 12px; color: var(--brass); white-space: nowrap; }
+
+  .all { margin-top: 40px; max-width: 760px; }
+  .all .eyebrow { display: block; margin-bottom: 12px; }
+  .chips { display: flex; flex-wrap: wrap; gap: 8px; }
+  .chips a.keyword {
+    font-size: 13px; padding: 8px 11px; text-decoration: none;
+    border: 1px solid transparent;
+  }
+  .chips a.keyword:hover { border-color: var(--brass); }
+</style>
+</head>
+<body>
+
+<header class="masthead">
+  <div class="wrap masthead-in">
+    <a class="wordmark" href="/"><span class="off">OFF-SCRIPT</span>&nbsp;<span class="rich">RICH</span></a>
+    <nav class="navlinks">
+      <a href="/guides/">guides</a>
+      <a href="/guides/stocks.html">the tape</a>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <div class="hero">
+    <p class="eyebrow">one word away</p>
+    <h1>type the word you commented</h1>
+    <p class="lede">the word from the video. your guide opens straight away.</p>
+  </div>
+
+  <div class="box">
+    <form class="field" id="form" autocomplete="off">
+      <label for="kw" class="eyebrow" hidden>keyword</label>
+      <input id="kw" name="k" type="text" placeholder="e.g. stocks"
+             autocapitalize="characters" autocorrect="off" spellcheck="false"
+             enterkeyhint="go" maxlength="40" aria-describedby="status">
+      <button class="btn btn-primary" type="submit">open</button>
+    </form>
+    <p class="status" id="status" role="status" aria-live="polite"></p>
+    <div class="matches" id="matches" hidden></div>
+  </div>
+
+  <section class="all" id="all" hidden>
+    <span class="eyebrow">or tap your word</span>
+    <div class="chips" id="chips"></div>
+  </section>
+
+  <footer class="foot">
+    <span>OFF-SCRIPT RICH</span>
+    <a href="/guides/">every guide</a>
+    <a href="https://instagram.com/livinxkp" rel="noopener">@livinxkp</a>
+  </footer>
+
+</main>
+
+<script src="/assets/guides.js"></script>
+<script>
+(function () {
+  "use strict";
+
+  var GUIDES = (window.OSR_GUIDES || []).filter(function (g) { return g.live === true && g.href && g.href !== "#"; });
+
+  // normalise anything they might type: "stocks", " Stocks!", "#ETF 🔥" -> "STOCKS", "ETF"
+  function norm(s) { return String(s || "").toUpperCase().replace(/[^A-Z0-9]/g, ""); }
+
+  // every word that opens a guide -> that guide
+  var INDEX = {};
+  GUIDES.forEach(function (g) {
+    [g.keyword].concat(g.aliases || []).forEach(function (w) {
+      var k = norm(w);
+      if (k && !INDEX[k]) INDEX[k] = g;
+    });
+  });
+  var WORDS = Object.keys(INDEX);
+
+  function url(g) { return "/guides/" + g.href; }
+
+  // typo distance; a swapped pair of letters (STCOKS) counts as one typo
+  function lev(a, b) {
+    if (Math.abs(a.length - b.length) > 2) return 9;
+    var d = [], i, j;
+    for (i = 0; i <= a.length; i++) { d[i] = [i]; }
+    for (j = 0; j <= b.length; j++) { d[0][j] = j; }
+    for (i = 1; i <= a.length; i++) {
+      for (j = 1; j <= b.length; j++) {
+        var cost = a[i - 1] === b[j - 1] ? 0 : 1;
+        d[i][j] = Math.min(d[i - 1][j] + 1, d[i][j - 1] + 1, d[i - 1][j - 1] + cost);
+        if (i > 1 && j > 1 && a[i - 1] === b[j - 2] && a[i - 2] === b[j - 1]) {
+          d[i][j] = Math.min(d[i][j], d[i - 2][j - 2] + 1);
+        }
+      }
+    }
+    return d[a.length][b.length];
+  }
+
+  // guides worth showing for what has been typed so far, best first, no duplicates
+  function candidates(q) {
+    var seen = {}, out = [];
+    function add(g) { if (!seen[g.href]) { seen[g.href] = 1; out.push(g); } }
+    if (INDEX[q]) add(INDEX[q]);
+    WORDS.filter(function (w) { return w.indexOf(q) === 0; }).sort().forEach(function (w) { add(INDEX[w]); });
+    if (q.length >= 3) {
+      WORDS.map(function (w) { return { w: w, d: lev(q, w) }; })
+        .filter(function (x) { return x.d <= (q.length >= 7 ? 2 : 1); })
+        .sort(function (a, b) { return a.d - b.d; })
+        .forEach(function (x) { add(INDEX[x.w]); });
+    }
+    return out.slice(0, 4);
+  }
+
+  var input = document.getElementById("kw");
+  var form = document.getElementById("form");
+  var statusEl = document.getElementById("status");
+  var matchesEl = document.getElementById("matches");
+  var timer = null;
+
+  function say(html, ok) {
+    statusEl.innerHTML = html;
+    statusEl.className = "status" + (ok ? " ok" : "");
+  }
+
+  function esc(s) { return String(s).replace(/[&<>"]/g, function (c) { return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]; }); }
+
+  function open(g, word) {
+    clearTimeout(timer);
+    say("opening <b>" + esc(word || g.keyword) + "</b>…", true);
+    window.location.href = url(g);
+  }
+
+  function renderMatches(list) {
+    matchesEl.textContent = "";
+    list.forEach(function (g) {
+      var a = document.createElement("a");
+      a.className = "match";
+      a.href = url(g);
+      var k = document.createElement("span"); k.className = "keyword"; k.textContent = g.keyword;
+      var t = document.createElement("span"); t.className = "t"; t.textContent = g.title;
+      var go = document.createElement("span"); go.className = "go"; go.textContent = "open →";
+      a.appendChild(k); a.appendChild(t); a.appendChild(go);
+      matchesEl.appendChild(a);
+    });
+    matchesEl.hidden = list.length === 0;
+  }
+
+  function onType() {
+    clearTimeout(timer);
+    var q = norm(input.value);
+    if (!q) { say(""); renderMatches([]); return; }
+
+    var exact = INDEX[q];
+    var list = candidates(q);
+    renderMatches(list);
+
+    if (exact) {
+      // only jump on its own when no longer word starts with this one
+      // (ETF must not fire while they are still typing ETFS)
+      var longer = WORDS.some(function (w) { return w !== q && w.indexOf(q) === 0; });
+      if (!longer) {
+        say("found <b>" + esc(q) + "</b>, opening…", true);
+        timer = setTimeout(function () { open(exact, q); }, 450);
+      } else {
+        say("tap <b>open</b> for " + esc(q) + ", or keep typing.");
+      }
+      return;
+    }
+    var typing = list.some(function (g) {
+      return [g.keyword].concat(g.aliases || []).some(function (w) { return norm(w).indexOf(q) === 0; });
+    });
+    if (list.length) { say(typing ? "keep typing, or tap yours." : "did you mean one of these?"); return; }
+    if (q.length < 3) { say(""); return; }
+    say("no guide with that word yet. check the caption for the exact word, or tap it below.");
+  }
+
+  form.addEventListener("submit", function (e) {
+    e.preventDefault();
+    var q = norm(input.value);
+    if (!q) { input.focus(); return; }
+    if (INDEX[q]) { open(INDEX[q], q); return; }
+    var list = candidates(q);
+    if (list.length === 1) { open(list[0]); return; }
+    onType();
+  });
+
+  input.addEventListener("input", onType);
+
+  // tap list: every live keyword, alphabetical
+  var chips = document.getElementById("chips");
+  GUIDES.slice().sort(function (a, b) { return a.keyword < b.keyword ? -1 : 1; }).forEach(function (g) {
+    var a = document.createElement("a");
+    a.className = "keyword";
+    a.href = url(g);
+    a.textContent = g.keyword;
+    chips.appendChild(a);
+  });
+  document.getElementById("all").hidden = GUIDES.length === 0;
+
+  // /go/?k=WORD jumps straight there
+  var param = new URLSearchParams(window.location.search).get("k") || new URLSearchParams(window.location.search).get("keyword");
+  var pq = norm(param);
+  if (pq && INDEX[pq]) {
+    say("opening <b>" + esc(pq) + "</b>…", true);
+    window.location.replace(url(INDEX[pq]));
+    return;
+  }
+  if (pq) { input.value = pq; onType(); }
+
+  input.focus();
+})();
+</script>
+
+</body>
+</html>

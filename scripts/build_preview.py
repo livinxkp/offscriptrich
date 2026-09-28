@@ -21,6 +21,7 @@ ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 OUT = os.path.join(ROOT, "build", "artifact")
 
 CSS = open(os.path.join(ROOT, "assets", "style.css"), encoding="utf-8").read()
+GUIDES_JS = open(os.path.join(ROOT, "assets", "guides.js"), encoding="utf-8").read()
 
 
 def flatten(html):
@@ -28,6 +29,10 @@ def flatten(html):
     html = html.replace(
         '<link rel="stylesheet" href="../assets/style.css">',
         "<style>\n" + CSS + "\n</style>",
+    )
+    html = html.replace(
+        '<script src="../assets/guides.js"></script>',
+        "<script>\n" + GUIDES_JS + "\n</script>",
     )
     html = html.replace('href="../index.html"', 'href="index.html"')
     html = html.replace('href="guides/index.html"', 'href="index.html"')
