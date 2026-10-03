@@ -27,6 +27,22 @@
   .fbtn:hover { color: var(--text); border-color: var(--text-faint); }
   .fbtn[aria-pressed="true"] { background: var(--text); color: var(--ink); border-color: var(--text); font-weight: 600; }
 
+  .searchbar { display: flex; gap: 8px; align-items: center; margin-top: 4px; margin-bottom: 14px; max-width: 420px; position: relative; }
+  .searchbar input {
+    flex: 1; min-width: 0; font-family: var(--body); font-size: 15px;
+    background: var(--surface); color: var(--text);
+    border: 1px solid var(--line); border-radius: 3px;
+    padding: 10px 36px 10px 12px; -webkit-appearance: none; appearance: none;
+  }
+  .searchbar input::placeholder { color: var(--text-faint); }
+  .searchbar input:focus { outline: none; border-color: var(--brass); }
+  .searchbar .clear {
+    position: absolute; right: 6px; top: 50%; transform: translateY(-50%);
+    background: transparent; border: 0; color: var(--text-faint); cursor: pointer;
+    font-size: 18px; line-height: 1; padding: 6px 8px;
+  }
+  .searchbar .clear:hover { color: var(--text); }
+
   .count { font-family: var(--mono); font-size: 12px; color: var(--text-faint); padding-block: 14px 18px; }
 
   .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(290px, 1fr)); gap: 1px; background: var(--line); border: 1px solid var(--line); border-radius: 3px; overflow: hidden; }
@@ -74,6 +90,13 @@
     <p class="lede">every tool, tracker and prompt pack i have given away, in one place. nothing gated, nothing for sale on this page. filter by what you are trying to do.</p>
   </div>
 
+  <form class="searchbar" id="searchform" role="search" autocomplete="off">
+    <label for="q" hidden>search guides</label>
+    <input id="q" type="search" placeholder="search guides or a keyword" enterkeyhint="search"
+           autocapitalize="none" autocorrect="off" spellcheck="false" maxlength="60">
+    <button class="clear" id="clear" type="button" aria-label="clear search" hidden>&times;</button>
+  </form>
+
   <div class="filterbar" role="group" aria-label="filter guides by pillar">
     <span class="lbl">filter</span>
     <button class="fbtn" type="button" data-f="all" aria-pressed="true">all</button>
@@ -111,6 +134,9 @@
   var noResults = document.getElementById("noresults");
   var buttons = Array.prototype.slice.call(document.querySelectorAll(".fbtn"));
   var active = "all";
+  var query = "";
+  var qInput = document.getElementById("q");
+  var clearBtn = document.getElementById("clear");
 
   function node(tag, cls, text) {
     var n = document.createElement(tag);
@@ -145,16 +171,58 @@
     return a;
   }
 
+  // lowercase words only: "#ETF!" -> "etf"
+  function words(s) { return String(s || "").toLowerCase().split(/[^a-z0-9]+/).filter(Boolean); }
+
+  // every typed word must start a word in the keyword, its aliases, the title or the description
+  function score(g, tokens) {
+    if (!tokens.length) return 0;
+    var kws = [g.keyword].concat(g.aliases || []).map(function (w) { return String(w).toLowerCase().replace(/[^a-z0-9]/g, ""); });
+    var hay = words([g.keyword].concat(g.aliases || []).join(" ") + " " + g.title + " " + g.desc);
+    var best = 3;
+    for (var i = 0; i < tokens.length; i++) {
+      var t = tokens[i];
+      var inHay = hay.some(function (w) { return w.indexOf(t) === 0; });
+      if (!inHay) return -1;
+      if (kws.indexOf(t) !== -1) best = Math.min(best, 0);
+      else if (kws.some(function (k) { return k.indexOf(t) === 0; })) best = Math.min(best, 1);
+      else best = Math.min(best, 2);
+    }
+    return best;
+  }
+
   function draw() {
     var shown = GUIDES.filter(function (g) { return g.live !== false; });
     var rows = active === "all" ? shown : shown.filter(function (g) { return g.pillar === active; });
+    var tokens = words(query);
+    if (tokens.length) {
+      rows = rows
+        .map(function (g, i) { return { g: g, s: score(g, tokens), i: i }; })
+        .filter(function (x) { return x.s >= 0; })
+        .sort(function (a, b) { return a.s - b.s || a.i - b.i; })
+        .map(function (x) { return x.g; });
+    }
     var total = shown.length;
     grid.textContent = "";
     rows.forEach(function (g) { grid.appendChild(card(g)); });
     grid.hidden = rows.length === 0;
     noResults.hidden = rows.length !== 0;
+    noResults.textContent = tokens.length
+      ? "nothing matches that. try the keyword from the video, or clear the search."
+      : "nothing in that pillar yet. new guides go up every week.";
     countEl.textContent = "showing " + rows.length + " of " + total + " guides";
+    clearBtn.hidden = !qInput.value;
   }
+
+  qInput.addEventListener("input", function () { query = qInput.value; draw(); });
+  clearBtn.addEventListener("click", function () { qInput.value = ""; query = ""; draw(); qInput.focus(); });
+  document.getElementById("searchform").addEventListener("submit", function (e) {
+    e.preventDefault();
+    var first = grid.querySelector("a.card");
+    var n = grid.querySelectorAll("a.card").length;
+    if (n === 1 && first) window.location.href = first.href;
+    qInput.blur();
+  });
 
   buttons.forEach(function (b) {
     b.addEventListener("click", function () {
@@ -163,6 +231,10 @@
       draw();
     });
   });
+
+  // /guides/?q=word pre-fills the search
+  var qp = new URLSearchParams(window.location.search).get("q");
+  if (qp) { qInput.value = qp.slice(0, 60); query = qInput.value; }
 
   draw();
 })();
