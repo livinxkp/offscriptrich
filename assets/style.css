@@ -85,7 +85,11 @@ body {
   font-size: 16px;
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
+  overflow-x: clip;
 }
+
+/* safety net: no page can ever scroll sideways, even if a future guide ships a wide element */
+html { overflow-x: clip; }
 
 img { max-width: 100%; height: auto; }
 [hidden] { display: none !important; }
@@ -142,6 +146,24 @@ a { color: inherit; }
 .wordmark .off { color: var(--text); }
 .wordmark .rich { color: var(--brass); }
 
+/* handle tag beside the wordmark, on every page that uses the masthead */
+.wordmark::after {
+  content: "@livinxkp";
+  font-family: var(--mono);
+  font-weight: 500;
+  font-size: 10.5px;
+  letter-spacing: 0.08em;
+  font-stretch: 100%;
+  color: var(--text-faint);
+  margin-left: 11px;
+  padding-left: 11px;
+  border-left: 1px solid var(--line);
+  align-self: center;
+  white-space: nowrap;
+  transition: color 0.15s ease;
+}
+.wordmark:hover::after { color: var(--brass); }
+
 .navlinks {
   display: flex;
   gap: 18px;
@@ -161,6 +183,14 @@ a { color: inherit; }
   color: var(--text);
   border-bottom-color: var(--brass);
 }
+
+/* phone widths: keep the handle tag and the nav on one line */
+@media (max-width: 420px) {
+  .wordmark { white-space: nowrap; flex-shrink: 0; }
+  .wordmark::after { font-size: 10px; letter-spacing: 0.04em; margin-left: 8px; padding-left: 8px; }
+  .navlinks { gap: 14px; white-space: nowrap; }
+}
+@media (max-width: 369px) { .wordmark::after { display: none; } }
 
 /* ---------- type ---------- */
 
@@ -276,6 +306,39 @@ p { margin: 0; }
 
 .foot a { color: var(--text-dim); text-decoration: none; border-bottom: 1px solid var(--line); }
 .foot a:hover { color: var(--text); border-bottom-color: var(--brass); }
+
+/* copyright line: full width, last thing on every page */
+.foot .copyright {
+  flex: 0 0 100%;
+  margin: 8px 0 0;
+  padding-top: 16px;
+  border-top: 1px solid var(--line-soft);
+  font-family: var(--mono);
+  font-size: 11px;
+  line-height: 1.6;
+  letter-spacing: 0.02em;
+  color: var(--text-faint);
+  max-width: 72ch;
+}
+
+/* code and prompt blocks wrap instead of pushing the page sideways */
+pre {
+  max-width: 100%;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+  overflow-x: auto;
+  font-family: var(--mono);
+  font-size: 13px;
+  line-height: 1.65;
+  color: var(--text);
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 3px;
+  padding: 16px 14px;
+  margin: 0;
+}
+pre code { font: inherit; background: none; border: 0; padding: 0; }
+code { font-family: var(--mono); overflow-wrap: anywhere; }
 
 @media (prefers-reduced-motion: reduce) {
   * { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
