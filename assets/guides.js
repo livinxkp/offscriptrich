@@ -41,6 +41,7 @@ window.OSR_GUIDES = [
       title: "build your own ai assistant",
       desc: "one evening, no code. the setup that actually knows your context instead of starting from zero every time you open it."
     },
+    { keyword: "AI", aliases: ["AL"], pillar: "ai", live: true, href: "ai.html", title: "you're not behind on ai, here's the map", desc: "one free course for the concepts, one to learn how to work with AI, two free tools to open every day, and a seven-day plan at twenty minutes a day with the prompts." },
     { keyword: "AVOID", pillar: "life", live: true, href: "avoid.html", title: "the work is not the problem", desc: "you're not avoiding the task, you're avoiding the feeling. the decoder, the ten-minute test, and the three messages you haven't sent." },
     { keyword: "BANKS", pillar: "money", live: true, href: "banks.html", title: "the account setup uneven income needs", desc: "how to run uneven creator income through four accounts — the split, the tax hold-back math, the FDIC limits, and exactly what to automate." },
     { keyword: "BOOMER", pillar: "ai", live: true, href: "boomer.html", title: "buy the business, bring the ai", desc: "the roadmap for buying a small business as its owner retires and using AI to run it better — real multiples, real SBA terms, and what to automate first." },
