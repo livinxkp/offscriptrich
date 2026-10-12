@@ -1,0 +1,235 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>The Best Card for Each Category · Off-Script Rich</title>
+<meta name="description" content="the four cards from the reel with their current earn rates and fees checked, a calculator that runs your own spending through all four, and the one rule that makes any rewards card worth it.">
+<link rel="stylesheet" href="../assets/style.css">
+<style>
+  .calc { border: 1px solid var(--line); border-left: 3px solid var(--brass); border-radius: 3px; background: var(--surface); padding: 20px 18px; display: flex; flex-direction: column; gap: 14px; max-width: var(--readw); }
+  .calc h3 { font-size: 17px; }
+  .calc .row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  @media (max-width: 560px) { .calc .row { grid-template-columns: 1fr; } }
+  .calc label { display: flex; flex-direction: column; gap: 6px; font-family: var(--mono); font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-faint); }
+  .calc input[type="number"] { font-family: var(--body); font-size: 16px; color: var(--text); background: var(--ink); border: 1px solid var(--line); border-radius: 3px; padding: 10px 11px; width: 100%; min-width: 0; }
+  .calc input:focus { outline: none; border-color: var(--brass); }
+  .calc .check { flex-direction: row; align-items: center; gap: 9px; font-family: var(--body); font-size: 14px; letter-spacing: 0; text-transform: none; color: var(--text-dim); }
+  .calc .check input { width: 18px; height: 18px; accent-color: var(--brass); margin: 0; }
+  .calc .hint { font-family: var(--body); font-size: 12.5px; letter-spacing: 0; text-transform: none; color: var(--text-faint); line-height: 1.4; }
+  .result { border-top: 1px solid var(--line); padding-top: 14px; display: flex; flex-direction: column; gap: 6px; }
+  .result .big { font-family: var(--display); font-weight: 800; font-size: clamp(34px, 8vw, 46px); letter-spacing: -0.03em; line-height: 1; font-variant-numeric: tabular-nums; }
+  .result .sub { font-size: 14px; color: var(--text-dim); }
+  .rtable { width: 100%; border-collapse: collapse; font-size: 14px; font-variant-numeric: tabular-nums; }
+  .rtable th, .rtable td { text-align: left; padding: 8px 6px; border-bottom: 1px solid var(--line); vertical-align: top; }
+  .rtable th { font-family: var(--mono); font-size: 10.5px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-faint); font-weight: 500; }
+  .rtable td.n { text-align: right; white-space: nowrap; }
+  .rtable tr.top td { color: var(--text); font-weight: 600; }
+  .tablewrap { overflow-x: auto; max-width: var(--readw); }
+</style>
+</head>
+<body>
+
+<header class="masthead">
+  <div class="masthead-in wrap">
+    <a class="wordmark" href="/"><span class="off">OFF-SCRIPT</span> <span class="rich">RICH</span></a>
+    <nav class="navlinks">
+      <a href="/guides/" aria-current="page">guides</a>
+      <a href="/guides/stocks.html">the tape</a>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap stack">
+
+  <p class="eyebrow"><span class="chip" data-pillar="money">money</span> <span class="keyword">CARDS</span></p>
+
+  <h1>the best card for each category</h1>
+
+  <p class="lede">hey, it's KP. you commented <strong>CARDS</strong>, so here it is. the reel gave you one card per category. this is the one-page breakdown: what each card actually earns right now, what it costs, the catch on each, and a calculator that runs your own monthly spending through all four so you're not choosing off someone else's lifestyle.</p>
+
+  <section class="prose">
+    <h2>who this is for</h2>
+    <p>you, if you pay your card off in full every month and you're putting real spending on a card that earns 1% or nothing. skip this entirely if you carry a balance. card interest runs far above any reward on this page, so paying that down beats every card here.</p>
+  </section>
+  <section class="prose">
+    <h2>the four, with the real numbers</h2>
+    <p><strong>1. dining and groceries · American Express Gold</strong></p>
+    <p>4x points at restaurants (on up to $50,000 a year) and 4x at US supermarkets (on up to $25,000 a year), 3x on flights booked direct or through Amex Travel, 1x on everything else. <strong>annual fee $325.</strong> it comes with monthly credits (dining partners, Uber Cash, Dunkin', Resy) that can offset a lot of the fee, but only if you'd have spent at those places anyway. points, not cash: their value depends on how you redeem them.</p>
+    <p><strong>2. travel · Capital One Venture X</strong></p>
+    <p>10x miles on hotels and rental cars and 5x on flights, <strong>when booked through Capital One Travel</strong>. 2x on everything else. <strong>annual fee $395</strong>, with up to $300 a year in travel credit (also only through Capital One Travel) and 10,000 bonus miles every anniversary. if you'll use the credit, the real fee is much smaller. if you won't book through their portal, the 10x and 5x don't apply.</p>
+    <p><strong>3. gas and ev charging · Costco Anywhere Visa by Citi</strong></p>
+    <p>5% on gas at Costco, 4% on other gas and EV charging (together on up to $7,000 a year, then 1%), 3% on restaurants and eligible travel, 2% at Costco, 1% everywhere else. <strong>no annual fee</strong>, but you need a Costco membership. the catch: rewards arrive once a year as a certificate with your February statement.</p>
+    <p><strong>4. starting out · Discover it Cash Back</strong></p>
+    <p>5% back on rotating categories you activate each quarter, on up to $1,500 of spend per quarter, then 1%. 1% on everything else. <strong>no annual fee.</strong> for October to December 2026 the 5% categories are entertainment, restaurants and utilities. Discover cards are moving under Capital One after the merger, with reward structures staying the same for now. the reel said it's the easiest approval with no history. i couldn't verify that, so check the pre-approval tool on the issuer's site, which doesn't hurt your score.</p>
+  </section>
+  <section class="prose">
+    <h2>run your own numbers</h2>
+    <p>monthly spend in each category. points and miles are valued at 1 cent each, which is the conservative floor. nothing you type leaves this page.</p>
+    <div class="calc">
+      <h3>which card pays me most?</h3>
+      <div class="row">
+        <label>restaurants / month<input type="number" id="cc_dining" inputmode="numeric" min="0" placeholder="e.g. 300"></label>
+        <label>us supermarkets / month<input type="number" id="cc_groc" inputmode="numeric" min="0" placeholder="e.g. 400"></label>
+      </div>
+      <div class="row">
+        <label>flights / month<input type="number" id="cc_flights" inputmode="numeric" min="0" placeholder="e.g. 100"></label>
+        <label>hotels + rental cars / month<input type="number" id="cc_hotels" inputmode="numeric" min="0" placeholder="e.g. 80"></label>
+      </div>
+      <div class="row">
+        <label>gas + ev charging / month<input type="number" id="cc_gas" inputmode="numeric" min="0" placeholder="e.g. 150"></label>
+        <label>this quarter's discover 5% categories / month<input type="number" id="cc_rot" inputmode="numeric" min="0" placeholder="e.g. 200"><span class="hint">spend outside dining that lands in the rotating category. leave 0 if unsure.</span></label>
+      </div>
+      <div class="row">
+        <label>everything else / month<input type="number" id="cc_other" inputmode="numeric" min="0" placeholder="e.g. 600"></label>
+        <label>amex gold credits you'd really use / year<input type="number" id="cc_credits" inputmode="numeric" min="0" placeholder="0"><span class="hint">only count ones you'd spend anyway.</span></label>
+      </div>
+      <label class="check"><input type="checkbox" id="cc_portal"> i'd book flights and hotels through Capital One Travel</label>
+      <label class="check"><input type="checkbox" id="cc_vxcredit"> i'd use the $300 Venture X travel credit</label>
+      <label class="check"><input type="checkbox" id="cc_costco"> my groceries are mostly at Costco</label>
+      <div class="result" aria-live="polite">
+        <div class="sub">best single card for you</div>
+        <div class="big" id="cc_out">&mdash;</div>
+        <div class="sub" id="cc_sub">fill in your monthly spend.</div>
+        <div class="tablewrap"><table class="rtable">
+          <thead><tr><th>card</th><th>rewards</th><th>fee</th><th>credits</th><th>net / yr</th></tr></thead>
+          <tbody id="cc_rows"></tbody>
+        </table></div>
+      </div>
+    </div>
+    <p>the calculator compares one card at a time. pairing two (say a no-fee card for groceries and gas plus a travel card) can beat any single one, and adds one more thing to keep track of.</p>
+  </section>
+  <section class="prose">
+    <h2>the one rule</h2>
+    <p><strong>pay the full statement balance, every month, automatically.</strong> one month of interest wipes out a year of 4% back. set autopay to "statement balance", not "minimum", the day you get the card. everything else on this page only works if that's true. that's Off-Script Rich.</p>
+  </section>
+  <section class="prose">
+    <h2>good to know</h2>
+    <ul>
+      <li><strong>terms change.</strong> earn rates, credits and fees above were checked on 12 October 2026. issuers change them, and the issuer's own terms page is the final word before you apply.</li>
+      <li><strong>points aren't cash.</strong> Amex points and Capital One miles can be worth more than 1 cent through transfer partners, or less if you redeem for statement credit. the calculator uses 1 cent so it doesn't flatter the fee cards.</li>
+      <li><strong>every application is a hard inquiry.</strong> it dips your score a little for a while. don't open four cards because of one reel. pick the one that fits your biggest category.</li>
+      <li><strong>no affiliate links.</strong> i don't earn anything if you open any of these. there are no referral links on this page.</li>
+    </ul>
+  </section>
+  <section class="prose">
+    <h2>proof</h2>
+    <ul>
+      <li><a href="https://www.nerdwallet.com/blog/credit-cards/american-express-gold-card-review" rel="noopener">NerdWallet: American Express Gold Card review</a> · updated 16 September 2026: 4x restaurants ($50k cap), 4x US supermarkets ($25k cap), 3x flights, $325 fee, monthly credits</li>
+      <li><a href="https://www.nerdwallet.com/reviews/credit-cards/capital-one-venture-x" rel="noopener">NerdWallet: Capital One Venture X review</a> · updated 14 September 2026: 10x/5x via Capital One Travel, 2x elsewhere, $395 fee, $300 travel credit, 10,000 anniversary miles</li>
+      <li><a href="https://www.citi.com/credit-cards/citi-costco-anywhere-visa-credit-card" rel="noopener">Citi: Costco Anywhere Visa</a> · issuer page: 5% Costco gas, 4% other gas and EV on $7,000 combined a year, 3% restaurants and eligible travel incl. Costco Travel, 2% Costco, 1% other</li>
+      <li><a href="https://www.bgr.com/2083581/costco-credit-card-gas-cashback-change" rel="noopener">BGR: Costco made a big credit card change</a> · 5% Costco gas, 4% other gas and EV on the first $7,000, 3% restaurants and travel, 2% Costco, annual reward certificate</li>
+      <li><a href="https://www.nerdwallet.com/credit-cards/news/discover-bonus-categories-q4-2026" rel="noopener">NerdWallet: Discover 5% bonus categories, Q4 2026</a> · entertainment, restaurants, utilities, $1,500 quarterly cap, activation, transition to Capital One</li>
+      <li><a href="https://www.consumerfinance.gov/ask-cfpb/what-is-a-credit-card-interest-rate-what-does-apr-mean-en-44/" rel="noopener">CFPB: what is a credit card interest rate</a> · why carrying a balance beats any reward rate</li>
+    </ul>
+  </section>
+  <section class="prose">
+    <h2>the boring but necessary part</h2>
+    <p>i'm not a financial adviser and this isn't personalised advice. it's what i've read, what i've done, and where i got it from, all linked above so you can check my work. what you do with your money is on you.</p>
+  </section>
+  <section class="prose">
+    <h2>the rest of the library</h2>
+    <p>every guide is free and there's no email wall. take what you need.</p>
+    <p><a class="btn btn-primary" href="/guides/">all free guides</a></p>
+  </section>
+
+</main>
+
+<footer class="foot wrap">
+  <p><strong>Off-Script Rich.</strong> rich isn't the money. rich is the life the script said you couldn't have.</p>
+  <p><a href="/">home</a> · <a href="/guides/">guides</a> · <a href="https://instagram.com/livinxkp">@livinxkp</a></p>
+  <p class="mono">last checked 12 October 2026 · if something here has gone stale, comment CARDS again and i'll have fixed it</p>
+  <p class="copyright">&copy; 2026 Off-Script Rich. all rights reserved. the guides, text and design on this site may not be copied, reproduced or republished without written permission.</p>
+</footer>
+
+<style>
+  .prose pre { position: relative; padding-top: 36px; }
+  .copypre {
+    position: absolute; top: 8px; right: 8px;
+    font-family: var(--mono); font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase;
+    background: var(--surface); color: var(--text-dim); border: 1px solid var(--line);
+    border-radius: 2px; padding: 4px 9px; cursor: pointer;
+  }
+  .copypre:hover { color: var(--text); border-color: var(--brass); }
+  .copypre[data-done="1"] { color: var(--buy); border-color: var(--buy); }
+</style>
+<script>
+(function () {
+  "use strict";
+  function fallback(text, done) {
+    var ta = document.createElement("textarea");
+    ta.value = text; ta.setAttribute("readonly", "");
+    ta.style.position = "fixed"; ta.style.top = "-1000px";
+    document.body.appendChild(ta); ta.select();
+    try { document.execCommand("copy"); done(); } catch (e) {}
+    document.body.removeChild(ta);
+  }
+  document.querySelectorAll(".prose pre").forEach(function (pre) {
+    var btn = document.createElement("button");
+    btn.type = "button"; btn.className = "copypre"; btn.textContent = "copy";
+    btn.addEventListener("click", function () {
+      var code = pre.querySelector("code");
+      var text = (code || pre).textContent;
+      var done = function () {
+        btn.textContent = "copied"; btn.setAttribute("data-done", "1");
+        setTimeout(function () { btn.textContent = "copy"; btn.removeAttribute("data-done"); }, 1800);
+      };
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(text).then(done, function () { fallback(text, done); });
+      } else { fallback(text, done); }
+    });
+    pre.appendChild(btn);
+  });
+})();
+</script>
+<script>
+(function () {
+  "use strict";
+  var ids = ["dining", "groc", "flights", "hotels", "gas", "rot", "other", "credits"];
+  var el = {};
+  ids.forEach(function (k) { el[k] = document.getElementById("cc_" + k); });
+  var portal = document.getElementById("cc_portal"), costco = document.getElementById("cc_costco"), usevx = document.getElementById("cc_vxcredit");
+  var body = document.getElementById("cc_rows"), out = document.getElementById("cc_out"), sub = document.getElementById("cc_sub");
+  function v(k) { var x = parseFloat(el[k].value); return isFinite(x) && x > 0 ? x * 12 : 0; }
+  function money(n) { var s = Math.round(Math.abs(n)).toLocaleString("en-US"); return (n < 0 ? "-$" : "$") + s; }
+  function capped(spend, cap, hi, lo) { return Math.min(spend, cap) * hi + Math.max(spend - cap, 0) * lo; }
+  function run() {
+    var d = v("dining"), g = v("groc"), f = v("flights"), h = v("hotels"), gas = v("gas"), r = v("rot"), o = v("other");
+    var amexCredits = parseFloat(el.credits.value); amexCredits = isFinite(amexCredits) && amexCredits > 0 ? amexCredits : 0;
+    var total = d + g + f + h + gas + r + o;
+    if (total === 0) { body.innerHTML = ""; out.textContent = "\u2014"; sub.textContent = "fill in your monthly spend."; return; }
+    var viaPortal = portal.checked;
+    var cards = [];
+    // Amex Gold: points valued at 1 cent
+    var amex = capped(d, 50000, 0.04, 0.01) + capped(g, 25000, 0.04, 0.01) + f * 0.03 + (h + gas + r + o) * 0.01;
+    cards.push({ n: "amex gold", gross: amex, fee: 325, extra: amexCredits, note: "credits you said you'd use" });
+    // Venture X: miles valued at 1 cent
+    var vx = (viaPortal ? h * 0.10 + f * 0.05 : (h + f) * 0.02) + (d + g + gas + r + o) * 0.02 + 100;
+    cards.push({ n: "venture x", gross: vx, fee: 395, extra: usevx.checked ? 300 : 0, note: "incl. 10k anniversary miles" });
+    // Costco Anywhere Visa: needs Costco membership (not counted)
+    var cv = capped(gas, 7000, 0.04, 0.01) + (d + f + h) * 0.03 + g * (costco.checked ? 0.02 : 0.01) + (r + o) * 0.01;
+    cards.push({ n: "costco anywhere visa", gross: cv, fee: 0, extra: 0, note: "needs a costco membership" });
+    // Discover it: 5% on up to $1,500 a quarter of activated categories
+    var di = capped(r, 6000, 0.05, 0.01) + (d + g + f + h + gas + o) * 0.01;
+    cards.push({ n: "discover it", gross: di, fee: 0, extra: 0, note: "if you activate every quarter" });
+    cards.forEach(function (c) { c.net = c.gross + c.extra - c.fee; });
+    cards.sort(function (a, b) { return b.net - a.net; });
+    body.innerHTML = "";
+    cards.forEach(function (c, i) {
+      var tr = document.createElement("tr"); if (i === 0) tr.className = "top";
+      [c.n, money(c.gross), c.fee ? "-" + money(c.fee) : "$0", c.extra ? "+" + money(c.extra) : "$0", money(c.net)].forEach(function (t, j) {
+        var td = document.createElement("td"); td.textContent = t; if (j > 0) td.className = "n"; tr.appendChild(td);
+      });
+      body.appendChild(tr);
+    });
+    out.textContent = cards[0].n;
+    sub.textContent = "about " + money(cards[0].net) + " a year net on " + money(total) + " of spend (" + cards[0].note + ")";
+  }
+  ids.forEach(function (k) { el[k].addEventListener("input", run); });
+  [portal, costco, usevx].forEach(function (x) { x.addEventListener("change", run); });
+  run();
+})();
+</script>
+
+</body>
+</html>

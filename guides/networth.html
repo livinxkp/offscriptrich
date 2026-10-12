@@ -1,0 +1,247 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>The Five Net Worth Habits, One Page · Off-Script Rich</title>
+<meta name="description" content="the five things from the reel turned into a one-page setup: the three accounts, the automation, the lifestyle-creep check, the credit routine and a budget you&#x27;ll actually keep, with a net worth calculator.">
+<link rel="stylesheet" href="../assets/style.css">
+<style>
+  .calc { border: 1px solid var(--line); border-left: 3px solid var(--brass); border-radius: 3px; background: var(--surface); padding: 20px 18px; display: flex; flex-direction: column; gap: 14px; max-width: var(--readw); }
+  .calc h3 { font-size: 17px; }
+  .calc .row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  @media (max-width: 560px) { .calc .row { grid-template-columns: 1fr; } }
+  .calc label { display: flex; flex-direction: column; gap: 6px; font-family: var(--mono); font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-faint); }
+  .calc input[type="number"] { font-family: var(--body); font-size: 16px; color: var(--text); background: var(--ink); border: 1px solid var(--line); border-radius: 3px; padding: 10px 11px; width: 100%; min-width: 0; }
+  .calc input:focus { outline: none; border-color: var(--brass); }
+  .calc .check { flex-direction: row; align-items: center; gap: 9px; font-family: var(--body); font-size: 14px; letter-spacing: 0; text-transform: none; color: var(--text-dim); }
+  .calc .check input { width: 18px; height: 18px; accent-color: var(--brass); margin: 0; }
+  .calc .hint { font-family: var(--body); font-size: 12.5px; letter-spacing: 0; text-transform: none; color: var(--text-faint); line-height: 1.4; }
+  .result { border-top: 1px solid var(--line); padding-top: 14px; display: flex; flex-direction: column; gap: 6px; }
+  .result .big { font-family: var(--display); font-weight: 800; font-size: clamp(34px, 8vw, 46px); letter-spacing: -0.03em; line-height: 1; font-variant-numeric: tabular-nums; }
+  .result .sub { font-size: 14px; color: var(--text-dim); }
+  .rtable { width: 100%; border-collapse: collapse; font-size: 14px; font-variant-numeric: tabular-nums; }
+  .rtable th, .rtable td { text-align: left; padding: 8px 6px; border-bottom: 1px solid var(--line); vertical-align: top; }
+  .rtable th { font-family: var(--mono); font-size: 10.5px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-faint); font-weight: 500; }
+  .rtable td.n { text-align: right; white-space: nowrap; }
+  .rtable tr.top td { color: var(--text); font-weight: 600; }
+  .tablewrap { overflow-x: auto; max-width: var(--readw); }
+</style>
+</head>
+<body>
+
+<header class="masthead">
+  <div class="masthead-in wrap">
+    <a class="wordmark" href="/"><span class="off">OFF-SCRIPT</span> <span class="rich">RICH</span></a>
+    <nav class="navlinks">
+      <a href="/guides/" aria-current="page">guides</a>
+      <a href="/guides/stocks.html">the tape</a>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap stack">
+
+  <p class="eyebrow"><span class="chip" data-pillar="money">money</span> <span class="keyword">NETWORTH</span></p>
+
+  <h1>five habits, one page, your number</h1>
+
+  <p class="lede">hey, it's KP. you commented <strong>NETWORTH</strong>, so here it is. the reel gave you the five things. this is the one-page version: what each one looks like set up properly, the numbers checked against the FDIC, the IRS and the credit bureaus, and a calculator so you know your own starting number before you change anything.</p>
+
+  <section class="prose">
+    <h2>who this is for</h2>
+    <p>you, if you earn money but can't say what you're actually worth today, or your savings only happen when there's "something left over". skip it if you already track your net worth monthly and everything is automated. you're past this page.</p>
+  </section>
+  <section class="prose">
+    <h2>your number, first</h2>
+    <p>you can't improve a number you've never written down. two minutes, rough figures are fine. nothing you type leaves this page.</p>
+    <div class="calc">
+      <h3>what am i worth today?</h3>
+      <div class="row">
+        <label>checking + cash<input type="number" id="nw_cash" inputmode="numeric" min="0" placeholder="0"></label>
+        <label>savings / hysa<input type="number" id="nw_hysa" inputmode="numeric" min="0" placeholder="0"></label>
+      </div>
+      <div class="row">
+        <label>brokerage investments<input type="number" id="nw_invest" inputmode="numeric" min="0" placeholder="0"></label>
+        <label>retirement (roth, 401k, ira)<input type="number" id="nw_retire" inputmode="numeric" min="0" placeholder="0"></label>
+      </div>
+      <div class="row">
+        <label>anything else you could sell<input type="number" id="nw_other" inputmode="numeric" min="0" placeholder="0"><span class="hint">car resale value, gear. be honest, not hopeful.</span></label>
+        <label>credit card balances<input type="number" id="nw_card" inputmode="numeric" min="0" placeholder="0"></label>
+      </div>
+      <div class="row">
+        <label>student loans<input type="number" id="nw_student" inputmode="numeric" min="0" placeholder="0"></label>
+        <label>car loan<input type="number" id="nw_car" inputmode="numeric" min="0" placeholder="0"></label>
+      </div>
+      <div class="row">
+        <label>any other debt<input type="number" id="nw_otherdebt" inputmode="numeric" min="0" placeholder="0"></label>
+      </div>
+      <div class="result" aria-live="polite">
+        <div class="big" id="nw_out">$&mdash;</div>
+        <div class="sub" id="nw_sub">fill in what you have and what you owe.</div>
+      </div>
+    </div>
+    <p>write the number and today's date somewhere you'll see it again. you redo this on the first of every month. the direction matters more than the size.</p>
+  </section>
+  <section class="prose">
+    <h2>1. three accounts, three jobs</h2>
+    <p><strong>every dollar should have one job. most people have one account doing all three.</strong></p>
+    <ul>
+      <li><strong>checking: bills.</strong> keep about one month of expenses here. more than that just sits.</li>
+      <li><strong>high-yield savings: emergencies.</strong> three to six months of expenses, at a bank or credit union that's FDIC or NCUA insured. the point of the high-yield part: the FDIC publishes the national average savings rate every month. if your bank pays close to that average, online banks and credit unions often pay meaningfully more. compare the current APY before you move anything.</li>
+      <li><strong>a roth ira: the long game.</strong> you put in money you've already paid tax on, and the growth comes out tax-free in retirement. the 2026 limit is $7,500 ($8,600 if you're 50 or older), with income limits. any major brokerage works. the full walkthrough is the <a href="/guides/roth.html">ROTH</a> guide.</li>
+    </ul>
+  </section>
+  <section class="prose">
+    <h2>2. automate it like a bill</h2>
+    <p><strong>if it depends on remembering, it won't happen in a bad month.</strong> set these up once, timed for the day after payday:</p>
+<pre><code>THE AUTOMATION SHEET
+
+payday: ________
+
+day after payday:
+  checking -> hysa       $______  (until 3-6 months is full)
+  checking -> roth ira   $______  (2026 max is $7,500 / 12 = $625/mo)
+
+inside the roth:
+  automatic investment into: ____________  (cash sitting in a
+  roth is not invested. set the auto-buy or log in and buy.)
+
+every credit card:
+  autopay = FULL STATEMENT BALANCE, not the minimum
+
+check-in date each month: the 1st</code></pre>
+  </section>
+  <section class="prose">
+    <h2>3. stop paying to look rich</h2>
+    <p><strong>lifestyle creep is every raise quietly turning into a bigger monthly bill.</strong> a car payment, a pricier lease, subscriptions you forgot. none of it is wrong on its own. the problem is a dollar that goes to a monthly payment is a dollar that never compounds.</p>
+    <p>the check: open last month's statement and mark every recurring charge. for each one, ask "would i sign up for this today, at this price?" cancel the noes the same day. then pick a rule for the next raise, for example half of it goes to the automation in step 2 before you ever see it.</p>
+  </section>
+  <section class="prose">
+    <h2>4. protect your credit</h2>
+    <p><strong>a better score means lower rates on every loan, and the gap is thousands over a car or a mortgage.</strong> FICO weights it roughly like this: payment history 35%, amounts owed 30%, length of history 15%, new credit 10%, credit mix 10%. so the two habits that matter most are boring:</p>
+    <ul>
+      <li>never miss a payment. autopay the full balance.</li>
+      <li>keep balances low against your limits. paying before the statement closes lowers what gets reported.</li>
+    </ul>
+    <p>and check your reports for errors. you can pull all three bureaus free every week at <a href="https://www.annualcreditreport.com" rel="noopener">annualcreditreport.com</a>, the only site the law set up for this.</p>
+  </section>
+  <section class="prose">
+    <h2>5. a budget you'll actually keep</h2>
+    <p><strong>track first, cut second.</strong> for one month, just record what comes in and what goes out, no judgement. then build the plan from what's real:</p>
+<pre><code>MONTHLY PLAN
+
+in (after tax):             $______
+
+fixed (rent, bills, debt):  $______
+automated (step 2):         $______
+spending, on purpose:       $______  <- the fun money. budget it
+                                         so you can spend it guilt-free
+buffer:                     $______
+
+in - everything above = 0. every dollar has a job.</code></pre>
+    <p>intentional spending, not restriction. a budget that bans everything lasts three weeks. that's Off-Script Rich.</p>
+  </section>
+  <section class="prose">
+    <h2>good to know</h2>
+    <ul>
+      <li><strong>net worth can go down while you're doing everything right.</strong> markets drop. that's why you track the direction over months, not the number on one day.</li>
+      <li><strong>insurance limits are per depositor, per bank, per category.</strong> FDIC insurance covers up to $250,000 per depositor, per insured bank, for each ownership category. most people never get near that. if you do, spread it.</li>
+      <li><strong>the roth has rules.</strong> earned income required, income limits apply, and the earnings have a five-year and age-59-and-a-half rule. the ROTH guide has the calculator.</li>
+    </ul>
+  </section>
+  <section class="prose">
+    <h2>proof</h2>
+    <ul>
+      <li><a href="https://www.fdic.gov/national-rates-and-rate-caps" rel="noopener">FDIC: national rates and rate caps</a> · the monthly national average savings rate to compare your bank against</li>
+      <li><a href="https://www.fdic.gov/resources/deposit-insurance" rel="noopener">FDIC: deposit insurance</a> · $250,000 per depositor, per insured bank, per ownership category</li>
+      <li><a href="https://www.irs.gov/newsroom/401k-limit-increases-to-24500-for-2026-ira-limit-increases-to-7500" rel="noopener">IRS: 2026 IRA limit increases to $7,500</a> · IRA limit, catch-up, Roth income ranges</li>
+      <li><a href="https://www.myfico.com/credit-education/whats-in-your-credit-score" rel="noopener">myFICO: what's in your credit score</a> · the 35/30/15/10/10 weighting</li>
+      <li><a href="https://consumer.ftc.gov/articles/free-credit-reports" rel="noopener">FTC: free credit reports</a> · free weekly reports from all three bureaus at AnnualCreditReport.com</li>
+    </ul>
+  </section>
+  <section class="prose">
+    <h2>the boring but necessary part</h2>
+    <p>i'm not a financial adviser and this isn't personalised advice. it's what i've read, what i've done, and where i got it from, all linked above so you can check my work. what you do with your money is on you.</p>
+  </section>
+  <section class="prose">
+    <h2>the rest of the library</h2>
+    <p>every guide is free and there's no email wall. take what you need.</p>
+    <p><a class="btn btn-primary" href="/guides/">all free guides</a></p>
+  </section>
+
+</main>
+
+<footer class="foot wrap">
+  <p><strong>Off-Script Rich.</strong> rich isn't the money. rich is the life the script said you couldn't have.</p>
+  <p><a href="/">home</a> · <a href="/guides/">guides</a> · <a href="https://instagram.com/livinxkp">@livinxkp</a></p>
+  <p class="mono">last checked 12 October 2026 · if something here has gone stale, comment NETWORTH again and i'll have fixed it</p>
+  <p class="copyright">&copy; 2026 Off-Script Rich. all rights reserved. the guides, text and design on this site may not be copied, reproduced or republished without written permission.</p>
+</footer>
+
+<style>
+  .prose pre { position: relative; padding-top: 36px; }
+  .copypre {
+    position: absolute; top: 8px; right: 8px;
+    font-family: var(--mono); font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase;
+    background: var(--surface); color: var(--text-dim); border: 1px solid var(--line);
+    border-radius: 2px; padding: 4px 9px; cursor: pointer;
+  }
+  .copypre:hover { color: var(--text); border-color: var(--brass); }
+  .copypre[data-done="1"] { color: var(--buy); border-color: var(--buy); }
+</style>
+<script>
+(function () {
+  "use strict";
+  function fallback(text, done) {
+    var ta = document.createElement("textarea");
+    ta.value = text; ta.setAttribute("readonly", "");
+    ta.style.position = "fixed"; ta.style.top = "-1000px";
+    document.body.appendChild(ta); ta.select();
+    try { document.execCommand("copy"); done(); } catch (e) {}
+    document.body.removeChild(ta);
+  }
+  document.querySelectorAll(".prose pre").forEach(function (pre) {
+    var btn = document.createElement("button");
+    btn.type = "button"; btn.className = "copypre"; btn.textContent = "copy";
+    btn.addEventListener("click", function () {
+      var code = pre.querySelector("code");
+      var text = (code || pre).textContent;
+      var done = function () {
+        btn.textContent = "copied"; btn.setAttribute("data-done", "1");
+        setTimeout(function () { btn.textContent = "copy"; btn.removeAttribute("data-done"); }, 1800);
+      };
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(text).then(done, function () { fallback(text, done); });
+      } else { fallback(text, done); }
+    });
+    pre.appendChild(btn);
+  });
+})();
+</script>
+<script>
+(function () {
+  "use strict";
+  var ids = ["cash", "hysa", "invest", "retire", "other", "card", "student", "car", "otherdebt"];
+  var el = {};
+  ids.forEach(function (k) { el[k] = document.getElementById("nw_" + k); });
+  var out = document.getElementById("nw_out"), sub = document.getElementById("nw_sub");
+  function v(k) { var x = parseFloat(el[k].value); return isFinite(x) && x > 0 ? x : 0; }
+  function money(n) { var s = Math.round(Math.abs(n)).toLocaleString("en-US"); return (n < 0 ? "-$" : "$") + s; }
+  function run() {
+    var assets = v("cash") + v("hysa") + v("invest") + v("retire") + v("other");
+    var debts = v("card") + v("student") + v("car") + v("otherdebt");
+    if (assets === 0 && debts === 0) { out.textContent = "$\u2014"; sub.textContent = "fill in what you have and what you owe."; return; }
+    var nw = assets - debts;
+    out.textContent = money(nw);
+    var compounding = v("hysa") + v("invest") + v("retire");
+    var share = assets > 0 ? Math.round(compounding / assets * 100) : 0;
+    sub.textContent = "own " + money(assets) + " \u00b7 owe " + money(debts) + " \u00b7 " + share + "% of what you own is earning something";
+  }
+  ids.forEach(function (k) { el[k].addEventListener("input", run); });
+  run();
+})();
+</script>
+
+</body>
+</html>

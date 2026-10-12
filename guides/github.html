@@ -1,0 +1,164 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Ten GitHub Repos Worth Saving · Off-Script Rich</title>
+<meta name="description" content="the five repos from the reel plus the five i held back: what each one does, who it&#x27;s for, and the exact line to install it. no coding background needed to read this.">
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+
+<header class="masthead">
+  <div class="masthead-in wrap">
+    <a class="wordmark" href="/"><span class="off">OFF-SCRIPT</span> <span class="rich">RICH</span></a>
+    <nav class="navlinks">
+      <a href="/guides/" aria-current="page">guides</a>
+      <a href="/guides/stocks.html">the tape</a>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap stack">
+
+  <p class="eyebrow"><span class="chip" data-pillar="ai">ai</span> <span class="keyword">GITHUB</span></p>
+
+  <h1>ten github repos worth saving</h1>
+
+  <p class="lede">hey, it's KP. you commented <strong>GITHUB</strong>, so here it is. the reel gave you five. here are all ten: what each one actually does, whether it's for you, and the exact line to install it, so you're not just starring things you'll never open.</p>
+
+  <section class="prose">
+    <h2>who this is for</h2>
+    <p>you, if you use ChatGPT or Claude every day and keep hearing about tools "on GitHub" without knowing what to do with them. skip the install lines if you've never opened a terminal. the first five minutes of this page still tell you which ones are worth learning that for.</p>
+  </section>
+  <section class="prose">
+    <h2>github in one paragraph</h2>
+    <p>GitHub is a giant public drive where people upload the things they build. a <strong>repo</strong> is one project's folder. the <strong>README</strong> is the front page that explains it. <strong>stars</strong> are bookmarks, and the count is a rough popularity signal. before you trust any repo, check three things on the front page: the star count, when it was last updated, and whether it has a licence. a repo with 50,000 stars that hasn't been touched in two years is a museum piece.</p>
+    <p>to save one properly: hit <strong>Star</strong>, then use the little arrow next to it to drop it into a <strong>list</strong> ("ai tools", "try this weekend"). lists are how you find it again in a month.</p>
+  </section>
+  <section class="prose">
+    <h2>the five from the reel</h2>
+    <p><strong>1. superpowers</strong> · <a href="https://github.com/obra/superpowers" rel="noopener">obra/superpowers</a></p>
+    <p>a pack of skills that makes coding agents work in a structured way: brainstorm, write a plan, build with tests, review, finish. it ships 15 skills (the reel said twenty, it's fifteen) and it's one of the most-starred agent projects on GitHub, past 290,000 stars when i checked. it's for you if you build anything with Claude Code and keep getting half-finished work back.</p>
+<pre><code>/plugin install superpowers@claude-plugins-official</code></pre>
+    <p><strong>2. awesome gpt image 2</strong> · <a href="https://github.com/YouMind-OpenLab/awesome-gpt-image-2" rel="noopener">YouMind-OpenLab/awesome-gpt-image-2</a></p>
+    <p>a library of image prompts with the picture each one made. the reel said 500. it's well past that now, over 17,000 listed, sorted by use case, style and subject. nothing to install, you just browse and copy. if you want the newer 2.5 version, that's the <a href="/guides/visual.html">VISUAL</a> guide.</p>
+    <p><strong>3. taskmaster ai</strong> · <a href="https://github.com/eyaltoledano/claude-task-master" rel="noopener">eyaltoledano/claude-task-master</a></p>
+    <p>give it a big project description and it breaks it into ordered tasks, tells you which one is next, and expands any task that's too big. it runs inside Cursor, Windsurf, Claude Code and others. you need an AI provider key, or Claude Code or Codex already set up.</p>
+<pre><code>claude mcp add taskmaster-ai -- npx -y task-master-ai</code></pre>
+    <p><strong>4. i-have-adhd</strong> · <a href="https://github.com/ayghri/i-have-adhd" rel="noopener">ayghri/i-have-adhd</a></p>
+    <p>a skill that stops your coding agent from burying the answer. it leads with the next action, numbers multi-step tasks, cuts the tangents and ends with one concrete next step. no diagnosis needed to want that. the repo's own install method is to ask your agent to install it by pasting the repo link and telling it to follow the AGENTS.md file, then run <code>/i-have-adhd</code>.</p>
+<pre><code>Install the skill at https://github.com/ayghri/i-have-adhd
+by following its AGENTS.md file.</code></pre>
+    <p><strong>5. awesome agents</strong> · <a href="https://github.com/kyrolabs/awesome-agents" rel="noopener">kyrolabs/awesome-agents</a></p>
+    <p>a curated list of open-source AI agents, around 175 entries, grouped into frameworks, software development, research, memory, automation and browser agents. it's a map, not a tool. use it when you want to know what already exists before you build something. a bigger, older list of the same kind lives at <a href="https://github.com/e2b-dev/awesome-ai-agents" rel="noopener">e2b-dev/awesome-ai-agents</a>.</p>
+  </section>
+  <section class="prose">
+    <h2>the five i held back</h2>
+    <p><strong>6. anthropic's skills</strong> · <a href="https://github.com/anthropics/skills" rel="noopener">anthropics/skills</a></p>
+    <p>Anthropic's own example skills, including the ones behind Claude's Word, PDF, PowerPoint and Excel features. the best place to see what a well-written skill looks like before you write your own.</p>
+<pre><code>/plugin marketplace add anthropics/skills
+/plugin install example-skills@anthropic-agent-skills</code></pre>
+    <p><strong>7. generative ai for beginners</strong> · <a href="https://github.com/microsoft/generative-ai-for-beginners" rel="noopener">microsoft/generative-ai-for-beginners</a></p>
+    <p>Microsoft's free 21-lesson course on building with generative AI. if the reel made you feel behind, this is the structured way to catch up without paying for a course.</p>
+    <p><strong>8. ollama</strong> · <a href="https://github.com/ollama/ollama" rel="noopener">ollama/ollama</a></p>
+    <p>runs open models on your own laptop. no account, no usage limits, nothing leaves your machine. useful when you're working with something private, or just want to see what a local model can do.</p>
+<pre><code>ollama run gemma3</code></pre>
+    <p><strong>9. n8n</strong> · <a href="https://github.com/n8n-io/n8n" rel="noopener">n8n-io/n8n</a></p>
+    <p>visual workflow automation with AI built in, the self-hosted alternative to Zapier. connect your inbox, a spreadsheet and a model with boxes and arrows. it's "fair-code", so read the licence before you build a business on it.</p>
+    <p><strong>10. browser use</strong> · <a href="https://github.com/browser-use/browser-use" rel="noopener">browser-use/browser-use</a></p>
+    <p>lets an AI agent drive a real browser: open pages, click, fill forms, pull data. it's the engine under a lot of "AI that books things for you" demos. developer-facing, but the README examples are short enough to follow.</p>
+  </section>
+  <section class="prose">
+    <h2>which one first</h2>
+    <p>if you only open one this week:</p>
+    <ul>
+      <li><strong>you just want better images:</strong> #2, nothing to install.</li>
+      <li><strong>you want to understand AI properly:</strong> #7, one lesson a day.</li>
+      <li><strong>you build with Claude Code:</strong> #1 then #4, together they fix the two biggest complaints people have about agent output.</li>
+      <li><strong>you want automations running while you sleep:</strong> #9.</li>
+    </ul>
+    <p>save the rest to a list and come back. that's Off-Script Rich: the tools are free, the edge is actually opening them.</p>
+  </section>
+  <section class="prose">
+    <h2>good to know</h2>
+    <ul>
+      <li><strong>star counts are a vibe, not a review.</strong> they tell you something got attention. check the last-updated date and the open issues before you install anything that touches your files.</li>
+      <li><strong>plugins can run code.</strong> a skill or plugin you install into an agent can read and change files in your project. install from repos you've looked at, and keep agents out of folders with anything sensitive.</li>
+      <li><strong>commands change.</strong> install lines are copied from each repo's README on 12 October 2026. if one fails, the README is the source of truth.</li>
+    </ul>
+  </section>
+  <section class="prose">
+    <h2>proof</h2>
+    <ul>
+      <li><a href="https://github.com/obra/superpowers" rel="noopener">obra/superpowers README</a> · 15 skills, install commands, star count</li>
+      <li><a href="https://github.com/YouMind-OpenLab/awesome-gpt-image-2" rel="noopener">YouMind-OpenLab/awesome-gpt-image-2 README</a> · 17,000+ prompts, categories</li>
+      <li><a href="https://github.com/eyaltoledano/claude-task-master" rel="noopener">eyaltoledano/claude-task-master README</a> · what Taskmaster does, Claude Code install line</li>
+      <li><a href="https://github.com/ayghri/i-have-adhd" rel="noopener">ayghri/i-have-adhd README</a> · what the skill changes, install via AGENTS.md, MIT licence</li>
+      <li><a href="https://github.com/kyrolabs/awesome-agents" rel="noopener">kyrolabs/awesome-agents</a> · the categories and entries</li>
+      <li><a href="https://github.com/anthropics/skills" rel="noopener">anthropics/skills README</a> · marketplace and install commands</li>
+      <li><a href="https://github.com/microsoft/generative-ai-for-beginners" rel="noopener">microsoft/generative-ai-for-beginners</a> · the 21-lesson course</li>
+      <li><a href="https://github.com/ollama/ollama" rel="noopener">ollama/ollama</a> · local model runner</li>
+      <li><a href="https://github.com/n8n-io/n8n" rel="noopener">n8n-io/n8n</a> · fair-code workflow automation</li>
+      <li><a href="https://github.com/browser-use/browser-use" rel="noopener">browser-use/browser-use</a> · agents that use the browser</li>
+      <li><a href="https://docs.github.com/en/get-started/exploring-projects-on-github/saving-repositories-with-stars" rel="noopener">GitHub Docs: saving repositories with stars</a> · stars and star lists</li>
+    </ul>
+  </section>
+  <section class="prose">
+    <h2>the rest of the library</h2>
+    <p>every guide is free and there's no email wall. take what you need.</p>
+    <p><a class="btn btn-primary" href="/guides/">all free guides</a></p>
+  </section>
+
+</main>
+
+<footer class="foot wrap">
+  <p><strong>Off-Script Rich.</strong> rich isn't the money. rich is the life the script said you couldn't have.</p>
+  <p><a href="/">home</a> · <a href="/guides/">guides</a> · <a href="https://instagram.com/livinxkp">@livinxkp</a></p>
+  <p class="mono">last checked 12 October 2026 · if something here has gone stale, comment GITHUB again and i'll have fixed it</p>
+  <p class="copyright">&copy; 2026 Off-Script Rich. all rights reserved. the guides, text and design on this site may not be copied, reproduced or republished without written permission.</p>
+</footer>
+
+<style>
+  .prose pre { position: relative; padding-top: 36px; }
+  .copypre {
+    position: absolute; top: 8px; right: 8px;
+    font-family: var(--mono); font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase;
+    background: var(--surface); color: var(--text-dim); border: 1px solid var(--line);
+    border-radius: 2px; padding: 4px 9px; cursor: pointer;
+  }
+  .copypre:hover { color: var(--text); border-color: var(--brass); }
+  .copypre[data-done="1"] { color: var(--buy); border-color: var(--buy); }
+</style>
+<script>
+(function () {
+  "use strict";
+  function fallback(text, done) {
+    var ta = document.createElement("textarea");
+    ta.value = text; ta.setAttribute("readonly", "");
+    ta.style.position = "fixed"; ta.style.top = "-1000px";
+    document.body.appendChild(ta); ta.select();
+    try { document.execCommand("copy"); done(); } catch (e) {}
+    document.body.removeChild(ta);
+  }
+  document.querySelectorAll(".prose pre").forEach(function (pre) {
+    var btn = document.createElement("button");
+    btn.type = "button"; btn.className = "copypre"; btn.textContent = "copy";
+    btn.addEventListener("click", function () {
+      var code = pre.querySelector("code");
+      var text = (code || pre).textContent;
+      var done = function () {
+        btn.textContent = "copied"; btn.setAttribute("data-done", "1");
+        setTimeout(function () { btn.textContent = "copy"; btn.removeAttribute("data-done"); }, 1800);
+      };
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(text).then(done, function () { fallback(text, done); });
+      } else { fallback(text, done); }
+    });
+    pre.appendChild(btn);
+  });
+})();
+</script>
+
+</body>
+</html>

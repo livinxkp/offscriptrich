@@ -1,0 +1,148 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>The Day-One Mission Card · Off-Script Rich</title>
+<meta name="description" content="a one-page practice for the gap between where you are and where you&#x27;re headed: the mission card, the morning question, and the weekly receipt that keeps the day-one feeling useful instead of discouraging.">
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+
+<header class="masthead">
+  <div class="masthead-in wrap">
+    <a class="wordmark" href="/"><span class="off">OFF-SCRIPT</span> <span class="rich">RICH</span></a>
+    <nav class="navlinks">
+      <a href="/guides/" aria-current="page">guides</a>
+      <a href="/guides/stocks.html">the tape</a>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap stack">
+
+  <p class="eyebrow"><span class="chip" data-pillar="life">life</span> <span class="keyword">MINDSET</span></p>
+
+  <h1>everyone had a day one</h1>
+
+  <p class="lede">hey, it's KP. you commented <strong>MINDSET</strong>, so here it is. the reel was about looking at someone at the top and remembering they had a starting point too. this is how i turn that feeling into something i use daily: a mission card, one morning question, and a weekly receipt, so "day one" doesn't stay day one.</p>
+
+  <section class="prose">
+    <h2>who this is for</h2>
+    <p>you, if you're early on something, can see exactly where you want to end up, and the distance sometimes feels discouraging instead of motivating. skip it if you're looking for a quote to save. this one only works if you fill it in.</p>
+  </section>
+  <section class="prose">
+    <h2>why comparing up can work for you</h2>
+    <p>looking at someone who's already made it can go two ways. it can make you feel behind, or it can show you the path exists. the difference is usually whether you're comparing your <strong>day one to their year fifteen</strong>, or using their story as proof that day one is a normal place to start.</p>
+    <p>everyone you admire was once unknown, unproven and early. the awards and the money are what we see. the years of showing up with nothing to show for it are what we don't. you're in that part now. so is almost everyone.</p>
+  </section>
+  <section class="prose">
+    <h2>the mission card</h2>
+    <p>write it once. keep it where you see it in the morning: phone lock screen, mirror, notebook cover.</p>
+<pre><code>THE MISSION CARD
+
+what i'm building: ___________________________________
+
+why it matters to me (one line, no one else's reason):
+_____________________________________________________
+
+who i'm becoming to build it (three behaviours):
+1. __________________________________________________
+2. __________________________________________________
+3. __________________________________________________
+
+the person who already did something like this, and
+what their day one looked like: ______________________
+
+today is day ____.</code></pre>
+  </section>
+  <section class="prose">
+    <h2>the morning question</h2>
+    <p>one question, before your phone:</p>
+<pre><code>what is the one thing that, if i do it today,
+makes today count toward the mission?</code></pre>
+    <p>one thing. not a list. on days you do nothing else, you did that. that's what "wake up with a mission" actually means in practice: a mission is useless as a feeling and powerful as a daily decision.</p>
+  </section>
+  <section class="prose">
+    <h2>the weekly receipt</h2>
+    <p>every sunday, ten minutes. this is what stops the gap from feeling discouraging: you can see you're closing it.</p>
+<pre><code>WEEKLY RECEIPT                         week of __________
+
+the one thing, each day:   M  T  W  T  F  S  S
+                           _  _  _  _  _  _  _
+
+something i can do now that i couldn't a month ago:
+_____________________________________________________
+
+proof i'm moving (a number, a message, a first):
+_____________________________________________________
+
+next week's one change: ______________________________</code></pre>
+    <p>stack enough receipts and day one turns into day one hundred. we're all human, and you can be amazing. now go work at it. that's Off-Script Rich.</p>
+  </section>
+  <section class="prose">
+    <h2>good to know</h2>
+    <ul>
+      <li><strong>their story is a highlight reel.</strong> the version of anyone's start that gets told years later is cleaner than it was. use it as proof the path exists, not as a timeline you're failing.</li>
+      <li><strong>one thing beats ten.</strong> the morning question only works if the answer is small enough to actually do. if it takes more than two hours, it's a project, so cut it down.</li>
+      <li><strong>skip a day, not two.</strong> missing once is normal. the receipt makes a second missed day visible, which is usually enough to stop a third.</li>
+    </ul>
+  </section>
+  <section class="prose">
+    <h2>the rest of the library</h2>
+    <p>every guide is free and there's no email wall. take what you need.</p>
+    <p><a class="btn btn-primary" href="/guides/">all free guides</a></p>
+  </section>
+
+</main>
+
+<footer class="foot wrap">
+  <p><strong>Off-Script Rich.</strong> rich isn't the money. rich is the life the script said you couldn't have.</p>
+  <p><a href="/">home</a> · <a href="/guides/">guides</a> · <a href="https://instagram.com/livinxkp">@livinxkp</a></p>
+  <p class="mono">last checked 12 October 2026 · if something here has gone stale, comment MINDSET again and i'll have fixed it</p>
+  <p class="copyright">&copy; 2026 Off-Script Rich. all rights reserved. the guides, text and design on this site may not be copied, reproduced or republished without written permission.</p>
+</footer>
+
+<style>
+  .prose pre { position: relative; padding-top: 36px; }
+  .copypre {
+    position: absolute; top: 8px; right: 8px;
+    font-family: var(--mono); font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase;
+    background: var(--surface); color: var(--text-dim); border: 1px solid var(--line);
+    border-radius: 2px; padding: 4px 9px; cursor: pointer;
+  }
+  .copypre:hover { color: var(--text); border-color: var(--brass); }
+  .copypre[data-done="1"] { color: var(--buy); border-color: var(--buy); }
+</style>
+<script>
+(function () {
+  "use strict";
+  function fallback(text, done) {
+    var ta = document.createElement("textarea");
+    ta.value = text; ta.setAttribute("readonly", "");
+    ta.style.position = "fixed"; ta.style.top = "-1000px";
+    document.body.appendChild(ta); ta.select();
+    try { document.execCommand("copy"); done(); } catch (e) {}
+    document.body.removeChild(ta);
+  }
+  document.querySelectorAll(".prose pre").forEach(function (pre) {
+    var btn = document.createElement("button");
+    btn.type = "button"; btn.className = "copypre"; btn.textContent = "copy";
+    btn.addEventListener("click", function () {
+      var code = pre.querySelector("code");
+      var text = (code || pre).textContent;
+      var done = function () {
+        btn.textContent = "copied"; btn.setAttribute("data-done", "1");
+        setTimeout(function () { btn.textContent = "copy"; btn.removeAttribute("data-done"); }, 1800);
+      };
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(text).then(done, function () { fallback(text, done); });
+      } else { fallback(text, done); }
+    });
+    pre.appendChild(btn);
+  });
+})();
+</script>
+
+</body>
+</html>

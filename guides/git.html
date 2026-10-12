@@ -1,0 +1,210 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>50 GitHub Tricks · Off-Script Rich</title>
+<meta name="description" content="the four url swaps from the reel plus 46 more: url hacks, line links, keyboard shortcuts, search filters and markdown tricks that make github faster.">
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+
+<header class="masthead">
+  <div class="masthead-in wrap">
+    <a class="wordmark" href="/"><span class="off">OFF-SCRIPT</span> <span class="rich">RICH</span></a>
+    <nav class="navlinks">
+      <a href="/guides/" aria-current="page">guides</a>
+      <a href="/guides/stocks.html">the tape</a>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap stack">
+
+  <p class="eyebrow"><span class="chip" data-pillar="ai">ai</span> <span class="keyword">GIT</span></p>
+
+  <h1>fifty github tricks</h1>
+
+  <p class="lede">hey, it's KP. you commented <strong>GIT</strong>, so here it is. the reel had four. these are all fifty, grouped so you can find the one you need: url swaps, line links, keyboard shortcuts, how to find good repos, and the markdown tricks that make you look like you've used this for years.</p>
+
+  <section class="prose">
+    <h2>who this is for</h2>
+    <p>you, if you open GitHub to grab a tool or read some code and always feel like you're doing it the slow way. skip it if you live in GitHub all day. you probably know most of these, though #6 and #18 surprise a lot of people.</p>
+  </section>
+  <section class="prose">
+    <h2>the four from the reel</h2>
+    <ol start="1">
+      <li><strong>swap <code>github.com</code> for <code>gitdiagram.com</code></strong>: the repo draws itself as an interactive architecture diagram you can click through.</li>
+      <li><strong>swap <code>hub</code> for <code>ingest</code> (<code>gitingest.com</code>)</strong>: the whole repo becomes one text digest you can paste into Claude or ChatGPT.</li>
+      <li><strong>swap <code>github.com</code> for <code>gitmcp.io</code></strong>: you get an MCP server for that project's docs, so your AI assistant reads the real documentation instead of inventing functions.</li>
+      <li><strong>press <code>.</code> on any repo while signed in</strong>: it opens github.dev, VS Code in your browser, with search and extensions.</li>
+    </ol>
+  </section>
+  <section class="prose">
+    <h2>more url swaps</h2>
+    <ol start="5">
+      <li><strong>press <code>&gt;</code> (shift + .) instead</strong>: same browser editor, opened in a new tab so you keep the repo page.</li>
+      <li><strong>swap <code>github.com</code> for <code>deepwiki.com</code></strong>: an AI-written wiki of the repo you can ask questions about.</li>
+      <li><strong>add <code>.patch</code> to a commit or pull request URL</strong>: the raw patch, in email format, with author and message.</li>
+      <li><strong>add <code>.diff</code> instead</strong>: just the diff, nothing else. good for pasting into an AI and asking what changed.</li>
+      <li><strong>add <code>?w=1</code> to any diff</strong>: hides whitespace-only changes, so a reformatted file stops looking like a rewrite.</li>
+      <li><strong>add <code>?plain=1</code> to a markdown file</strong>: shows the source with line numbers instead of the rendered page.</li>
+      <li><strong>go to <code>/releases/latest</code></strong>: always lands on the newest release, so the link never goes stale.</li>
+      <li><strong>use <code>/releases/latest/download/FILE</code></strong>: a permanent download link for an asset in the latest release.</li>
+      <li><strong>go to <code>/archive/refs/heads/main.zip</code></strong>: downloads the main branch as a zip without cloning.</li>
+      <li><strong>type <code>repo.new</code> in your address bar</strong>: jumps straight to creating a new repository.</li>
+      <li><strong>type <code>gist.new</code></strong>: jumps straight to a new gist, for snippets you want to share fast.</li>
+    </ol>
+  </section>
+  <section class="prose">
+    <h2>linking to exactly the right line</h2>
+    <ol start="16">
+      <li><strong>add <code>#L10</code> to a file URL</strong>: links to line 10 and highlights it.</li>
+      <li><strong>add <code>#L10-L20</code></strong>: links to and highlights a range. or click one line number and shift-click another.</li>
+      <li><strong>press <code>y</code> on a file</strong>: swaps the URL to the exact commit, so your link keeps pointing at the same code after the file changes.</li>
+      <li><strong>open <code>/blame/main/PATH</code></strong>: who last changed each line, and in which commit.</li>
+      <li><strong>open <code>/commits/main/PATH</code></strong>: the full history of a single file.</li>
+      <li><strong>compare branches with <code>/compare/main...feature</code></strong>: every difference between two branches on one page, with a button to open a pull request.</li>
+      <li><strong>compare across time with <code>/compare/main@{1day}...main</code></strong>: what changed on main in the last day. swap the period for whatever you need.</li>
+    </ol>
+  </section>
+  <section class="prose">
+    <h2>keyboard shortcuts worth learning</h2>
+    <ol start="23">
+      <li><strong><code>?</code></strong>: shows every shortcut available on the page you're on.</li>
+      <li><strong><code>t</code></strong>: file finder. start typing a file name and jump straight to it.</li>
+      <li><strong><code>l</code></strong>: jump to a line number in the open file.</li>
+      <li><strong><code>b</code></strong>: opens blame view for the open file.</li>
+      <li><strong><code>s</code> or <code>/</code></strong>: focuses the search bar.</li>
+      <li><strong><code>ctrl + k</code> or <code>cmd + k</code></strong>: the command palette. search repos, files and commands from anywhere.</li>
+      <li><strong><code>g</code> then <code>c</code></strong>: go to the code tab.</li>
+      <li><strong><code>g</code> then <code>i</code></strong>: go to issues.</li>
+      <li><strong><code>g</code> then <code>p</code></strong>: go to pull requests.</li>
+    </ol>
+  </section>
+  <section class="prose">
+    <h2>finding good repos</h2>
+    <ol start="32">
+      <li><strong><code>github.com/trending</code></strong>: what's gaining stars today. add <code>/python</code> and <code>?since=weekly</code> to narrow it.</li>
+      <li><strong><code>github.com/topics/TOPIC</code></strong>: every repo tagged with a topic, sorted however you like.</li>
+      <li><strong>search with <code>stars:&gt;1000</code></strong>: filters out the abandoned experiments.</li>
+      <li><strong>search with <code>pushed:&gt;2026-01-01</code></strong>: only repos that have been touched this year.</li>
+      <li><strong>search with <code>language:python</code></strong>: limit results to one language.</li>
+      <li><strong>in code search, use <code>path:</code> and <code>repo:</code></strong>: e.g. <code>path:SKILL.md</code> finds every skill file on GitHub.</li>
+      <li><strong>in code search, wrap a pattern in slashes</strong>: <code>/regex/</code> searches by regular expression.</li>
+      <li><strong>open <code>/contribute</code> on a repo</strong>: lists the issues maintainers flagged as good first contributions.</li>
+    </ol>
+  </section>
+  <section class="prose">
+    <h2>writing on github</h2>
+    <ol start="40">
+      <li><strong>make a repo named exactly your username</strong>: its README becomes your profile page.</li>
+      <li><strong><code>&gt; [!NOTE]</code>, <code>[!TIP]</code>, <code>[!WARNING]</code></strong>: coloured callout boxes in any markdown file, issue or comment.</li>
+      <li><strong>a <code>```mermaid</code> code block</strong>: renders as a real diagram. flowcharts in plain text.</li>
+      <li><strong><code>- [ ]</code> in an issue</strong>: a checklist people can tick.</li>
+      <li><strong><code>&lt;details&gt;&lt;summary&gt;...</code></strong>: a collapsible section, so long logs don't swamp the page.</li>
+      <li><strong>"closes #12" in a pull request description</strong>: merging the PR closes issue 12 automatically.</li>
+      <li><strong>a <code>```suggestion</code> block in a review</strong>: proposes an exact edit the author can accept with one click.</li>
+      <li><strong><code>/issues/new?title=...&amp;body=...</code></strong>: a link that opens a pre-filled issue. great for bug-report buttons.</li>
+    </ol>
+  </section>
+  <section class="prose">
+    <h2>and two more</h2>
+    <ol start="48">
+      <li><strong><code>github.com/USERNAME.png</code></strong>: anyone's profile picture as a direct image link.</li>
+      <li><strong>watch, then custom, then releases only</strong>: get notified when a tool ships a new version, without every comment.</li>
+      <li><strong><code>/pulse</code> on any repo</strong>: a one-week summary of what got merged, opened and closed.</li>
+    </ol>
+  </section>
+  <section class="prose">
+    <h2>the three to use today</h2>
+    <ol>
+      <li><strong>gitingest</strong> any repo you're curious about, paste the digest into Claude and ask "explain this like i'm new to it".</li>
+      <li>press <strong>y</strong> before you share any code link, so it doesn't break next week.</li>
+      <li>press <strong>t</strong> instead of clicking through folders.</li>
+    </ol>
+    <p>that's Off-Script Rich. none of this costs anything.</p>
+  </section>
+  <section class="prose">
+    <h2>good to know</h2>
+    <ul>
+      <li><strong>the swap sites are third parties.</strong> gitdiagram, gitingest, gitmcp and deepwiki are separate projects, not GitHub. they only work on public repos, and you shouldn't point them at anything private.</li>
+      <li><strong>shortcuts depend on the page.</strong> some only work on a file view, some only when you're signed in. press <code>?</code> to see what's live where you are.</li>
+      <li><strong>search syntax splits in two.</strong> repo search and code search use slightly different filters. <code>stars:</code> and <code>pushed:</code> are repo search, <code>path:</code> and regex are code search.</li>
+    </ul>
+  </section>
+  <section class="prose">
+    <h2>proof</h2>
+    <ul>
+      <li><a href="https://docs.github.com/en/get-started/accessibility/keyboard-shortcuts" rel="noopener">GitHub Docs: keyboard shortcuts</a> · <code>.</code>, <code>t</code>, <code>l</code>, <code>b</code>, <code>y</code>, <code>s</code>, <code>g c</code>, command palette</li>
+      <li><a href="https://docs.github.com/en/codespaces/the-githubdev-web-based-editor" rel="noopener">GitHub Docs: the github.dev web-based editor</a> · <code>.</code> and <code>&gt;</code></li>
+      <li><a href="https://docs.github.com/en/repositories/working-with-files/using-files/getting-permanent-links-to-files" rel="noopener">GitHub Docs: getting permanent links to files</a> · line links and the <code>y</code> permalink</li>
+      <li><a href="https://docs.github.com/en/pull-requests/committing-changes-to-your-project/viewing-and-comparing-commits/comparing-commits" rel="noopener">GitHub Docs: comparing commits</a> · branch and time-based compare URLs</li>
+      <li><a href="https://docs.github.com/en/repositories/releasing-projects-on-github/linking-to-releases" rel="noopener">GitHub Docs: linking to releases</a> · <code>/releases/latest</code> and latest asset downloads</li>
+      <li><a href="https://docs.github.com/en/search-github/github-code-search/understanding-github-code-search-syntax" rel="noopener">GitHub Docs: code search syntax</a> · <code>path:</code>, <code>repo:</code>, regex</li>
+      <li><a href="https://docs.github.com/en/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax" rel="noopener">GitHub Docs: basic writing and formatting syntax</a> · alerts and task lists</li>
+      <li><a href="https://docs.github.com/en/get-started/writing-on-github/working-with-advanced-formatting/creating-diagrams" rel="noopener">GitHub Docs: creating diagrams</a> · mermaid blocks</li>
+      <li><a href="https://docs.github.com/en/account-and-profile/setting-up-and-managing-your-github-profile/customizing-your-profile/managing-your-profile-readme" rel="noopener">GitHub Docs: managing your profile README</a> · the username repo</li>
+      <li><a href="https://github.com/ahmedkhaleel2004/gitdiagram" rel="noopener">ahmedkhaleel2004/gitdiagram</a> · the diagram swap</li>
+      <li><a href="https://github.com/coderamp-labs/gitingest" rel="noopener">coderamp-labs/gitingest</a> · "replace hub with ingest in any GitHub URL"</li>
+      <li><a href="https://github.com/idosal/git-mcp" rel="noopener">idosal/git-mcp</a> · the gitmcp.io swap</li>
+    </ul>
+  </section>
+  <section class="prose">
+    <h2>the rest of the library</h2>
+    <p>every guide is free and there's no email wall. take what you need.</p>
+    <p><a class="btn btn-primary" href="/guides/">all free guides</a></p>
+  </section>
+
+</main>
+
+<footer class="foot wrap">
+  <p><strong>Off-Script Rich.</strong> rich isn't the money. rich is the life the script said you couldn't have.</p>
+  <p><a href="/">home</a> · <a href="/guides/">guides</a> · <a href="https://instagram.com/livinxkp">@livinxkp</a></p>
+  <p class="mono">last checked 12 October 2026 · if something here has gone stale, comment GIT again and i'll have fixed it</p>
+  <p class="copyright">&copy; 2026 Off-Script Rich. all rights reserved. the guides, text and design on this site may not be copied, reproduced or republished without written permission.</p>
+</footer>
+
+<style>
+  .prose pre { position: relative; padding-top: 36px; }
+  .copypre {
+    position: absolute; top: 8px; right: 8px;
+    font-family: var(--mono); font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase;
+    background: var(--surface); color: var(--text-dim); border: 1px solid var(--line);
+    border-radius: 2px; padding: 4px 9px; cursor: pointer;
+  }
+  .copypre:hover { color: var(--text); border-color: var(--brass); }
+  .copypre[data-done="1"] { color: var(--buy); border-color: var(--buy); }
+</style>
+<script>
+(function () {
+  "use strict";
+  function fallback(text, done) {
+    var ta = document.createElement("textarea");
+    ta.value = text; ta.setAttribute("readonly", "");
+    ta.style.position = "fixed"; ta.style.top = "-1000px";
+    document.body.appendChild(ta); ta.select();
+    try { document.execCommand("copy"); done(); } catch (e) {}
+    document.body.removeChild(ta);
+  }
+  document.querySelectorAll(".prose pre").forEach(function (pre) {
+    var btn = document.createElement("button");
+    btn.type = "button"; btn.className = "copypre"; btn.textContent = "copy";
+    btn.addEventListener("click", function () {
+      var code = pre.querySelector("code");
+      var text = (code || pre).textContent;
+      var done = function () {
+        btn.textContent = "copied"; btn.setAttribute("data-done", "1");
+        setTimeout(function () { btn.textContent = "copy"; btn.removeAttribute("data-done"); }, 1800);
+      };
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(text).then(done, function () { fallback(text, done); });
+      } else { fallback(text, done); }
+    });
+    pre.appendChild(btn);
+  });
+})();
+</script>
+
+</body>
+</html>
