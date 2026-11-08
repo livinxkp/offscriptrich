@@ -1,0 +1,154 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>The Two-Minute Heatmap Read · Off-Script Rich</title>
+<meta name="description" content="how to read the s&amp;p 500 heatmap in two minutes every morning: what the box sizes and colours mean, the four things i look at, and the prompt that turns a screenshot into a plain-english summary.">
+<link rel="stylesheet" href="../assets/style.css">
+<style>
+  main.stack { gap: 30px; }
+  .calc { border: 1px solid var(--line); border-left: 3px solid var(--brass); border-radius: 3px; background: var(--surface); padding: 20px 18px; display: flex; flex-direction: column; gap: 14px; max-width: var(--readw); }
+  .calc h3 { font-size: 17px; }
+  .calc .row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  @media (max-width: 560px) { .calc .row { grid-template-columns: 1fr; } }
+  .calc label { display: flex; flex-direction: column; gap: 6px; font-family: var(--mono); font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-faint); }
+  .calc input[type="number"] { font-family: var(--body); font-size: 16px; color: var(--text); background: var(--ink); border: 1px solid var(--line); border-radius: 3px; padding: 10px 11px; width: 100%; min-width: 0; }
+  .calc input:focus { outline: none; border-color: var(--brass); }
+  .calc .hint { font-family: var(--body); font-size: 12.5px; letter-spacing: 0; text-transform: none; color: var(--text-faint); line-height: 1.4; }
+  .result { border-top: 1px solid var(--line); padding-top: 14px; display: flex; flex-direction: column; gap: 6px; }
+  .result .big { font-family: var(--display); font-weight: 800; font-size: clamp(30px, 7vw, 42px); letter-spacing: -0.03em; line-height: 1; font-variant-numeric: tabular-nums; }
+  .result .sub { font-size: 14px; color: var(--text-dim); }
+  .rtable { width: 100%; border-collapse: collapse; font-size: 14px; font-variant-numeric: tabular-nums; }
+  .rtable th, .rtable td { text-align: left; padding: 8px 6px; border-bottom: 1px solid var(--line); vertical-align: top; }
+  .rtable th { font-family: var(--mono); font-size: 10.5px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-faint); font-weight: 500; }
+  .tablewrap { overflow-x: auto; max-width: var(--readw); }
+  .prose ul, .prose ol { margin: 0; padding-left: 20px; display: flex; flex-direction: column; gap: 8px; color: var(--text-dim); }
+  .prose li strong { color: var(--text); }
+  .prose a { color: var(--brass); }
+</style>
+</head>
+<body>
+
+<header class="masthead">
+  <div class="masthead-in wrap">
+    <a class="wordmark" href="/"><span class="off">OFF-SCRIPT</span> <span class="rich">RICH</span></a>
+    <nav class="navlinks">
+      <a href="/guides/" aria-current="page">guides</a>
+      <a href="/guides/stocks.html">the tape</a>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap stack">
+
+  <p class="eyebrow"><span class="chip" data-pillar="money">money</span> <span class="keyword">MAP</span></p>
+
+  <h1>the two-minute heatmap read</h1>
+
+  <p class="lede">hey, it's KP. you commented <strong>MAP</strong>, so here it is. the reel was one picture of a red market. this is how i read that picture every morning in about two minutes, plus the prompt that explains a screenshot back to you in plain words.</p>
+
+  <section class="prose">
+    <h2>who this is for</h2>
+    <p>you, if you own an index fund or a few stocks and you want to know what actually happened today without watching a single talking head. skip it if you want a trade signal. a heatmap tells you what moved. it doesn't tell you what to do.</p>
+  </section>
+  <section class="prose">
+    <h2>what you're looking at</h2>
+    <p>open <a href="https://finviz.com/map.ashx" rel="noopener">finviz.com/map.ashx</a>, the free s&amp;p 500 map. every box is one company. two things are encoded in it.</p>
+    <ul>
+      <li><strong>size is market cap.</strong> the bigger the company, the bigger the box. that's why a handful of tech giants take up a huge chunk of the screen.</li>
+      <li><strong>colour is the % move.</strong> green is up, red is down, and the deeper the colour the bigger the move. grey is roughly flat.</li>
+    </ul>
+    <p>boxes are grouped by sector, so you can see in one glance whether it's one industry bleeding or the whole board.</p>
+  </section>
+  <section class="prose">
+    <h2>the two-minute routine</h2>
+    <ol>
+      <li><strong>step back first.</strong> is the whole map one colour, or is it patchy? one colour means a broad move, usually rates, a macro number or an election. patchy means stock or sector news.</li>
+      <li><strong>find the biggest red box.</strong> because boxes are sized by market cap, a big red box moves the index more than ten small ones. that's the one to read about.</li>
+      <li><strong>find the odd one out.</strong> one green box in a red sector (or the other way round) is almost always earnings or company news.</li>
+      <li><strong>check the sector you own most.</strong> if your index fund is heavy in tech, the tech block is your day. everything else is background.</li>
+    </ol>
+    <p>then close it. checking it ten times a day doesn't change what you own.</p>
+  </section>
+  <section class="prose">
+    <h2>the prompt</h2>
+    <p>screenshot the map and paste it into chatgpt or claude with this:</p>
+<pre><code>This is a screenshot of today&#x27;s S&amp;P 500 heatmap. Box size is market cap, colour is today&#x27;s % move.
+1. In one sentence: was today a broad move or a sector/stock move?
+2. Name the 3 largest boxes that are red and their approximate % move as shown.
+3. Name any stock moving against its sector.
+4. Which sector had the worst day by colour?
+Only describe what is visible in the image. If a number isn&#x27;t readable, say &quot;not readable&quot; instead of guessing. Do not tell me what to buy or sell.</code></pre>
+    <p>that's Off-Script Rich: read the market before the market reads you.</p>
+  </section>
+  <section class="prose">
+    <h2>good to know</h2>
+<ul><li><strong>the colour isn't the index.</strong> a map can look mostly red while the s&amp;p is only slightly down, because a few giant boxes carry most of the weight. check the actual index number before you repeat a headline.</li><li><strong>check the timestamp.</strong> free maps can lag the live market. if you're reading it mid-session, compare one box against your broker's live price.</li><li><strong>ai reads pictures badly at small sizes.</strong> zoom into the sector you care about before you screenshot, or it will invent numbers. the prompt tells it not to, and it still sometimes does.</li><li><strong>a red day is information, not an instruction.</strong> if you want the checklist i run before touching anything on a red day, comment RED on that reel.</li></ul>
+  </section>
+  <section class="prose">
+    <h2>proof</h2>
+    <ul><li><a href="https://finviz.com/map.ashx" rel="noopener">Finviz: S&amp;P 500 map</a> · free, box size = market cap, colour = performance</li><li><a href="https://finviz.com/blog/new-stock-market-maps-for-market-cap-52-week-highs-lows-themes-and-insider-trading" rel="noopener">Finviz blog: new stock market maps</a> · the other map views (market cap, 52-week highs and lows, themes)</li></ul>
+  </section>
+  <section class="prose">
+    <h2>the boring but necessary part</h2>
+    <p>i'm not a financial adviser and this isn't personalised advice. it's what i've read, what i do, and where i got it from, all linked above so you can check my work. what you do with your money is on you.</p>
+  </section>
+  <section class="prose">
+    <h2>the rest of the library</h2>
+    <p>every guide is free and there's no email wall. take what you need.</p>
+    <p><a class="btn btn-primary" href="/guides/">all free guides</a></p>
+  </section>
+
+</main>
+
+<footer class="foot wrap">
+  <p><strong>Off-Script Rich.</strong> rich isn't the money. rich is the life the script said you couldn't have.</p>
+  <p><a href="/">home</a> · <a href="/guides/">guides</a> · <a href="https://instagram.com/livinxkp">@livinxkp</a></p>
+  <p class="mono">last checked 8 November 2026 · if something here has gone stale, comment MAP again and i'll have fixed it</p>
+  <p class="copyright">&copy; 2026 Off-Script Rich. all rights reserved. the guides, text and design on this site may not be copied, reproduced or republished without written permission.</p>
+</footer>
+
+<style>
+  .prose pre { position: relative; padding-top: 36px; }
+  .copypre {
+    position: absolute; top: 8px; right: 8px;
+    font-family: var(--mono); font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase;
+    background: var(--surface); color: var(--text-dim); border: 1px solid var(--line);
+    border-radius: 2px; padding: 4px 9px; cursor: pointer;
+  }
+  .copypre:hover { color: var(--text); border-color: var(--brass); }
+  .copypre[data-done="1"] { color: var(--buy); border-color: var(--buy); }
+</style>
+<script>
+(function () {
+  "use strict";
+  function fallback(text, done) {
+    var ta = document.createElement("textarea");
+    ta.value = text; ta.setAttribute("readonly", "");
+    ta.style.position = "fixed"; ta.style.top = "-1000px";
+    document.body.appendChild(ta); ta.select();
+    try { document.execCommand("copy"); done(); } catch (e) {}
+    document.body.removeChild(ta);
+  }
+  document.querySelectorAll(".prose pre").forEach(function (pre) {
+    var btn = document.createElement("button");
+    btn.type = "button"; btn.className = "copypre"; btn.textContent = "copy";
+    btn.addEventListener("click", function () {
+      var code = pre.querySelector("code");
+      var text = (code || pre).textContent;
+      var done = function () {
+        btn.textContent = "copied"; btn.setAttribute("data-done", "1");
+        setTimeout(function () { btn.textContent = "copy"; btn.removeAttribute("data-done"); }, 1800);
+      };
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(text).then(done, function () { fallback(text, done); });
+      } else { fallback(text, done); }
+    });
+    pre.appendChild(btn);
+  });
+})();
+</script>
+
+</body>
+</html>

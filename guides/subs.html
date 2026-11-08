@@ -1,0 +1,159 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>The Subscription Audit · Off-Script Rich</title>
+<meta name="description" content="a free 20-minute subscription audit you can do with your bank statement, your california cancellation rights, and the fine print on apps like rocket money before you hand over a cut. not sponsored.">
+<link rel="stylesheet" href="../assets/style.css">
+<style>
+  main.stack { gap: 30px; }
+  .calc { border: 1px solid var(--line); border-left: 3px solid var(--brass); border-radius: 3px; background: var(--surface); padding: 20px 18px; display: flex; flex-direction: column; gap: 14px; max-width: var(--readw); }
+  .calc h3 { font-size: 17px; }
+  .calc .row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  @media (max-width: 560px) { .calc .row { grid-template-columns: 1fr; } }
+  .calc label { display: flex; flex-direction: column; gap: 6px; font-family: var(--mono); font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-faint); }
+  .calc input[type="number"] { font-family: var(--body); font-size: 16px; color: var(--text); background: var(--ink); border: 1px solid var(--line); border-radius: 3px; padding: 10px 11px; width: 100%; min-width: 0; }
+  .calc input:focus { outline: none; border-color: var(--brass); }
+  .calc .hint { font-family: var(--body); font-size: 12.5px; letter-spacing: 0; text-transform: none; color: var(--text-faint); line-height: 1.4; }
+  .result { border-top: 1px solid var(--line); padding-top: 14px; display: flex; flex-direction: column; gap: 6px; }
+  .result .big { font-family: var(--display); font-weight: 800; font-size: clamp(30px, 7vw, 42px); letter-spacing: -0.03em; line-height: 1; font-variant-numeric: tabular-nums; }
+  .result .sub { font-size: 14px; color: var(--text-dim); }
+  .rtable { width: 100%; border-collapse: collapse; font-size: 14px; font-variant-numeric: tabular-nums; }
+  .rtable th, .rtable td { text-align: left; padding: 8px 6px; border-bottom: 1px solid var(--line); vertical-align: top; }
+  .rtable th { font-family: var(--mono); font-size: 10.5px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-faint); font-weight: 500; }
+  .tablewrap { overflow-x: auto; max-width: var(--readw); }
+  .prose ul, .prose ol { margin: 0; padding-left: 20px; display: flex; flex-direction: column; gap: 8px; color: var(--text-dim); }
+  .prose li strong { color: var(--text); }
+  .prose a { color: var(--brass); }
+</style>
+</head>
+<body>
+
+<header class="masthead">
+  <div class="masthead-in wrap">
+    <a class="wordmark" href="/"><span class="off">OFF-SCRIPT</span> <span class="rich">RICH</span></a>
+    <nav class="navlinks">
+      <a href="/guides/" aria-current="page">guides</a>
+      <a href="/guides/stocks.html">the tape</a>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap stack">
+
+  <p class="eyebrow"><span class="chip" data-pillar="money">money</span> <span class="keyword">SUBS</span></p>
+
+  <h1>the subscription audit</h1>
+
+  <p class="lede">hey, it's KP. you commented <strong>SUBS</strong>, so here it is. here's the audit from the reel. you can do it free with a bank statement in about 20 minutes, and an app is optional. plus the rule in california that makes cancelling easier than companies want you to think.</p>
+
+  <section class="prose">
+    <h2>the free version, 20 minutes</h2>
+    <ol>
+      <li>download the last <strong>3 months</strong> of statements for every card and bank account. some things only bill quarterly.</li>
+      <li>search for these words: <strong>subscription, monthly, renew, membership, premium, plus, pro, recurring</strong>.</li>
+      <li>also look for small round amounts and anything you don't recognise.</li>
+      <li>fill in the sheet below.</li>
+    </ol>
+<pre><code>SUBSCRIPTION AUDIT                     total per month: $______
+name          $/month   last used   keep / cancel / downgrade
+__________    ______    ________    ______
+__________    ______    ________    ______
+__________    ______    ________    ______
+
+per month cut: $______   x 12 = $______ a year</code></pre>
+    <p>rule i use: if i haven't opened it in 30 days, it goes. i can always come back.</p>
+  </section>
+  <section class="prose">
+    <h2>your rights in california</h2>
+    <p>since <strong>1 July 2025</strong>, California's updated automatic renewal law requires businesses to let you cancel through the same way you signed up, so if you subscribed online, you should be able to cancel online. it also requires your clear consent to the auto-renewal and an annual reminder for ongoing subscriptions. if a company makes you call a retention line for something you bought online, that's worth pushing back on.</p>
+  </section>
+  <section class="prose">
+    <h2>if you use an app</h2>
+    <p>apps like Rocket Money pull your recurring charges into one list. the fine print matters:</p>
+    <ul>
+      <li><strong>premium is pay-what-you-choose</strong>, generally $6 to $12 a month according to their help centre.</li>
+      <li><strong>bill negotiation takes 35% to 60% of your first year's savings</strong> as a one-time fee, only if they succeed. you pick the percentage.</li>
+    </ul>
+    <p>so if they cut a bill by $20 a month, that's $240 a year saved, and at 35% you'd pay $84 up front. you can often get the same result by calling yourself and asking for the current promo rate.</p>
+    <p>that's Off-Script Rich: know where every dollar goes before you let anything take a cut.</p>
+  </section>
+  <section class="prose">
+    <h2>the prompt</h2>
+<pre><code>Here are 3 months of my bank and card transactions: [paste or upload CSV].
+1. List every charge that repeats monthly, quarterly or yearly, with the amount and merchant.
+2. Flag any charge that looks like a free trial that converted to paid.
+3. Give me the total per month and per year.
+Don&#x27;t guess merchants you can&#x27;t identify. List them separately as &quot;unknown&quot;.</code></pre>
+  </section>
+  <section class="prose">
+    <h2>good to know</h2>
+<ul><li><strong>linking your bank is a trade.</strong> any budgeting app sees your transactions. read what it does with the data before you connect.</li><li><strong>cancelling isn't always deleting.</strong> some services keep billing if you only delete the app. cancel in the account settings and screenshot the confirmation.</li><li><strong>annual plans hide.</strong> they show up once a year, so the 3-month check misses them. search your email for "renewal".</li></ul>
+  </section>
+  <section class="prose">
+    <h2>proof</h2>
+    <ul><li><a href="https://btlaw.com/en/insights/alerts/2025/california-expands-automatic-renewal-law-new-requirements-now-in-effect" rel="noopener">Barnes &amp; Thornburg: California expands automatic renewal law, new requirements now in effect</a> · AB 2863, effective 1 July 2025, cancel through the same channel used to sign up</li><li><a href="https://jdsupra.com/legalnews/california-s-latest-automatic-renewal-5514590" rel="noopener">JD Supra: California&#x27;s latest automatic renewal law amendments</a> · express consent, annual reminders, click to cancel</li><li><a href="https://help.rocketmoney.com/en/articles/2217739-how-much-does-rocket-money-cost" rel="noopener">Rocket Money help: how much does Rocket Money cost?</a> · premium generally $6 to $12 a month, bill negotiation 35% to 60% of first-year savings</li></ul>
+  </section>
+  <section class="prose">
+    <h2>the boring but necessary part</h2>
+    <p>i'm not a financial adviser and this isn't personalised advice. it's what i've read, what i do, and where i got it from, all linked above so you can check my work. what you do with your money is on you.</p>
+  </section>
+  <section class="prose">
+    <h2>the rest of the library</h2>
+    <p>every guide is free and there's no email wall. take what you need.</p>
+    <p><a class="btn btn-primary" href="/guides/">all free guides</a></p>
+  </section>
+
+</main>
+
+<footer class="foot wrap">
+  <p><strong>Off-Script Rich.</strong> rich isn't the money. rich is the life the script said you couldn't have.</p>
+  <p><a href="/">home</a> · <a href="/guides/">guides</a> · <a href="https://instagram.com/livinxkp">@livinxkp</a></p>
+  <p class="mono">last checked 8 November 2026 · if something here has gone stale, comment SUBS again and i'll have fixed it</p>
+  <p class="copyright">&copy; 2026 Off-Script Rich. all rights reserved. the guides, text and design on this site may not be copied, reproduced or republished without written permission.</p>
+</footer>
+
+<style>
+  .prose pre { position: relative; padding-top: 36px; }
+  .copypre {
+    position: absolute; top: 8px; right: 8px;
+    font-family: var(--mono); font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase;
+    background: var(--surface); color: var(--text-dim); border: 1px solid var(--line);
+    border-radius: 2px; padding: 4px 9px; cursor: pointer;
+  }
+  .copypre:hover { color: var(--text); border-color: var(--brass); }
+  .copypre[data-done="1"] { color: var(--buy); border-color: var(--buy); }
+</style>
+<script>
+(function () {
+  "use strict";
+  function fallback(text, done) {
+    var ta = document.createElement("textarea");
+    ta.value = text; ta.setAttribute("readonly", "");
+    ta.style.position = "fixed"; ta.style.top = "-1000px";
+    document.body.appendChild(ta); ta.select();
+    try { document.execCommand("copy"); done(); } catch (e) {}
+    document.body.removeChild(ta);
+  }
+  document.querySelectorAll(".prose pre").forEach(function (pre) {
+    var btn = document.createElement("button");
+    btn.type = "button"; btn.className = "copypre"; btn.textContent = "copy";
+    btn.addEventListener("click", function () {
+      var code = pre.querySelector("code");
+      var text = (code || pre).textContent;
+      var done = function () {
+        btn.textContent = "copied"; btn.setAttribute("data-done", "1");
+        setTimeout(function () { btn.textContent = "copy"; btn.removeAttribute("data-done"); }, 1800);
+      };
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(text).then(done, function () { fallback(text, done); });
+      } else { fallback(text, done); }
+    });
+    pre.appendChild(btn);
+  });
+})();
+</script>
+
+</body>
+</html>

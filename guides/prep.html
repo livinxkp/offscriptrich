@@ -1,0 +1,187 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>The 2027 Prep Checklist · Off-Script Rich</title>
+<meta name="description" content="the three moves from the reel as a checklist: the emergency fund math for la rent with a calculator, the no-new-payments rule, and building income that doesn&#x27;t depend on one employer.">
+<link rel="stylesheet" href="../assets/style.css">
+<style>
+  main.stack { gap: 30px; }
+  .calc { border: 1px solid var(--line); border-left: 3px solid var(--brass); border-radius: 3px; background: var(--surface); padding: 20px 18px; display: flex; flex-direction: column; gap: 14px; max-width: var(--readw); }
+  .calc h3 { font-size: 17px; }
+  .calc .row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  @media (max-width: 560px) { .calc .row { grid-template-columns: 1fr; } }
+  .calc label { display: flex; flex-direction: column; gap: 6px; font-family: var(--mono); font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-faint); }
+  .calc input[type="number"] { font-family: var(--body); font-size: 16px; color: var(--text); background: var(--ink); border: 1px solid var(--line); border-radius: 3px; padding: 10px 11px; width: 100%; min-width: 0; }
+  .calc input:focus { outline: none; border-color: var(--brass); }
+  .calc .hint { font-family: var(--body); font-size: 12.5px; letter-spacing: 0; text-transform: none; color: var(--text-faint); line-height: 1.4; }
+  .result { border-top: 1px solid var(--line); padding-top: 14px; display: flex; flex-direction: column; gap: 6px; }
+  .result .big { font-family: var(--display); font-weight: 800; font-size: clamp(30px, 7vw, 42px); letter-spacing: -0.03em; line-height: 1; font-variant-numeric: tabular-nums; }
+  .result .sub { font-size: 14px; color: var(--text-dim); }
+  .rtable { width: 100%; border-collapse: collapse; font-size: 14px; font-variant-numeric: tabular-nums; }
+  .rtable th, .rtable td { text-align: left; padding: 8px 6px; border-bottom: 1px solid var(--line); vertical-align: top; }
+  .rtable th { font-family: var(--mono); font-size: 10.5px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-faint); font-weight: 500; }
+  .tablewrap { overflow-x: auto; max-width: var(--readw); }
+  .prose ul, .prose ol { margin: 0; padding-left: 20px; display: flex; flex-direction: column; gap: 8px; color: var(--text-dim); }
+  .prose li strong { color: var(--text); }
+  .prose a { color: var(--brass); }
+</style>
+</head>
+<body>
+
+<header class="masthead">
+  <div class="masthead-in wrap">
+    <a class="wordmark" href="/"><span class="off">OFF-SCRIPT</span> <span class="rich">RICH</span></a>
+    <nav class="navlinks">
+      <a href="/guides/" aria-current="page">guides</a>
+      <a href="/guides/stocks.html">the tape</a>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap stack">
+
+  <p class="eyebrow"><span class="chip" data-pillar="money">money</span> <span class="keyword">PREP</span></p>
+
+  <h1>the 2027 prep checklist</h1>
+
+  <p class="lede">hey, it's KP. you commented <strong>PREP</strong>, so here it is. nobody knows what 2027 does. this is the checklist i'm running so i don't have to know: the emergency fund math for la rent with a calculator, plus the other two moves from the reel.</p>
+
+  <section class="prose">
+    <h2>how a slowdown spreads</h2>
+    <p>companies cut jobs. people who lose jobs miss payments. people still working get nervous and spend less, which hits more companies. you can't stop that loop. you can make sure it doesn't reach your rent.</p>
+  </section>
+  <section class="prose">
+    <h2>move one: the emergency fund</h2>
+    <p>a common rule of thumb is three to six months of essential costs. the CFPB's own guide says the right number depends on your situation. i use six because my income isn't one paycheck. for reference, HUD's 2026 fair market rent for a one-bedroom in the Los Angeles area is <strong>$2,328 a month</strong>, so six months of rent alone is nearly $14,000 before anything else.</p>
+    <form class="calc" id="pcalc" onsubmit="return false">
+      <h3>your number</h3>
+      <div class="row">
+        <label>rent<input type="number" id="p-rent" value="2328" inputmode="decimal"></label>
+        <label>bills and insurance<input type="number" id="p-bills" value="400" inputmode="decimal"></label>
+        <label>groceries and transport<input type="number" id="p-food" value="700" inputmode="decimal"></label>
+        <label>minimum debt payments<input type="number" id="p-other" value="0" inputmode="decimal"></label>
+        <label>months of cover<input type="number" id="p-months" value="6" inputmode="decimal"></label>
+        <label>saved so far<input type="number" id="p-have" value="0" inputmode="decimal"></label>
+        <label>you can add each month<input type="number" id="p-save" value="500" inputmode="decimal"></label>
+      </div>
+      <div class="result" id="pout"><span class="eyebrow">your emergency fund target</span><span class="big">$0</span><span class="sub"></span></div>
+    </form>
+    <p>keep it in a high-yield savings account at an FDIC-insured bank, separate from your checking so you don't spend it. comment SAFE on that reel for how i hold mine.</p>
+  </section>
+  <section class="prose">
+    <h2>move two: no new monthly payments</h2>
+    <ul>
+      <li>no new car loan or lease.</li>
+      <li>no buy now pay later.</li>
+      <li>no new subscriptions without cancelling one.</li>
+    </ul>
+    <p>every fixed payment is something a pay cut can't negotiate with. fewer of them means a rough year hurts less.</p>
+  </section>
+  <section class="prose">
+    <h2>move three: income that doesn't depend on one employer</h2>
+    <p>this is the one most people skip. it doesn't have to be big. a skill you can sell on the side, a small client, a product. the point is that if one stream stops, the others keep going. if you want ideas that don't need a product, comment MIDDLE on that reel.</p>
+    <p>that's Off-Script Rich: being ready beats being right.</p>
+  </section>
+  <section class="prose">
+    <h2>the checklist</h2>
+<pre><code>2027 PREP                                   done?
+[ ] emergency fund target set (calculator above)
+[ ] automatic transfer to savings on payday
+[ ] emergency fund in a separate FDIC-insured account
+[ ] zero new monthly payments this year
+[ ] one income stream outside my main job started
+[ ] resume / portfolio updated (takes an hour, saves weeks)</code></pre>
+  </section>
+  <section class="prose">
+    <h2>good to know</h2>
+<ul><li><strong>this isn't a prediction.</strong> it's what i'd do in any year. if 2027 is great, you lose nothing by being ready.</li><li><strong>fair market rent isn't your rent.</strong> HUD's number is a benchmark. put your actual rent in the calculator.</li><li><strong>don't stop retirement contributions to build this</strong> if your employer matches. take the match, build the fund with what's left.</li></ul>
+  </section>
+  <section class="prose">
+    <h2>proof</h2>
+    <ul><li><a href="https://www.govinfo.gov/content/pkg/FR-2026-04-21/html/2026-07741.htm" rel="noopener">Federal Register: revised FY 2026 Fair Market Rents</a> · Los Angeles-Long Beach-Glendale: $2,328 one-bedroom</li><li><a href="https://www.consumerfinance.gov/an-essential-guide-to-building-an-emergency-fund/" rel="noopener">CFPB: an essential guide to building an emergency fund</a></li><li><a href="https://www.fdic.gov/resources/deposit-insurance/understanding-deposit-insurance" rel="noopener">FDIC: understanding deposit insurance</a> · $250,000 per depositor, per insured bank, per ownership category</li></ul>
+  </section>
+  <section class="prose">
+    <h2>the boring but necessary part</h2>
+    <p>i'm not a financial adviser and this isn't personalised advice. it's what i've read, what i do, and where i got it from, all linked above so you can check my work. what you do with your money is on you.</p>
+  </section>
+  <section class="prose">
+    <h2>the rest of the library</h2>
+    <p>every guide is free and there's no email wall. take what you need.</p>
+    <p><a class="btn btn-primary" href="/guides/">all free guides</a></p>
+  </section>
+
+</main>
+
+<footer class="foot wrap">
+  <p><strong>Off-Script Rich.</strong> rich isn't the money. rich is the life the script said you couldn't have.</p>
+  <p><a href="/">home</a> · <a href="/guides/">guides</a> · <a href="https://instagram.com/livinxkp">@livinxkp</a></p>
+  <p class="mono">last checked 8 November 2026 · if something here has gone stale, comment PREP again and i'll have fixed it</p>
+  <p class="copyright">&copy; 2026 Off-Script Rich. all rights reserved. the guides, text and design on this site may not be copied, reproduced or republished without written permission.</p>
+</footer>
+
+<style>
+  .prose pre { position: relative; padding-top: 36px; }
+  .copypre {
+    position: absolute; top: 8px; right: 8px;
+    font-family: var(--mono); font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase;
+    background: var(--surface); color: var(--text-dim); border: 1px solid var(--line);
+    border-radius: 2px; padding: 4px 9px; cursor: pointer;
+  }
+  .copypre:hover { color: var(--text); border-color: var(--brass); }
+  .copypre[data-done="1"] { color: var(--buy); border-color: var(--buy); }
+</style>
+<script>
+(function () {
+  "use strict";
+  function fallback(text, done) {
+    var ta = document.createElement("textarea");
+    ta.value = text; ta.setAttribute("readonly", "");
+    ta.style.position = "fixed"; ta.style.top = "-1000px";
+    document.body.appendChild(ta); ta.select();
+    try { document.execCommand("copy"); done(); } catch (e) {}
+    document.body.removeChild(ta);
+  }
+  document.querySelectorAll(".prose pre").forEach(function (pre) {
+    var btn = document.createElement("button");
+    btn.type = "button"; btn.className = "copypre"; btn.textContent = "copy";
+    btn.addEventListener("click", function () {
+      var code = pre.querySelector("code");
+      var text = (code || pre).textContent;
+      var done = function () {
+        btn.textContent = "copied"; btn.setAttribute("data-done", "1");
+        setTimeout(function () { btn.textContent = "copy"; btn.removeAttribute("data-done"); }, 1800);
+      };
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(text).then(done, function () { fallback(text, done); });
+      } else { fallback(text, done); }
+    });
+    pre.appendChild(btn);
+  });
+})();
+</script>
+<script>
+(function () {
+  var f = document.getElementById("pcalc"); if (!f) return;
+  var out = document.getElementById("pout");
+  function n(id) { var v = parseFloat(document.getElementById(id).value); return isNaN(v) ? 0 : v; }
+  function money(x) { return "$" + Math.round(x).toLocaleString("en-US"); }
+  function run() {
+    var monthly = n("p-rent") + n("p-bills") + n("p-food") + n("p-other");
+    var target = monthly * n("p-months");
+    var gap = Math.max(0, target - n("p-have"));
+    var save = n("p-save");
+    out.querySelector(".big").textContent = money(target);
+    var line = "that's " + money(monthly) + " a month of real costs. ";
+    if (gap === 0) line += "you're already there.";
+    else if (save > 0) line += "you need " + money(gap) + " more. at " + money(save) + " a month that's about " + Math.ceil(gap / save) + " months.";
+    else line += "you need " + money(gap) + " more.";
+    out.querySelector(".sub").textContent = line;
+  }
+  f.addEventListener("input", run); run();
+})();
+</script>
+
+</body>
+</html>

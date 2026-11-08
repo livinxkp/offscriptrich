@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>The Find-Anything Prompt · Off-Script Rich</title>
+<meta name="description" content="the prompt from the reel for finding a lost item in a photo with chatgpt, plus how to take the photo so it actually works, and the limits.">
+<link rel="stylesheet" href="../assets/style.css">
+<style>
+  main.stack { gap: 30px; }
+  .calc { border: 1px solid var(--line); border-left: 3px solid var(--brass); border-radius: 3px; background: var(--surface); padding: 20px 18px; display: flex; flex-direction: column; gap: 14px; max-width: var(--readw); }
+  .calc h3 { font-size: 17px; }
+  .calc .row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  @media (max-width: 560px) { .calc .row { grid-template-columns: 1fr; } }
+  .calc label { display: flex; flex-direction: column; gap: 6px; font-family: var(--mono); font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-faint); }
+  .calc input[type="number"] { font-family: var(--body); font-size: 16px; color: var(--text); background: var(--ink); border: 1px solid var(--line); border-radius: 3px; padding: 10px 11px; width: 100%; min-width: 0; }
+  .calc input:focus { outline: none; border-color: var(--brass); }
+  .calc .hint { font-family: var(--body); font-size: 12.5px; letter-spacing: 0; text-transform: none; color: var(--text-faint); line-height: 1.4; }
+  .result { border-top: 1px solid var(--line); padding-top: 14px; display: flex; flex-direction: column; gap: 6px; }
+  .result .big { font-family: var(--display); font-weight: 800; font-size: clamp(30px, 7vw, 42px); letter-spacing: -0.03em; line-height: 1; font-variant-numeric: tabular-nums; }
+  .result .sub { font-size: 14px; color: var(--text-dim); }
+  .rtable { width: 100%; border-collapse: collapse; font-size: 14px; font-variant-numeric: tabular-nums; }
+  .rtable th, .rtable td { text-align: left; padding: 8px 6px; border-bottom: 1px solid var(--line); vertical-align: top; }
+  .rtable th { font-family: var(--mono); font-size: 10.5px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-faint); font-weight: 500; }
+  .tablewrap { overflow-x: auto; max-width: var(--readw); }
+  .prose ul, .prose ol { margin: 0; padding-left: 20px; display: flex; flex-direction: column; gap: 8px; color: var(--text-dim); }
+  .prose li strong { color: var(--text); }
+  .prose a { color: var(--brass); }
+</style>
+</head>
+<body>
+
+<header class="masthead">
+  <div class="masthead-in wrap">
+    <a class="wordmark" href="/"><span class="off">OFF-SCRIPT</span> <span class="rich">RICH</span></a>
+    <nav class="navlinks">
+      <a href="/guides/" aria-current="page">guides</a>
+      <a href="/guides/stocks.html">the tape</a>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap stack">
+
+  <p class="eyebrow"><span class="chip" data-pillar="ai">ai</span> <span class="keyword">FIND</span></p>
+
+  <h1>the find-anything-in-a-photo prompt</h1>
+
+  <p class="lede">hey, it's KP. you commented <strong>FIND</strong>, so here it is. here's the exact prompt for finding something in a photo, how to take the photo so it actually has a chance, and the honest limits.</p>
+
+  <section class="prose">
+    <h2>take the photo right</h2>
+    <ul>
+      <li><strong>more light.</strong> daylight or a phone torch at an angle. shadows hide small things.</li>
+      <li><strong>closer, and more than one.</strong> split a big area into 2 to 4 overlapping photos rather than one wide shot.</li>
+      <li><strong>full resolution.</strong> send the original, not a screenshot.</li>
+      <li><strong>a reference if you can.</strong> a photo of the same item (or one like it) helps the model know what it's looking for.</li>
+    </ul>
+  </section>
+  <section class="prose">
+    <h2>the prompt</h2>
+<pre><code>I lost [item, with colour, size and shape, e.g. &quot;a white wireless earbud, about the size of a grape&quot;] somewhere in this photo.
+1. Scan the whole image carefully, section by section.
+2. Tell me the most likely location using simple directions (e.g. &quot;lower left, just right of the large grey rock&quot;).
+3. Give a confidence level (low, medium, high) and explain what you&#x27;re seeing.
+4. If you can&#x27;t find it, say so and tell me how to retake the photo.
+Don&#x27;t guess a location just to give an answer.</code></pre>
+  </section>
+  <section class="prose">
+    <h2>follow-up that helps</h2>
+<pre><code>Crop or zoom into the area you think it&#x27;s in and describe exactly what you see there. Is the shape and colour consistent with [item]?</code></pre>
+    <p>that's Off-Script Rich: one photo, one question.</p>
+  </section>
+  <section class="prose">
+    <h2>good to know</h2>
+<ul><li><strong>it will sometimes be confidently wrong.</strong> image models can "see" things that aren't there. the confidence question is there to catch that.</li><li><strong>the viral clips are the hits.</strong> nobody posts the times it didn't work. treat it as a second pair of eyes, not a metal detector.</li><li><strong>for anything valuable or dangerous, look yourself.</strong> keys, medication, a ring. use this to know where to start, not to stop looking.</li></ul>
+  </section>
+  <section class="prose">
+    <h2>the rest of the library</h2>
+    <p>every guide is free and there's no email wall. take what you need.</p>
+    <p><a class="btn btn-primary" href="/guides/">all free guides</a></p>
+  </section>
+
+</main>
+
+<footer class="foot wrap">
+  <p><strong>Off-Script Rich.</strong> rich isn't the money. rich is the life the script said you couldn't have.</p>
+  <p><a href="/">home</a> · <a href="/guides/">guides</a> · <a href="https://instagram.com/livinxkp">@livinxkp</a></p>
+  <p class="mono">last checked 8 November 2026 · if something here has gone stale, comment FIND again and i'll have fixed it</p>
+  <p class="copyright">&copy; 2026 Off-Script Rich. all rights reserved. the guides, text and design on this site may not be copied, reproduced or republished without written permission.</p>
+</footer>
+
+<style>
+  .prose pre { position: relative; padding-top: 36px; }
+  .copypre {
+    position: absolute; top: 8px; right: 8px;
+    font-family: var(--mono); font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase;
+    background: var(--surface); color: var(--text-dim); border: 1px solid var(--line);
+    border-radius: 2px; padding: 4px 9px; cursor: pointer;
+  }
+  .copypre:hover { color: var(--text); border-color: var(--brass); }
+  .copypre[data-done="1"] { color: var(--buy); border-color: var(--buy); }
+</style>
+<script>
+(function () {
+  "use strict";
+  function fallback(text, done) {
+    var ta = document.createElement("textarea");
+    ta.value = text; ta.setAttribute("readonly", "");
+    ta.style.position = "fixed"; ta.style.top = "-1000px";
+    document.body.appendChild(ta); ta.select();
+    try { document.execCommand("copy"); done(); } catch (e) {}
+    document.body.removeChild(ta);
+  }
+  document.querySelectorAll(".prose pre").forEach(function (pre) {
+    var btn = document.createElement("button");
+    btn.type = "button"; btn.className = "copypre"; btn.textContent = "copy";
+    btn.addEventListener("click", function () {
+      var code = pre.querySelector("code");
+      var text = (code || pre).textContent;
+      var done = function () {
+        btn.textContent = "copied"; btn.setAttribute("data-done", "1");
+        setTimeout(function () { btn.textContent = "copy"; btn.removeAttribute("data-done"); }, 1800);
+      };
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(text).then(done, function () { fallback(text, done); });
+      } else { fallback(text, done); }
+    });
+    pre.appendChild(btn);
+  });
+})();
+</script>
+
+</body>
+</html>

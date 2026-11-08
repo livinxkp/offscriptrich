@@ -1,0 +1,172 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Same LA Salary, Two Budgets · Off-Script Rich</title>
+<meta name="description" content="the two-column la budget from the reel, how $85k becomes about $5,300 a month after tax in california, where the $18,000 a year gap comes from, and a calculator for your own take-home.">
+<link rel="stylesheet" href="../assets/style.css">
+<style>
+  main.stack { gap: 30px; }
+  .calc { border: 1px solid var(--line); border-left: 3px solid var(--brass); border-radius: 3px; background: var(--surface); padding: 20px 18px; display: flex; flex-direction: column; gap: 14px; max-width: var(--readw); }
+  .calc h3 { font-size: 17px; }
+  .calc .row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  @media (max-width: 560px) { .calc .row { grid-template-columns: 1fr; } }
+  .calc label { display: flex; flex-direction: column; gap: 6px; font-family: var(--mono); font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-faint); }
+  .calc input[type="number"] { font-family: var(--body); font-size: 16px; color: var(--text); background: var(--ink); border: 1px solid var(--line); border-radius: 3px; padding: 10px 11px; width: 100%; min-width: 0; }
+  .calc input:focus { outline: none; border-color: var(--brass); }
+  .calc .hint { font-family: var(--body); font-size: 12.5px; letter-spacing: 0; text-transform: none; color: var(--text-faint); line-height: 1.4; }
+  .result { border-top: 1px solid var(--line); padding-top: 14px; display: flex; flex-direction: column; gap: 6px; }
+  .result .big { font-family: var(--display); font-weight: 800; font-size: clamp(30px, 7vw, 42px); letter-spacing: -0.03em; line-height: 1; font-variant-numeric: tabular-nums; }
+  .result .sub { font-size: 14px; color: var(--text-dim); }
+  .rtable { width: 100%; border-collapse: collapse; font-size: 14px; font-variant-numeric: tabular-nums; }
+  .rtable th, .rtable td { text-align: left; padding: 8px 6px; border-bottom: 1px solid var(--line); vertical-align: top; }
+  .rtable th { font-family: var(--mono); font-size: 10.5px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-faint); font-weight: 500; }
+  .tablewrap { overflow-x: auto; max-width: var(--readw); }
+  .prose ul, .prose ol { margin: 0; padding-left: 20px; display: flex; flex-direction: column; gap: 8px; color: var(--text-dim); }
+  .prose li strong { color: var(--text); }
+  .prose a { color: var(--brass); }
+</style>
+</head>
+<body>
+
+<header class="masthead">
+  <div class="masthead-in wrap">
+    <a class="wordmark" href="/"><span class="off">OFF-SCRIPT</span> <span class="rich">RICH</span></a>
+    <nav class="navlinks">
+      <a href="/guides/" aria-current="page">guides</a>
+      <a href="/guides/stocks.html">the tape</a>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap stack">
+
+  <p class="eyebrow"><span class="chip" data-pillar="money">money</span> <span class="keyword">BUDGET</span></p>
+
+  <h1>same la salary, two budgets</h1>
+
+  <p class="lede">hey, it's KP. you commented <strong>BUDGET</strong>, so here it is. here's the two-column budget from the reel, how i got to the $5,300 take-home number, where the $1,500 a month gap actually comes from, and a calculator that gives every dollar of your own paycheck a job.</p>
+
+  <section class="prose">
+    <h2>how $85k becomes about $5,300 a month</h2>
+    <p>rough estimate for a single filer in california earning $85,000 in 2026, taking the standard deduction, with no pre-tax 401k contributions:</p><div class="tablewrap"><table class="rtable"><thead><tr><th>line</th><th>per year</th></tr></thead><tbody><tr><td>gross pay</td><td>$85,000</td></tr><tr><td>federal income tax (2026 brackets, $16,100 standard deduction)</td><td>about $9,870</td></tr><tr><td>social security and medicare (7.65%)</td><td>about $6,500</td></tr><tr><td>california income tax</td><td>about $3,660</td></tr><tr><td>california SDI (1.3% in 2026)</td><td>about $1,100</td></tr><tr><td><strong>take-home</strong></td><td><strong>about $63,850, or $5,320 a month</strong></td></tr></tbody></table></div>
+    <p>your real number depends on your 401k contributions, health insurance and anything else your employer takes out. use your pay stub, not this table.</p>
+  </section>
+  <section class="prose">
+    <h2>the two columns</h2>
+<div class="tablewrap"><table class="rtable"><thead><tr><th>line</th><th>spending it</th><th>building it</th></tr></thead><tbody><tr><td>rent</td><td>$2,400 (1br)</td><td>$1,750 (roommate)</td></tr><tr><td>car, gas, insurance</td><td>$950</td><td>$350 (paid-off car)</td></tr><tr><td>eating out</td><td>$700</td><td>$300</td></tr><tr><td>groceries</td><td>$300</td><td>$450</td></tr><tr><td>bills</td><td>$250</td><td>$250</td></tr><tr><td>buy now pay later</td><td>$250</td><td>$0</td></tr><tr><td>subscriptions</td><td>$150</td><td>$0</td></tr><tr><td>shopping</td><td>$200</td><td>$0</td></tr><tr><td>sinking fund</td><td>$0</td><td>$200</td></tr><tr><td>fun money</td><td>$0</td><td>$400</td></tr><tr><td>invest</td><td>$100</td><td>$1,600</td></tr><tr><td><strong>total</strong></td><td><strong>$5,300</strong></td><td><strong>$5,300</strong></td></tr></tbody></table></div>
+    <p>same $5,300. the gap is $1,500 a month in the invest line, which is <strong>$18,000 a year</strong>. the left side isn't reckless. it's money with no job, so it finds one on its own.</p>
+  </section>
+  <section class="prose">
+    <h2>where the $1,500 actually came from</h2>
+    <ul>
+      <li><strong>rent:</strong> $650 a month, from a roommate.</li>
+      <li><strong>the car:</strong> $600 a month, from a paid-off car.</li>
+      <li><strong>everything else:</strong> $250 a month, from smaller lines added up.</li>
+    </ul>
+    <p>the two biggest lines did most of the work. cutting coffee wouldn't have got anywhere close. that's Off-Script Rich: fix the big lines and let the small ones breathe.</p>
+  </section>
+  <section class="prose">
+    <h2>your version</h2>
+    <form class="calc" id="bcalc" onsubmit="return false">
+      <h3>give every dollar a job</h3>
+      <div class="row">
+        <label>monthly take-home<input type="number" id="b-take" value="5300" inputmode="decimal"></label>
+        <label>rent<input type="number" id="b-rent" value="1750" inputmode="decimal"></label>
+        <label>car, gas, insurance<input type="number" id="b-car" value="350" inputmode="decimal"></label>
+        <label>food (eating out + groceries)<input type="number" id="b-food" value="750" inputmode="decimal"></label>
+        <label>bills<input type="number" id="b-bills" value="250" inputmode="decimal"></label>
+        <label>subscriptions<input type="number" id="b-subs" value="0" inputmode="decimal"></label>
+        <label>everything else<input type="number" id="b-other" value="0" inputmode="decimal"></label>
+      </div>
+      <div class="result" id="bout"><span class="eyebrow">left to give a job</span><span class="big">$0</span><span class="sub"></span></div>
+    </form>
+  </section>
+  <section class="prose">
+    <h2>good to know</h2>
+<ul><li><strong>the tax line is an estimate.</strong> california brackets for 2026 are adjusted for inflation each year. i used the latest published schedule, so treat the result as within a few dollars a month, not exact.</li><li><strong>a roommate isn't for everyone.</strong> it's just the biggest single lever in this example. your biggest lever might be different.</li><li><strong>start with the invest line, not the cuts.</strong> set the transfer on payday and spend what's left.</li></ul>
+  </section>
+  <section class="prose">
+    <h2>proof</h2>
+    <ul><li><a href="https://www.irs.gov/newsroom/irs-releases-tax-inflation-adjustments-for-tax-year-2026-including-amendments-from-the-one-big-beautiful-bill" rel="noopener">IRS: tax inflation adjustments for tax year 2026</a> · single standard deduction $16,100, 12% bracket to $50,400, 22% to $105,700</li><li><a href="https://www.ssa.gov/oact/cola/cbb.html" rel="noopener">Social Security Administration: contribution and benefit base</a> · 6.2% social security, 1.45% medicare</li><li><a href="https://edd.ca.gov/en/payroll_taxes/rates_and_withholding" rel="noopener">California EDD: 2026 rates and withholding</a> · SDI withholding rate for 2026 is 1.3%, no wage cap</li><li><a href="https://www.ftb.ca.gov/forms/2025/2025-540-tax-rate-schedules.pdf" rel="noopener">California FTB: tax rate schedules</a> · latest published schedule, $5,706 single standard deduction for 2025</li></ul>
+  </section>
+  <section class="prose">
+    <h2>the boring but necessary part</h2>
+    <p>i'm not a financial adviser and this isn't personalised advice. it's what i've read, what i do, and where i got it from, all linked above so you can check my work. what you do with your money is on you.</p>
+  </section>
+  <section class="prose">
+    <h2>the rest of the library</h2>
+    <p>every guide is free and there's no email wall. take what you need.</p>
+    <p><a class="btn btn-primary" href="/guides/">all free guides</a></p>
+  </section>
+
+</main>
+
+<footer class="foot wrap">
+  <p><strong>Off-Script Rich.</strong> rich isn't the money. rich is the life the script said you couldn't have.</p>
+  <p><a href="/">home</a> · <a href="/guides/">guides</a> · <a href="https://instagram.com/livinxkp">@livinxkp</a></p>
+  <p class="mono">last checked 8 November 2026 · if something here has gone stale, comment BUDGET again and i'll have fixed it</p>
+  <p class="copyright">&copy; 2026 Off-Script Rich. all rights reserved. the guides, text and design on this site may not be copied, reproduced or republished without written permission.</p>
+</footer>
+
+<style>
+  .prose pre { position: relative; padding-top: 36px; }
+  .copypre {
+    position: absolute; top: 8px; right: 8px;
+    font-family: var(--mono); font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase;
+    background: var(--surface); color: var(--text-dim); border: 1px solid var(--line);
+    border-radius: 2px; padding: 4px 9px; cursor: pointer;
+  }
+  .copypre:hover { color: var(--text); border-color: var(--brass); }
+  .copypre[data-done="1"] { color: var(--buy); border-color: var(--buy); }
+</style>
+<script>
+(function () {
+  "use strict";
+  function fallback(text, done) {
+    var ta = document.createElement("textarea");
+    ta.value = text; ta.setAttribute("readonly", "");
+    ta.style.position = "fixed"; ta.style.top = "-1000px";
+    document.body.appendChild(ta); ta.select();
+    try { document.execCommand("copy"); done(); } catch (e) {}
+    document.body.removeChild(ta);
+  }
+  document.querySelectorAll(".prose pre").forEach(function (pre) {
+    var btn = document.createElement("button");
+    btn.type = "button"; btn.className = "copypre"; btn.textContent = "copy";
+    btn.addEventListener("click", function () {
+      var code = pre.querySelector("code");
+      var text = (code || pre).textContent;
+      var done = function () {
+        btn.textContent = "copied"; btn.setAttribute("data-done", "1");
+        setTimeout(function () { btn.textContent = "copy"; btn.removeAttribute("data-done"); }, 1800);
+      };
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(text).then(done, function () { fallback(text, done); });
+      } else { fallback(text, done); }
+    });
+    pre.appendChild(btn);
+  });
+})();
+</script>
+<script>
+(function () {
+  var f = document.getElementById("bcalc"); if (!f) return;
+  var out = document.getElementById("bout");
+  function n(id) { var v = parseFloat(document.getElementById(id).value); return isNaN(v) ? 0 : v; }
+  function run() {
+    var take = n("b-take");
+    var spend = ["b-rent","b-car","b-food","b-bills","b-subs","b-other"].reduce(function (a, id) { return a + n(id); }, 0);
+    var left = take - spend;
+    out.querySelector(".big").textContent = (left < 0 ? "-$" : "$") + Math.abs(Math.round(left)).toLocaleString("en-US");
+    out.querySelector(".sub").textContent = left >= 0
+      ? "a month with a job: about $" + Math.round(left * 12).toLocaleString("en-US") + " a year for investing, sinking funds and fun money."
+      : "you're spending more than you take home. start with the biggest line.";
+  }
+  f.addEventListener("input", run); run();
+})();
+</script>
+
+</body>
+</html>

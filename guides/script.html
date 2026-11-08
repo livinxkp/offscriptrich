@@ -1,0 +1,170 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>The Raise Plan · Off-Script Rich</title>
+<meta name="description" content="the plan i use for every raise: the split between living better and building, where the building half goes, and a calculator that shows what one raise turns into over ten years.">
+<link rel="stylesheet" href="../assets/style.css">
+<style>
+  main.stack { gap: 30px; }
+  .calc { border: 1px solid var(--line); border-left: 3px solid var(--brass); border-radius: 3px; background: var(--surface); padding: 20px 18px; display: flex; flex-direction: column; gap: 14px; max-width: var(--readw); }
+  .calc h3 { font-size: 17px; }
+  .calc .row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  @media (max-width: 560px) { .calc .row { grid-template-columns: 1fr; } }
+  .calc label { display: flex; flex-direction: column; gap: 6px; font-family: var(--mono); font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-faint); }
+  .calc input[type="number"] { font-family: var(--body); font-size: 16px; color: var(--text); background: var(--ink); border: 1px solid var(--line); border-radius: 3px; padding: 10px 11px; width: 100%; min-width: 0; }
+  .calc input:focus { outline: none; border-color: var(--brass); }
+  .calc .hint { font-family: var(--body); font-size: 12.5px; letter-spacing: 0; text-transform: none; color: var(--text-faint); line-height: 1.4; }
+  .result { border-top: 1px solid var(--line); padding-top: 14px; display: flex; flex-direction: column; gap: 6px; }
+  .result .big { font-family: var(--display); font-weight: 800; font-size: clamp(30px, 7vw, 42px); letter-spacing: -0.03em; line-height: 1; font-variant-numeric: tabular-nums; }
+  .result .sub { font-size: 14px; color: var(--text-dim); }
+  .rtable { width: 100%; border-collapse: collapse; font-size: 14px; font-variant-numeric: tabular-nums; }
+  .rtable th, .rtable td { text-align: left; padding: 8px 6px; border-bottom: 1px solid var(--line); vertical-align: top; }
+  .rtable th { font-family: var(--mono); font-size: 10.5px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-faint); font-weight: 500; }
+  .tablewrap { overflow-x: auto; max-width: var(--readw); }
+  .prose ul, .prose ol { margin: 0; padding-left: 20px; display: flex; flex-direction: column; gap: 8px; color: var(--text-dim); }
+  .prose li strong { color: var(--text); }
+  .prose a { color: var(--brass); }
+</style>
+</head>
+<body>
+
+<header class="masthead">
+  <div class="masthead-in wrap">
+    <a class="wordmark" href="/"><span class="off">OFF-SCRIPT</span> <span class="rich">RICH</span></a>
+    <nav class="navlinks">
+      <a href="/guides/" aria-current="page">guides</a>
+      <a href="/guides/stocks.html">the tape</a>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap stack">
+
+  <p class="eyebrow"><span class="chip" data-pillar="money">money</span> <span class="keyword">SCRIPT</span></p>
+
+  <h1>the raise plan</h1>
+
+  <p class="lede">hey, it's KP. you commented <strong>SCRIPT</strong>, so here it is. the skit showed two friends with the same raise. this is the plan friend B was running, written out so you can use it the next time your pay goes up, with a calculator for what one raise turns into.</p>
+
+  <section class="prose">
+    <h2>the idea</h2>
+    <p>lifestyle creep isn't spending money. it's spending <strong>all</strong> of every raise automatically, so your costs rise exactly as fast as your pay. you never feel richer, because you never are. the fix isn't refusing the upgrade. it's deciding the split before the money arrives.</p>
+  </section>
+  <section class="prose">
+    <h2>the plan</h2>
+<pre><code>EVERY RAISE, BEFORE THE FIRST NEW PAYCHECK:
+
+1. work out the monthly difference after tax:  $______
+2. split it:
+   ___% (i use 50%)  -&gt; building: automatic transfer on payday
+   ___% (i use 50%)  -&gt; living better, guilt-free
+3. building money goes in this order:
+   a. emergency fund, until it hits its target
+   b. any employer 401k match you&#x27;re not getting yet
+   c. a roth ira (comment ROTH for the 2026 limits)
+   d. a side project or skill that adds another income
+4. change the automatic transfer the same day.</code></pre>
+    <p>the order matters. the match is free money, so it comes early. the side project is how friend B's side income passed his rent.</p>
+  </section>
+  <section class="prose">
+    <h2>what one raise turns into</h2>
+    <form class="calc" id="scalc" onsubmit="return false">
+      <h3>one raise, invested</h3>
+      <div class="row">
+        <label>raise per year, after tax<input type="number" id="s-raise" value="6000" inputmode="decimal"></label>
+        <label>% of it you invest<input type="number" id="s-pct" value="50" inputmode="decimal"></label>
+        <label>years<input type="number" id="s-years" value="10" inputmode="decimal"></label>
+        <label>growth rate to test (%)<input type="number" id="s-rate" value="5" inputmode="decimal"><span class="hint">an assumption you choose, not a forecast. try 0 to see contributions only.</span></label>
+      </div>
+      <div class="result" id="sout"><span class="eyebrow">after the years you chose</span><span class="big">$0</span><span class="sub"></span></div>
+    </form>
+    <p>that's one raise. most careers have a lot of them. that's Off-Script Rich: same start, different script.</p>
+  </section>
+  <section class="prose">
+    <h2>good to know</h2>
+<ul><li><strong>the 50/50 is mine, not a rule.</strong> if you're behind on the emergency fund, send more to building. if you've been tight for years, send more to living. the point is deciding.</li><li><strong>returns aren't guaranteed.</strong> investments go down as well as up. the calculator is for testing ideas, not planning on a number.</li><li><strong>check the tax.</strong> a $10,000 raise isn't $10,000 a year in your account. use the change on your pay stub.</li></ul>
+  </section>
+  <section class="prose">
+    <h2>proof</h2>
+    <ul><li><a href="https://www.investor.gov/financial-tools-calculators/calculators/compound-interest-calculator" rel="noopener">Investor.gov (SEC): compound interest calculator</a> · check the math yourself</li><li><a href="https://www.irs.gov/retirement-plans/plan-participant-employee/retirement-topics-ira-contribution-limits" rel="noopener">IRS: IRA contribution limits</a></li></ul>
+  </section>
+  <section class="prose">
+    <h2>the boring but necessary part</h2>
+    <p>i'm not a financial adviser and this isn't personalised advice. it's what i've read, what i do, and where i got it from, all linked above so you can check my work. what you do with your money is on you.</p>
+  </section>
+  <section class="prose">
+    <h2>the rest of the library</h2>
+    <p>every guide is free and there's no email wall. take what you need.</p>
+    <p><a class="btn btn-primary" href="/guides/">all free guides</a></p>
+  </section>
+
+</main>
+
+<footer class="foot wrap">
+  <p><strong>Off-Script Rich.</strong> rich isn't the money. rich is the life the script said you couldn't have.</p>
+  <p><a href="/">home</a> · <a href="/guides/">guides</a> · <a href="https://instagram.com/livinxkp">@livinxkp</a></p>
+  <p class="mono">last checked 8 November 2026 · if something here has gone stale, comment SCRIPT again and i'll have fixed it</p>
+  <p class="copyright">&copy; 2026 Off-Script Rich. all rights reserved. the guides, text and design on this site may not be copied, reproduced or republished without written permission.</p>
+</footer>
+
+<style>
+  .prose pre { position: relative; padding-top: 36px; }
+  .copypre {
+    position: absolute; top: 8px; right: 8px;
+    font-family: var(--mono); font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase;
+    background: var(--surface); color: var(--text-dim); border: 1px solid var(--line);
+    border-radius: 2px; padding: 4px 9px; cursor: pointer;
+  }
+  .copypre:hover { color: var(--text); border-color: var(--brass); }
+  .copypre[data-done="1"] { color: var(--buy); border-color: var(--buy); }
+</style>
+<script>
+(function () {
+  "use strict";
+  function fallback(text, done) {
+    var ta = document.createElement("textarea");
+    ta.value = text; ta.setAttribute("readonly", "");
+    ta.style.position = "fixed"; ta.style.top = "-1000px";
+    document.body.appendChild(ta); ta.select();
+    try { document.execCommand("copy"); done(); } catch (e) {}
+    document.body.removeChild(ta);
+  }
+  document.querySelectorAll(".prose pre").forEach(function (pre) {
+    var btn = document.createElement("button");
+    btn.type = "button"; btn.className = "copypre"; btn.textContent = "copy";
+    btn.addEventListener("click", function () {
+      var code = pre.querySelector("code");
+      var text = (code || pre).textContent;
+      var done = function () {
+        btn.textContent = "copied"; btn.setAttribute("data-done", "1");
+        setTimeout(function () { btn.textContent = "copy"; btn.removeAttribute("data-done"); }, 1800);
+      };
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(text).then(done, function () { fallback(text, done); });
+      } else { fallback(text, done); }
+    });
+    pre.appendChild(btn);
+  });
+})();
+</script>
+<script>
+(function () {
+  var f = document.getElementById("scalc"); if (!f) return;
+  var out = document.getElementById("sout");
+  function n(id) { var v = parseFloat(document.getElementById(id).value); return isNaN(v) ? 0 : v; }
+  function money(x) { return "$" + Math.round(x).toLocaleString("en-US"); }
+  function run() {
+    var raise = n("s-raise"), pct = n("s-pct") / 100, years = Math.max(0, Math.round(n("s-years"))), r = n("s-rate") / 100;
+    var monthly = raise / 12 * pct, total = 0, m = years * 12, i = r / 12;
+    for (var k = 0; k < m; k++) { total = total * (1 + i) + monthly; }
+    out.querySelector(".big").textContent = money(total);
+    out.querySelector(".sub").textContent = "investing " + money(monthly) + " a month of this one raise for " + years + " years, at the growth rate you typed. you put in " + money(monthly * m) + ".";
+  }
+  f.addEventListener("input", run); run();
+})();
+</script>
+
+</body>
+</html>

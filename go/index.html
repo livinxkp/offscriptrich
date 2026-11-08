@@ -206,8 +206,9 @@
 
     if (exact) {
       // only jump on its own when no longer word starts with this one
-      // (ETF must not fire while they are still typing ETFS)
-      var longer = WORDS.some(function (w) { return w !== q && w.indexOf(q) === 0; });
+      // (ETF must not fire while they are still typing ETFS).
+      // a longer word that opens the same guide (RATE / RATES) doesn't count.
+      var longer = WORDS.some(function (w) { return w !== q && w.indexOf(q) === 0 && INDEX[w].href !== exact.href; });
       if (!longer) {
         say("found <b>" + esc(q) + "</b>, opening…", true);
         timer = setTimeout(function () { open(exact, q); }, 450);

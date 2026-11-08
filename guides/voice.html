@@ -1,0 +1,156 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Clone Your Voice, Dub Your Reels · Off-Script Rich</title>
+<meta name="description" content="the setup for cloning your voice in elevenlabs and dubbing a reel into spanish: what the free plan does and doesn&#x27;t include, how to record the sample, and the disclosure rule. not sponsored.">
+<link rel="stylesheet" href="../assets/style.css">
+<style>
+  main.stack { gap: 30px; }
+  .calc { border: 1px solid var(--line); border-left: 3px solid var(--brass); border-radius: 3px; background: var(--surface); padding: 20px 18px; display: flex; flex-direction: column; gap: 14px; max-width: var(--readw); }
+  .calc h3 { font-size: 17px; }
+  .calc .row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  @media (max-width: 560px) { .calc .row { grid-template-columns: 1fr; } }
+  .calc label { display: flex; flex-direction: column; gap: 6px; font-family: var(--mono); font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-faint); }
+  .calc input[type="number"] { font-family: var(--body); font-size: 16px; color: var(--text); background: var(--ink); border: 1px solid var(--line); border-radius: 3px; padding: 10px 11px; width: 100%; min-width: 0; }
+  .calc input:focus { outline: none; border-color: var(--brass); }
+  .calc .hint { font-family: var(--body); font-size: 12.5px; letter-spacing: 0; text-transform: none; color: var(--text-faint); line-height: 1.4; }
+  .result { border-top: 1px solid var(--line); padding-top: 14px; display: flex; flex-direction: column; gap: 6px; }
+  .result .big { font-family: var(--display); font-weight: 800; font-size: clamp(30px, 7vw, 42px); letter-spacing: -0.03em; line-height: 1; font-variant-numeric: tabular-nums; }
+  .result .sub { font-size: 14px; color: var(--text-dim); }
+  .rtable { width: 100%; border-collapse: collapse; font-size: 14px; font-variant-numeric: tabular-nums; }
+  .rtable th, .rtable td { text-align: left; padding: 8px 6px; border-bottom: 1px solid var(--line); vertical-align: top; }
+  .rtable th { font-family: var(--mono); font-size: 10.5px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-faint); font-weight: 500; }
+  .tablewrap { overflow-x: auto; max-width: var(--readw); }
+  .prose ul, .prose ol { margin: 0; padding-left: 20px; display: flex; flex-direction: column; gap: 8px; color: var(--text-dim); }
+  .prose li strong { color: var(--text); }
+  .prose a { color: var(--brass); }
+</style>
+</head>
+<body>
+
+<header class="masthead">
+  <div class="masthead-in wrap">
+    <a class="wordmark" href="/"><span class="off">OFF-SCRIPT</span> <span class="rich">RICH</span></a>
+    <nav class="navlinks">
+      <a href="/guides/" aria-current="page">guides</a>
+      <a href="/guides/stocks.html">the tape</a>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap stack">
+
+  <p class="eyebrow"><span class="chip" data-pillar="ai">ai</span> <span class="keyword">VOICE</span></p>
+
+  <h1>clone your voice, dub your reels</h1>
+
+  <p class="lede">hey, it's KP. you commented <strong>VOICE</strong>, so here it is. here's the setup from the reel, step by step: how to record the sample so the clone sounds like you, how to dub a finished reel, and what the free plan won't do. not sponsored, i just use it.</p>
+
+  <section class="prose">
+    <h2>which plan you need</h2>
+<div class="tablewrap"><table class="rtable"><thead><tr><th></th><th>free</th><th>starter</th></tr></thead><tbody><tr><td>price</td><td>$0</td><td>$6 a month ($1 for the first month when i checked)</td></tr><tr><td>credits</td><td>10,000 a month</td><td>30,000 a month</td></tr><tr><td>instant voice cloning</td><td>not included</td><td>included</td></tr><tr><td>commercial license</td><td>not included</td><td>included</td></tr><tr><td>dubbing studio</td><td>not included</td><td>included</td></tr></tbody></table></div>
+    <p>if you want your own voice, or you'll post it on a page that earns money, you need a paid plan.</p>
+  </section>
+  <section class="prose">
+    <h2>step one: record the sample</h2>
+    <ol>
+      <li>ElevenLabs recommends <strong>1 to 2 minutes of good audio</strong> for an instant clone. more isn't better past that.</li>
+      <li>record in a quiet room, phone 20cm from your mouth, no music.</li>
+      <li>talk the way you talk on camera. read a caption or two, then just explain something you know well.</li>
+      <li>export as MP3 at 192kbps or higher, which is their recommended format.</li>
+    </ol>
+  </section>
+  <section class="prose">
+    <h2>step two: make the clone</h2>
+    <ol>
+      <li>in ElevenLabs, go to <strong>voices</strong>, click the plus icon, choose <strong>instant voice clone</strong>.</li>
+      <li>upload the sample, name it, confirm it's your voice.</li>
+      <li>test it: paste a caption into text to speech and pick your voice.</li>
+    </ol>
+  </section>
+  <section class="prose">
+    <h2>step three: dub a reel</h2>
+    <ol>
+      <li>open <strong>dubbing</strong> and upload the finished reel.</li>
+      <li>pick the target language. their dubbing page lists 90+ languages.</li>
+      <li>download, watch it all the way through, then post it as its own reel or on a second account.</li>
+    </ol>
+    <p>that's Off-Script Rich: one reel, every language.</p>
+  </section>
+  <section class="prose">
+    <h2>the prompt for a clean dub script</h2>
+<pre><code>Translate this reel script into [language] for a native speaker in [country].
+Keep it casual and spoken, the same length or shorter, no formal phrasing.
+Keep these words in English: [brand names, keywords].
+Flag any line where a direct translation would sound odd and give a natural alternative.
+
+Script: [paste]</code></pre>
+  </section>
+  <section class="prose">
+    <h2>good to know</h2>
+<ul><li><strong>only clone your own voice.</strong> cloning someone else's voice without permission is against ElevenLabs' rules and can be illegal.</li><li><strong>tell people.</strong> if a reel is AI-dubbed, say so on screen or in the caption. it's the honest move and platforms increasingly label it anyway.</li><li><strong>prices and credits change.</strong> check the pricing page before you pay.</li><li><strong>mistranslations happen.</strong> ask a native speaker to watch one before you post a batch.</li></ul>
+  </section>
+  <section class="prose">
+    <h2>proof</h2>
+    <ul><li><a href="https://elevenlabs.io/pricing" rel="noopener">ElevenLabs pricing</a> · free 10k credits, starter $6 a month with instant voice cloning, commercial license and dubbing studio</li><li><a href="https://elevenlabs.io/docs/eleven-creative/voices/voice-cloning/instant-voice-cloning" rel="noopener">ElevenLabs docs: instant voice cloning</a> · 1 to 2 minutes of good audio, MP3 192kbps or higher</li><li><a href="https://elevenlabs.io/dubbing" rel="noopener">ElevenLabs: AI dubbing</a></li></ul>
+  </section>
+  <section class="prose">
+    <h2>the rest of the library</h2>
+    <p>every guide is free and there's no email wall. take what you need.</p>
+    <p><a class="btn btn-primary" href="/guides/">all free guides</a></p>
+  </section>
+
+</main>
+
+<footer class="foot wrap">
+  <p><strong>Off-Script Rich.</strong> rich isn't the money. rich is the life the script said you couldn't have.</p>
+  <p><a href="/">home</a> · <a href="/guides/">guides</a> · <a href="https://instagram.com/livinxkp">@livinxkp</a></p>
+  <p class="mono">last checked 8 November 2026 · if something here has gone stale, comment VOICE again and i'll have fixed it</p>
+  <p class="copyright">&copy; 2026 Off-Script Rich. all rights reserved. the guides, text and design on this site may not be copied, reproduced or republished without written permission.</p>
+</footer>
+
+<style>
+  .prose pre { position: relative; padding-top: 36px; }
+  .copypre {
+    position: absolute; top: 8px; right: 8px;
+    font-family: var(--mono); font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase;
+    background: var(--surface); color: var(--text-dim); border: 1px solid var(--line);
+    border-radius: 2px; padding: 4px 9px; cursor: pointer;
+  }
+  .copypre:hover { color: var(--text); border-color: var(--brass); }
+  .copypre[data-done="1"] { color: var(--buy); border-color: var(--buy); }
+</style>
+<script>
+(function () {
+  "use strict";
+  function fallback(text, done) {
+    var ta = document.createElement("textarea");
+    ta.value = text; ta.setAttribute("readonly", "");
+    ta.style.position = "fixed"; ta.style.top = "-1000px";
+    document.body.appendChild(ta); ta.select();
+    try { document.execCommand("copy"); done(); } catch (e) {}
+    document.body.removeChild(ta);
+  }
+  document.querySelectorAll(".prose pre").forEach(function (pre) {
+    var btn = document.createElement("button");
+    btn.type = "button"; btn.className = "copypre"; btn.textContent = "copy";
+    btn.addEventListener("click", function () {
+      var code = pre.querySelector("code");
+      var text = (code || pre).textContent;
+      var done = function () {
+        btn.textContent = "copied"; btn.setAttribute("data-done", "1");
+        setTimeout(function () { btn.textContent = "copy"; btn.removeAttribute("data-done"); }, 1800);
+      };
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(text).then(done, function () { fallback(text, done); });
+      } else { fallback(text, done); }
+    });
+    pre.appendChild(btn);
+  });
+})();
+</script>
+
+</body>
+</html>

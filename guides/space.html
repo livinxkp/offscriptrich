@@ -1,0 +1,159 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Alternative Data, Explained · Off-Script Rich</title>
+<meta name="description" content="what alternative data is, what the berkeley satellite study actually found (4 to 5% in the three days around earnings), the oil tank and coffee examples, and what a regular investor should do with this.">
+<link rel="stylesheet" href="../assets/style.css">
+<style>
+  main.stack { gap: 30px; }
+  .calc { border: 1px solid var(--line); border-left: 3px solid var(--brass); border-radius: 3px; background: var(--surface); padding: 20px 18px; display: flex; flex-direction: column; gap: 14px; max-width: var(--readw); }
+  .calc h3 { font-size: 17px; }
+  .calc .row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  @media (max-width: 560px) { .calc .row { grid-template-columns: 1fr; } }
+  .calc label { display: flex; flex-direction: column; gap: 6px; font-family: var(--mono); font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-faint); }
+  .calc input[type="number"] { font-family: var(--body); font-size: 16px; color: var(--text); background: var(--ink); border: 1px solid var(--line); border-radius: 3px; padding: 10px 11px; width: 100%; min-width: 0; }
+  .calc input:focus { outline: none; border-color: var(--brass); }
+  .calc .hint { font-family: var(--body); font-size: 12.5px; letter-spacing: 0; text-transform: none; color: var(--text-faint); line-height: 1.4; }
+  .result { border-top: 1px solid var(--line); padding-top: 14px; display: flex; flex-direction: column; gap: 6px; }
+  .result .big { font-family: var(--display); font-weight: 800; font-size: clamp(30px, 7vw, 42px); letter-spacing: -0.03em; line-height: 1; font-variant-numeric: tabular-nums; }
+  .result .sub { font-size: 14px; color: var(--text-dim); }
+  .rtable { width: 100%; border-collapse: collapse; font-size: 14px; font-variant-numeric: tabular-nums; }
+  .rtable th, .rtable td { text-align: left; padding: 8px 6px; border-bottom: 1px solid var(--line); vertical-align: top; }
+  .rtable th { font-family: var(--mono); font-size: 10.5px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-faint); font-weight: 500; }
+  .tablewrap { overflow-x: auto; max-width: var(--readw); }
+  .prose ul, .prose ol { margin: 0; padding-left: 20px; display: flex; flex-direction: column; gap: 8px; color: var(--text-dim); }
+  .prose li strong { color: var(--text); }
+  .prose a { color: var(--brass); }
+</style>
+</head>
+<body>
+
+<header class="masthead">
+  <div class="masthead-in wrap">
+    <a class="wordmark" href="/"><span class="off">OFF-SCRIPT</span> <span class="rich">RICH</span></a>
+    <nav class="navlinks">
+      <a href="/guides/" aria-current="page">guides</a>
+      <a href="/guides/stocks.html">the tape</a>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap stack">
+
+  <p class="eyebrow"><span class="chip" data-pillar="money">money</span> <span class="keyword">SPACE</span></p>
+
+  <h1>how wall street counts your car from space</h1>
+
+  <p class="lede">hey, it's KP. you commented <strong>SPACE</strong>, so here it is. the reel was the hook. this is the full picture: what the berkeley study actually measured, the other kinds of alternative data funds buy, and the honest answer to what a regular investor should do about an edge they can't get.</p>
+
+  <section class="prose">
+    <h2>who this is for</h2>
+    <p>you, if you invest in individual stocks or you've ever traded around an earnings report. skip it if you only own a broad index fund and never touch it, because this mostly confirms you're playing the right game.</p>
+  </section>
+  <section class="prose">
+    <h2>the original version</h2>
+    <p>long before satellites, Walmart founder Sam Walton was known for flying over store parking lots and counting cars to read how stores were doing. the Berkeley researchers below open their paper with that story. the idea is old. what changed is that computers can now count every lot in america, every day.</p>
+  </section>
+  <section class="prose">
+    <h2>what the berkeley study found</h2>
+    <p>researchers at Berkeley Haas used about <strong>4.8 million images</strong> of parking lots at around <strong>67,000 stores</strong> owned by 44 major US retailers, including Walmart, from satellite data firms RS Metrics and Orbital Insight.</p>
+    <p>the finding: year-over-year changes in the number of cars predicted earnings news, and the informational advantage was worth about <strong>4% to 5% in the three days around quarterly earnings announcements</strong>. the researchers also found that small individual investors tended to be on the other side of those trades.</p>
+  </section>
+  <section class="prose">
+    <h2>the other alternative data</h2>
+    <ul>
+      <li><strong>oil tanks.</strong> many oil storage tanks have floating roofs that sit on top of the oil. less oil, the roof sits lower and the shadow inside the tank grows. measure the shadow from orbit and you can estimate how full the tank is.</li>
+      <li><strong>weather.</strong> frost hit brazil's coffee belt on 20 July 2021. the International Coffee Organization reported the daily coffee price rose 25.4% in one week, from 165.65 to 207.8 US cents per lb by 26 July. anyone watching the weather data had the news before the price did.</li>
+      <li><strong>everything else.</strong> credit card panels, app downloads, web traffic and phone location data are all sold to funds under the same label.</li>
+    </ul>
+  </section>
+  <section class="prose">
+    <h2>what to actually do with this</h2>
+    <p>you won't out-satellite a hedge fund. so don't play their game.</p>
+    <ol>
+      <li><strong>don't trade the three days around earnings off a headline.</strong> that's exactly the window the study says the edge sits in, and you're the one without the photos.</li>
+      <li><strong>if you hold for years, this matters a lot less.</strong> a 4% edge across three days is a short-term trading game. owning a business for a decade is a different game.</li>
+      <li><strong>use what is free and public.</strong> company filings on SEC EDGAR, the insider tape on this site (comment STOCKS), and the company's own numbers.</li>
+    </ol>
+    <p>none of this is illegal. it's a different game. that's Off-Script Rich: know which game you're actually in.</p>
+  </section>
+  <section class="prose">
+    <h2>the prompt</h2>
+<pre><code>I hold [ticker] and its next earnings report is on [date].
+1. What alternative data would a hedge fund likely use to predict this company&#x27;s results (e.g. parking lots, card spend, app downloads, web traffic)? Explain each in one line.
+2. Is there any free public data I can check myself (company filings, government data, public web data)? Give me the source names.
+3. In plain words, what is the risk of buying or selling in the 3 days around earnings as a regular investor?
+Do not predict the stock price and do not tell me to buy or sell.</code></pre>
+  </section>
+  <section class="prose">
+    <h2>good to know</h2>
+<ul><li><strong>the edge shrinks once it's known.</strong> the researchers themselves noted that publishing the study could change the market for this data. old studies describe the past, not a guaranteed edge today.</li><li><strong>the study is about retailers.</strong> parking lots say a lot about Walmart and very little about a software company.</li><li><strong>not a picks list.</strong> nothing here names a stock to buy. it's about knowing who is on the other side of your trade.</li></ul>
+  </section>
+  <section class="prose">
+    <h2>proof</h2>
+    <ul><li><a href="https://newsroom.haas.berkeley.edu/how-hedge-funds-use-satellite-images-to-beat-wall-street-and-main-street/" rel="noopener">Berkeley Haas: how hedge funds use satellite images to beat Wall Street and Main Street</a> · 28 May 2019, 4.8M images, 67,000 stores, 44 retailers, 4% to 5% in the three days around earnings</li><li><a href="https://doi.org/10.1017/S0022109023001448" rel="noopener">Katona, Painter, Patatoukas and Zeng: On the Capital Market Consequences of Big Data, Evidence from Outer Space</a> · Journal of Financial and Quantitative Analysis, the published paper, opens with the Sam Walton story</li><li><a href="https://www.teaandcoffee.net/news/27534/arabica-prices-hit-highest-levels-since-2014-but-concerns-about-origins-grow/" rel="noopener">Tea &amp; Coffee Trade Journal on the ICO July 2021 report</a> · frost on 20 July 2021, daily price up 25.4% in one week</li><li><a href="https://www.sec.gov/edgar/search/" rel="noopener">SEC EDGAR full-text search</a> · every public filing, free</li></ul>
+  </section>
+  <section class="prose">
+    <h2>the boring but necessary part</h2>
+    <p>i'm not a financial adviser and this isn't personalised advice. it's what i've read, what i do, and where i got it from, all linked above so you can check my work. what you do with your money is on you.</p>
+  </section>
+  <section class="prose">
+    <h2>the rest of the library</h2>
+    <p>every guide is free and there's no email wall. take what you need.</p>
+    <p><a class="btn btn-primary" href="/guides/">all free guides</a></p>
+  </section>
+
+</main>
+
+<footer class="foot wrap">
+  <p><strong>Off-Script Rich.</strong> rich isn't the money. rich is the life the script said you couldn't have.</p>
+  <p><a href="/">home</a> · <a href="/guides/">guides</a> · <a href="https://instagram.com/livinxkp">@livinxkp</a></p>
+  <p class="mono">last checked 8 November 2026 · if something here has gone stale, comment SPACE again and i'll have fixed it</p>
+  <p class="copyright">&copy; 2026 Off-Script Rich. all rights reserved. the guides, text and design on this site may not be copied, reproduced or republished without written permission.</p>
+</footer>
+
+<style>
+  .prose pre { position: relative; padding-top: 36px; }
+  .copypre {
+    position: absolute; top: 8px; right: 8px;
+    font-family: var(--mono); font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase;
+    background: var(--surface); color: var(--text-dim); border: 1px solid var(--line);
+    border-radius: 2px; padding: 4px 9px; cursor: pointer;
+  }
+  .copypre:hover { color: var(--text); border-color: var(--brass); }
+  .copypre[data-done="1"] { color: var(--buy); border-color: var(--buy); }
+</style>
+<script>
+(function () {
+  "use strict";
+  function fallback(text, done) {
+    var ta = document.createElement("textarea");
+    ta.value = text; ta.setAttribute("readonly", "");
+    ta.style.position = "fixed"; ta.style.top = "-1000px";
+    document.body.appendChild(ta); ta.select();
+    try { document.execCommand("copy"); done(); } catch (e) {}
+    document.body.removeChild(ta);
+  }
+  document.querySelectorAll(".prose pre").forEach(function (pre) {
+    var btn = document.createElement("button");
+    btn.type = "button"; btn.className = "copypre"; btn.textContent = "copy";
+    btn.addEventListener("click", function () {
+      var code = pre.querySelector("code");
+      var text = (code || pre).textContent;
+      var done = function () {
+        btn.textContent = "copied"; btn.setAttribute("data-done", "1");
+        setTimeout(function () { btn.textContent = "copy"; btn.removeAttribute("data-done"); }, 1800);
+      };
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(text).then(done, function () { fallback(text, done); });
+      } else { fallback(text, done); }
+    });
+    pre.appendChild(btn);
+  });
+})();
+</script>
+
+</body>
+</html>

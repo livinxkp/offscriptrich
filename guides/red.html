@@ -1,0 +1,165 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>The Red-Day Checklist · Off-Script Rich</title>
+<meta name="description" content="the checklist i run on a red day before i touch anything: the five questions, the wash sale rule to know before you sell at a loss, and the one thing to do at 4pm.">
+<link rel="stylesheet" href="../assets/style.css">
+<style>
+  main.stack { gap: 30px; }
+  .calc { border: 1px solid var(--line); border-left: 3px solid var(--brass); border-radius: 3px; background: var(--surface); padding: 20px 18px; display: flex; flex-direction: column; gap: 14px; max-width: var(--readw); }
+  .calc h3 { font-size: 17px; }
+  .calc .row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  @media (max-width: 560px) { .calc .row { grid-template-columns: 1fr; } }
+  .calc label { display: flex; flex-direction: column; gap: 6px; font-family: var(--mono); font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-faint); }
+  .calc input[type="number"] { font-family: var(--body); font-size: 16px; color: var(--text); background: var(--ink); border: 1px solid var(--line); border-radius: 3px; padding: 10px 11px; width: 100%; min-width: 0; }
+  .calc input:focus { outline: none; border-color: var(--brass); }
+  .calc .hint { font-family: var(--body); font-size: 12.5px; letter-spacing: 0; text-transform: none; color: var(--text-faint); line-height: 1.4; }
+  .result { border-top: 1px solid var(--line); padding-top: 14px; display: flex; flex-direction: column; gap: 6px; }
+  .result .big { font-family: var(--display); font-weight: 800; font-size: clamp(30px, 7vw, 42px); letter-spacing: -0.03em; line-height: 1; font-variant-numeric: tabular-nums; }
+  .result .sub { font-size: 14px; color: var(--text-dim); }
+  .rtable { width: 100%; border-collapse: collapse; font-size: 14px; font-variant-numeric: tabular-nums; }
+  .rtable th, .rtable td { text-align: left; padding: 8px 6px; border-bottom: 1px solid var(--line); vertical-align: top; }
+  .rtable th { font-family: var(--mono); font-size: 10.5px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-faint); font-weight: 500; }
+  .tablewrap { overflow-x: auto; max-width: var(--readw); }
+  .prose ul, .prose ol { margin: 0; padding-left: 20px; display: flex; flex-direction: column; gap: 8px; color: var(--text-dim); }
+  .prose li strong { color: var(--text); }
+  .prose a { color: var(--brass); }
+</style>
+</head>
+<body>
+
+<header class="masthead">
+  <div class="masthead-in wrap">
+    <a class="wordmark" href="/"><span class="off">OFF-SCRIPT</span> <span class="rich">RICH</span></a>
+    <nav class="navlinks">
+      <a href="/guides/" aria-current="page">guides</a>
+      <a href="/guides/stocks.html">the tape</a>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap stack">
+
+  <p class="eyebrow"><span class="chip" data-pillar="money">money</span> <span class="keyword">RED</span></p>
+
+  <h1>the red-day checklist</h1>
+
+  <p class="lede">hey, it's KP. you commented <strong>RED</strong>, so here it is. this is the checklist from the reel, the one i run before i touch anything on a red day. it takes about ten minutes and it's built to stop me from selling on a feeling.</p>
+
+  <section class="prose">
+    <h2>who this is for</h2>
+    <p>you, if you just watched your account drop and your thumb is hovering over sell. skip it if you're a day trader, because this is built for people who hold for years.</p>
+  </section>
+  <section class="prose">
+    <h2>the checklist</h2>
+<pre><code>RED DAY CHECKLIST              date: ______
+
+1. what&#x27;s down?          ticker/fund: ______  -__% today
+2. why?                  one line, from a real source: ______
+3. did the BUSINESS change, or only the PRICE?
+                         business / price
+4. would i buy it today at this price if i didn&#x27;t own it?
+                         yes / no / not sure
+5. do i need this money in the next 12 months?
+                         yes / no
+
+if 3 = price and 5 = no  -&gt; do nothing. close the app.
+if 3 = business          -&gt; re-read why you bought it.
+if 5 = yes               -&gt; that money was in the wrong place.
+                            fix the plan, not today&#x27;s trade.</code></pre>
+    <p>i fill this in after the close at 4pm eastern, never during the drop. the market will still be there tomorrow.</p>
+  </section>
+  <section class="prose">
+    <h2>before you sell at a loss: the wash sale rule</h2>
+    <p>if you sell something at a loss and buy the same or a <strong>substantially identical</strong> security within <strong>30 days before or after</strong> the sale, the IRS calls it a wash sale and you can't deduct that loss now. instead it gets added to the cost basis of the new shares. so selling to "harvest" a loss and buying straight back doesn't do what people think.</p>
+    <p>this only matters in a taxable brokerage account. inside a 401k or IRA, gains and losses aren't taxed year to year anyway.</p>
+  </section>
+  <section class="prose">
+    <h2>what i actually do on red days</h2>
+    <ul>
+      <li><strong>keep the automatic contributions running.</strong> buying on schedule means red days buy more shares for the same money.</li>
+      <li><strong>write the number down, then stop looking.</strong> checking every hour doesn't change the price.</li>
+      <li><strong>keep the emergency fund separate.</strong> people sell on red days when they need the cash. if the cash lives elsewhere, the red day is just a number.</li>
+    </ul>
+    <p>that's Off-Script Rich: staying in the game on the red days too.</p>
+  </section>
+  <section class="prose">
+    <h2>the prompt</h2>
+<pre><code>My [ticker or fund] is down [x]% today.
+1. Find the main reason reported today and give me the source.
+2. Did anything about the business itself change (earnings, guidance, a lawsuit, a product) or is this a market-wide or sector move?
+3. List 3 questions I should answer before deciding to do anything.
+Do not tell me to buy or sell, and do not predict tomorrow&#x27;s price.</code></pre>
+  </section>
+  <section class="prose">
+    <h2>good to know</h2>
+<ul><li><strong>not a reason to never sell.</strong> if question 3 says the business really changed, selling can be the right call. the checklist just makes sure it's the business deciding and not your stomach.</li><li><strong>wash sales count across accounts.</strong> buying the same stock in your IRA, or your spouse buying it, can still trigger the rule. ask a tax pro if you're harvesting losses.</li><li><strong>a heatmap helps with question 2.</strong> comment MAP on that reel for the two-minute read.</li></ul>
+  </section>
+  <section class="prose">
+    <h2>proof</h2>
+    <ul><li><a href="https://www.irs.gov/publications/p550" rel="noopener">IRS Publication 550, Investment Income and Expenses</a> · see the Wash Sales section</li><li><a href="https://www.fidelity.com/learning-center/personal-finance/wash-sales-rules-tax" rel="noopener">Fidelity: wash-sale rules</a> · 30 days before or after, disallowed loss added to the cost basis of the new shares</li></ul>
+  </section>
+  <section class="prose">
+    <h2>the boring but necessary part</h2>
+    <p>i'm not a financial adviser and this isn't personalised advice. it's what i've read, what i do, and where i got it from, all linked above so you can check my work. what you do with your money is on you.</p>
+  </section>
+  <section class="prose">
+    <h2>the rest of the library</h2>
+    <p>every guide is free and there's no email wall. take what you need.</p>
+    <p><a class="btn btn-primary" href="/guides/">all free guides</a></p>
+  </section>
+
+</main>
+
+<footer class="foot wrap">
+  <p><strong>Off-Script Rich.</strong> rich isn't the money. rich is the life the script said you couldn't have.</p>
+  <p><a href="/">home</a> · <a href="/guides/">guides</a> · <a href="https://instagram.com/livinxkp">@livinxkp</a></p>
+  <p class="mono">last checked 8 November 2026 · if something here has gone stale, comment RED again and i'll have fixed it</p>
+  <p class="copyright">&copy; 2026 Off-Script Rich. all rights reserved. the guides, text and design on this site may not be copied, reproduced or republished without written permission.</p>
+</footer>
+
+<style>
+  .prose pre { position: relative; padding-top: 36px; }
+  .copypre {
+    position: absolute; top: 8px; right: 8px;
+    font-family: var(--mono); font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase;
+    background: var(--surface); color: var(--text-dim); border: 1px solid var(--line);
+    border-radius: 2px; padding: 4px 9px; cursor: pointer;
+  }
+  .copypre:hover { color: var(--text); border-color: var(--brass); }
+  .copypre[data-done="1"] { color: var(--buy); border-color: var(--buy); }
+</style>
+<script>
+(function () {
+  "use strict";
+  function fallback(text, done) {
+    var ta = document.createElement("textarea");
+    ta.value = text; ta.setAttribute("readonly", "");
+    ta.style.position = "fixed"; ta.style.top = "-1000px";
+    document.body.appendChild(ta); ta.select();
+    try { document.execCommand("copy"); done(); } catch (e) {}
+    document.body.removeChild(ta);
+  }
+  document.querySelectorAll(".prose pre").forEach(function (pre) {
+    var btn = document.createElement("button");
+    btn.type = "button"; btn.className = "copypre"; btn.textContent = "copy";
+    btn.addEventListener("click", function () {
+      var code = pre.querySelector("code");
+      var text = (code || pre).textContent;
+      var done = function () {
+        btn.textContent = "copied"; btn.setAttribute("data-done", "1");
+        setTimeout(function () { btn.textContent = "copy"; btn.removeAttribute("data-done"); }, 1800);
+      };
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(text).then(done, function () { fallback(text, done); });
+      } else { fallback(text, done); }
+    });
+    pre.appendChild(btn);
+  });
+})();
+</script>
+
+</body>
+</html>

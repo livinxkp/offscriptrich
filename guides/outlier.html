@@ -1,0 +1,157 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>The Outlier Finder · Off-Script Rich</title>
+<meta name="description" content="the outlier method from the reel: views divided by the creator&#x27;s normal views, anything over 10x is an idea that worked on its own. the steps, a worksheet and the prompt i use.">
+<link rel="stylesheet" href="../assets/style.css">
+<style>
+  main.stack { gap: 30px; }
+  .calc { border: 1px solid var(--line); border-left: 3px solid var(--brass); border-radius: 3px; background: var(--surface); padding: 20px 18px; display: flex; flex-direction: column; gap: 14px; max-width: var(--readw); }
+  .calc h3 { font-size: 17px; }
+  .calc .row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  @media (max-width: 560px) { .calc .row { grid-template-columns: 1fr; } }
+  .calc label { display: flex; flex-direction: column; gap: 6px; font-family: var(--mono); font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-faint); }
+  .calc input[type="number"] { font-family: var(--body); font-size: 16px; color: var(--text); background: var(--ink); border: 1px solid var(--line); border-radius: 3px; padding: 10px 11px; width: 100%; min-width: 0; }
+  .calc input:focus { outline: none; border-color: var(--brass); }
+  .calc .hint { font-family: var(--body); font-size: 12.5px; letter-spacing: 0; text-transform: none; color: var(--text-faint); line-height: 1.4; }
+  .result { border-top: 1px solid var(--line); padding-top: 14px; display: flex; flex-direction: column; gap: 6px; }
+  .result .big { font-family: var(--display); font-weight: 800; font-size: clamp(30px, 7vw, 42px); letter-spacing: -0.03em; line-height: 1; font-variant-numeric: tabular-nums; }
+  .result .sub { font-size: 14px; color: var(--text-dim); }
+  .rtable { width: 100%; border-collapse: collapse; font-size: 14px; font-variant-numeric: tabular-nums; }
+  .rtable th, .rtable td { text-align: left; padding: 8px 6px; border-bottom: 1px solid var(--line); vertical-align: top; }
+  .rtable th { font-family: var(--mono); font-size: 10.5px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-faint); font-weight: 500; }
+  .tablewrap { overflow-x: auto; max-width: var(--readw); }
+  .prose ul, .prose ol { margin: 0; padding-left: 20px; display: flex; flex-direction: column; gap: 8px; color: var(--text-dim); }
+  .prose li strong { color: var(--text); }
+  .prose a { color: var(--brass); }
+</style>
+</head>
+<body>
+
+<header class="masthead">
+  <div class="masthead-in wrap">
+    <a class="wordmark" href="/"><span class="off">OFF-SCRIPT</span> <span class="rich">RICH</span></a>
+    <nav class="navlinks">
+      <a href="/guides/" aria-current="page">guides</a>
+      <a href="/guides/stocks.html">the tape</a>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap stack">
+
+  <p class="eyebrow"><span class="chip" data-pillar="ai">ai</span> <span class="keyword">OUTLIER</span></p>
+
+  <h1>the outlier finder</h1>
+
+  <p class="lede">hey, it's KP. you commented <strong>OUTLIER</strong>, so here it is. here's the method i used to pick this week's 21 reel ideas, with a worksheet and the prompt that does the maths for you.</p>
+
+  <section class="prose">
+    <h2>viral isn't the signal. outlier is.</h2>
+    <p>a reel with a million views on a page that always gets a million tells you about the page. a reel with a million views on a page that normally gets three thousand tells you about the <strong>idea</strong>. that's the one worth borrowing.</p>
+    <p><strong>outlier score = the reel's views ÷ the creator's median views.</strong> anything over 10x is an outlier.</p>
+  </section>
+  <section class="prose">
+    <h2>the steps</h2>
+    <ol>
+      <li><strong>search your niche</strong> on instagram or tiktok with 3 or 4 keywords your audience would type.</li>
+      <li><strong>only use the last 30 days.</strong> older hits tell you what worked, not what's working.</li>
+      <li><strong>for each reel that looks big, open the creator's page</strong> and note the views on their last 17 to 20 reels. skip pinned posts, because they're pinned for a reason and skew the number.</li>
+      <li><strong>take the median</strong>, not the average. one monster hit drags an average up.</li>
+      <li><strong>divide.</strong> 10x or more goes on the list.</li>
+    </ol>
+    <p>this week's biggest was a cash-or-finance reel at <strong>about 2,004x</strong> its creator's median. the rest of the list ran from 12x up.</p>
+  </section>
+  <section class="prose">
+    <h2>the worksheet</h2>
+<pre><code>REEL                     VIEWS     CREATOR MEDIAN   SCORE   TOPIC / FORMAT
+(link)                   ______    ______           ___x    ______________
+(link)                   ______    ______           ___x    ______________
+(link)                   ______    ______           ___x    ______________
+
+score = views / median of last 17-20 non-pinned reels
+keep: 10x and up, posted in the last 30 days</code></pre>
+  </section>
+  <section class="prose">
+    <h2>the prompt</h2>
+<pre><code>Here are reels from my niche with their view counts, and for each creator, the view counts of their last 17-20 non-pinned reels:
+[paste]
+1. Calculate each creator&#x27;s median views.
+2. Calculate each reel&#x27;s outlier score (views / median).
+3. List every reel at 10x or above, sorted by score.
+4. For each, describe the topic and format in one line, and what made it work (hook, format, timing).
+5. Flag any format that appears in 3 or more outliers from different creators.
+Show the median and score for each so I can check the maths.</code></pre>
+  </section>
+  <section class="prose">
+    <h2>borrow the topic, own the angle</h2>
+    <p>once you have the list, keep the topic and the format, then make it yours. your city, your numbers, your story. that's Off-Script Rich.</p>
+  </section>
+  <section class="prose">
+    <h2>good to know</h2>
+<ul><li><strong>one outlier can be luck.</strong> a format showing up in 3 or more outliers from different creators in a few weeks is a trend. one is a hint.</li><li><strong>check the topic still has time.</strong> news-driven outliers (an election, a crash) expire fast.</li><li><strong>don't copy the video.</strong> copying someone's script and edit word for word isn't the move. the idea is fair game, the execution should be yours.</li><li><strong>don't scrape with tools that log into your account.</strong> look it up by hand or use tools that don't need your login.</li></ul>
+  </section>
+  <section class="prose">
+    <h2>proof</h2>
+    <ul><li><a href="https://www.instagram.com/reel/De2K5FMhnfR/" rel="noopener">@d.mvreal: cash or finance it?</a> · 6.91M views, about 2,004x the creator's median when checked 7 November 2026</li></ul>
+  </section>
+  <section class="prose">
+    <h2>the rest of the library</h2>
+    <p>every guide is free and there's no email wall. take what you need.</p>
+    <p><a class="btn btn-primary" href="/guides/">all free guides</a></p>
+  </section>
+
+</main>
+
+<footer class="foot wrap">
+  <p><strong>Off-Script Rich.</strong> rich isn't the money. rich is the life the script said you couldn't have.</p>
+  <p><a href="/">home</a> · <a href="/guides/">guides</a> · <a href="https://instagram.com/livinxkp">@livinxkp</a></p>
+  <p class="mono">last checked 8 November 2026 · if something here has gone stale, comment OUTLIER again and i'll have fixed it</p>
+  <p class="copyright">&copy; 2026 Off-Script Rich. all rights reserved. the guides, text and design on this site may not be copied, reproduced or republished without written permission.</p>
+</footer>
+
+<style>
+  .prose pre { position: relative; padding-top: 36px; }
+  .copypre {
+    position: absolute; top: 8px; right: 8px;
+    font-family: var(--mono); font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase;
+    background: var(--surface); color: var(--text-dim); border: 1px solid var(--line);
+    border-radius: 2px; padding: 4px 9px; cursor: pointer;
+  }
+  .copypre:hover { color: var(--text); border-color: var(--brass); }
+  .copypre[data-done="1"] { color: var(--buy); border-color: var(--buy); }
+</style>
+<script>
+(function () {
+  "use strict";
+  function fallback(text, done) {
+    var ta = document.createElement("textarea");
+    ta.value = text; ta.setAttribute("readonly", "");
+    ta.style.position = "fixed"; ta.style.top = "-1000px";
+    document.body.appendChild(ta); ta.select();
+    try { document.execCommand("copy"); done(); } catch (e) {}
+    document.body.removeChild(ta);
+  }
+  document.querySelectorAll(".prose pre").forEach(function (pre) {
+    var btn = document.createElement("button");
+    btn.type = "button"; btn.className = "copypre"; btn.textContent = "copy";
+    btn.addEventListener("click", function () {
+      var code = pre.querySelector("code");
+      var text = (code || pre).textContent;
+      var done = function () {
+        btn.textContent = "copied"; btn.setAttribute("data-done", "1");
+        setTimeout(function () { btn.textContent = "copy"; btn.removeAttribute("data-done"); }, 1800);
+      };
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(text).then(done, function () { fallback(text, done); });
+      } else { fallback(text, done); }
+    });
+    pre.appendChild(btn);
+  });
+})();
+</script>
+
+</body>
+</html>

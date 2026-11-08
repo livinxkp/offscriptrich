@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Stocks After Every Midterm Since 1950 · Off-Script Rich</title>
+<meta name="description" content="the s&amp;p 500&#x27;s 12-month return after all 19 midterm elections since 1950, the average, the drawdowns hiding inside the green years, and what the table can and can&#x27;t tell you.">
+<link rel="stylesheet" href="../assets/style.css">
+<style>
+  main.stack { gap: 30px; }
+  .calc { border: 1px solid var(--line); border-left: 3px solid var(--brass); border-radius: 3px; background: var(--surface); padding: 20px 18px; display: flex; flex-direction: column; gap: 14px; max-width: var(--readw); }
+  .calc h3 { font-size: 17px; }
+  .calc .row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  @media (max-width: 560px) { .calc .row { grid-template-columns: 1fr; } }
+  .calc label { display: flex; flex-direction: column; gap: 6px; font-family: var(--mono); font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-faint); }
+  .calc input[type="number"] { font-family: var(--body); font-size: 16px; color: var(--text); background: var(--ink); border: 1px solid var(--line); border-radius: 3px; padding: 10px 11px; width: 100%; min-width: 0; }
+  .calc input:focus { outline: none; border-color: var(--brass); }
+  .calc .hint { font-family: var(--body); font-size: 12.5px; letter-spacing: 0; text-transform: none; color: var(--text-faint); line-height: 1.4; }
+  .result { border-top: 1px solid var(--line); padding-top: 14px; display: flex; flex-direction: column; gap: 6px; }
+  .result .big { font-family: var(--display); font-weight: 800; font-size: clamp(30px, 7vw, 42px); letter-spacing: -0.03em; line-height: 1; font-variant-numeric: tabular-nums; }
+  .result .sub { font-size: 14px; color: var(--text-dim); }
+  .rtable { width: 100%; border-collapse: collapse; font-size: 14px; font-variant-numeric: tabular-nums; }
+  .rtable th, .rtable td { text-align: left; padding: 8px 6px; border-bottom: 1px solid var(--line); vertical-align: top; }
+  .rtable th { font-family: var(--mono); font-size: 10.5px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-faint); font-weight: 500; }
+  .tablewrap { overflow-x: auto; max-width: var(--readw); }
+  .prose ul, .prose ol { margin: 0; padding-left: 20px; display: flex; flex-direction: column; gap: 8px; color: var(--text-dim); }
+  .prose li strong { color: var(--text); }
+  .prose a { color: var(--brass); }
+</style>
+</head>
+<body>
+
+<header class="masthead">
+  <div class="masthead-in wrap">
+    <a class="wordmark" href="/"><span class="off">OFF-SCRIPT</span> <span class="rich">RICH</span></a>
+    <nav class="navlinks">
+      <a href="/guides/" aria-current="page">guides</a>
+      <a href="/guides/stocks.html">the tape</a>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap stack">
+
+  <p class="eyebrow"><span class="chip" data-pillar="money">money</span> <span class="keyword">HISTORY</span></p>
+
+  <h1>every midterm since 1950, one table</h1>
+
+  <p class="lede">hey, it's KP. you commented <strong>HISTORY</strong>, so here it is. here's the full table from the reel, every midterm since 1950, with the part the reel didn't have room for: how rough some of those green years got before they ended green.</p>
+
+  <section class="prose">
+    <h2>the table</h2>
+    <p>s&amp;p 500 price return in the 12 months after each midterm election day.</p>
+<div class="tablewrap"><table class="rtable"><thead><tr><th>year</th><th>president</th><th>12 months later</th></tr></thead><tbody><tr><td>1950</td><td>Truman (D)</td><td>+16.2%</td></tr><tr><td>1954</td><td>Eisenhower (R)</td><td>+33.2%</td></tr><tr><td>1958</td><td>Eisenhower (R)</td><td>+11.1%</td></tr><tr><td>1962</td><td>Kennedy (D)</td><td>+24.8%</td></tr><tr><td>1966</td><td>Johnson (D)</td><td>+12.9%</td></tr><tr><td>1970</td><td>Nixon (R)</td><td>+12.7%</td></tr><tr><td>1974</td><td>Ford (R)</td><td>+18.7%</td></tr><tr><td>1978</td><td>Carter (D)</td><td>+6.4%</td></tr><tr><td>1982</td><td>Reagan (R)</td><td>+19.9%</td></tr><tr><td>1986</td><td>Reagan (R)</td><td>+1.1%</td></tr><tr><td>1990</td><td>G.H.W. Bush (R)</td><td>+25.1%</td></tr><tr><td>1994</td><td>Clinton (D)</td><td>+27.1%</td></tr><tr><td>1998</td><td>Clinton (D)</td><td>+22.0%</td></tr><tr><td>2002</td><td>G.W. Bush (R)</td><td>+14.9%</td></tr><tr><td>2006</td><td>G.W. Bush (R)</td><td>+6.7%</td></tr><tr><td>2010</td><td>Obama (D)</td><td>+3.7%</td></tr><tr><td>2014</td><td>Obama (D)</td><td>+4.5%</td></tr><tr><td>2018</td><td>Trump (R)</td><td>+11.7%</td></tr><tr><td>2022</td><td>Biden (D)</td><td>+14.5%</td></tr><tr><td>2026</td><td>Trump (R)</td><td>?</td></tr></tbody></table></div>
+    <p><strong>19 out of 19 were higher.</strong> the average was about +15.1% and the median +14.5%.</p>
+  </section>
+  <section class="prose">
+    <h2>what the green hides</h2>
+    <p>this is the part that matters if you actually hold through it. in <strong>11 of those 19 years</strong>, the index fell more than 10% from a peak at some point during the following 12 months. in 1986 it fell <strong>33.2%</strong> along the way and still finished the year 1.1% higher.</p>
+    <p>so the real lesson isn't "midterms are bullish". it's that the people who got the green number were the ones who didn't sell during the red part.</p>
+  </section>
+  <section class="prose">
+    <h2>why the streak might exist</h2>
+    <p>the usual explanation is that the uncertainty ends. before a midterm nobody knows who controls congress. after it, markets can price the next two years, and a split government usually means fewer big surprises from washington. that's a story that fits the data. it isn't proof.</p>
+    <p>that's Off-Script Rich: read the history before the headline.</p>
+  </section>
+  <section class="prose">
+    <h2>the prompt</h2>
+<pre><code>Here is a table of S&amp;P 500 returns in the 12 months after every midterm since 1950: [paste the table].
+1. What else was happening in each year that could explain the return (interest rates, recessions, earnings)?
+2. Which years had the biggest drop along the way before ending positive?
+3. Explain in plain words why 19 data points is a small sample.
+Do not predict 2027 returns.</code></pre>
+  </section>
+  <section class="prose">
+    <h2>good to know</h2>
+<ul><li><strong>19 is a small sample.</strong> the source itself says the pattern isn't statistically proven. rates and earnings were doing most of the work in every one of those years.</li><li><strong>price only.</strong> these are price returns, without dividends. other sources quote different averages because they use different start years and windows.</li><li><strong>past returns aren't a promise.</strong> the 2026 row is a question mark on purpose.</li><li><strong>want the what-changes-now version?</strong> comment CONGRESS on that reel.</li></ul>
+  </section>
+  <section class="prose">
+    <h2>proof</h2>
+    <ul><li><a href="https://www.pepperstone.com/en/insights/guides/cfds/do-stocks-rally-after-midterms" rel="noopener">Pepperstone: do stocks rally after midterms?</a> · the full table, 15.1% average, 14.5% median, 11 of 19 years with a 10%+ fall, 1986's 33.2% drawdown</li></ul>
+  </section>
+  <section class="prose">
+    <h2>the boring but necessary part</h2>
+    <p>i'm not a financial adviser and this isn't personalised advice. it's what i've read, what i do, and where i got it from, all linked above so you can check my work. what you do with your money is on you.</p>
+  </section>
+  <section class="prose">
+    <h2>the rest of the library</h2>
+    <p>every guide is free and there's no email wall. take what you need.</p>
+    <p><a class="btn btn-primary" href="/guides/">all free guides</a></p>
+  </section>
+
+</main>
+
+<footer class="foot wrap">
+  <p><strong>Off-Script Rich.</strong> rich isn't the money. rich is the life the script said you couldn't have.</p>
+  <p><a href="/">home</a> · <a href="/guides/">guides</a> · <a href="https://instagram.com/livinxkp">@livinxkp</a></p>
+  <p class="mono">last checked 8 November 2026 · if something here has gone stale, comment HISTORY again and i'll have fixed it</p>
+  <p class="copyright">&copy; 2026 Off-Script Rich. all rights reserved. the guides, text and design on this site may not be copied, reproduced or republished without written permission.</p>
+</footer>
+
+<style>
+  .prose pre { position: relative; padding-top: 36px; }
+  .copypre {
+    position: absolute; top: 8px; right: 8px;
+    font-family: var(--mono); font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase;
+    background: var(--surface); color: var(--text-dim); border: 1px solid var(--line);
+    border-radius: 2px; padding: 4px 9px; cursor: pointer;
+  }
+  .copypre:hover { color: var(--text); border-color: var(--brass); }
+  .copypre[data-done="1"] { color: var(--buy); border-color: var(--buy); }
+</style>
+<script>
+(function () {
+  "use strict";
+  function fallback(text, done) {
+    var ta = document.createElement("textarea");
+    ta.value = text; ta.setAttribute("readonly", "");
+    ta.style.position = "fixed"; ta.style.top = "-1000px";
+    document.body.appendChild(ta); ta.select();
+    try { document.execCommand("copy"); done(); } catch (e) {}
+    document.body.removeChild(ta);
+  }
+  document.querySelectorAll(".prose pre").forEach(function (pre) {
+    var btn = document.createElement("button");
+    btn.type = "button"; btn.className = "copypre"; btn.textContent = "copy";
+    btn.addEventListener("click", function () {
+      var code = pre.querySelector("code");
+      var text = (code || pre).textContent;
+      var done = function () {
+        btn.textContent = "copied"; btn.setAttribute("data-done", "1");
+        setTimeout(function () { btn.textContent = "copy"; btn.removeAttribute("data-done"); }, 1800);
+      };
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(text).then(done, function () { fallback(text, done); });
+      } else { fallback(text, done); }
+    });
+    pre.appendChild(btn);
+  });
+})();
+</script>
+
+</body>
+</html>

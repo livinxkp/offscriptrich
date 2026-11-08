@@ -1,0 +1,148 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Google Maps + Claude: The Walkthrough · Off-Script Rich</title>
+<meta name="description" content="the four-step google maps and claude walkthrough from the reel: find local businesses with great reviews and no website, build a one-page preview with claude, and show it before you ask for anything. includes the exact prompt.">
+<link rel="stylesheet" href="../assets/style.css">
+<style>
+  main.stack { gap: 30px; }
+  .calc { border: 1px solid var(--line); border-left: 3px solid var(--brass); border-radius: 3px; background: var(--surface); padding: 20px 18px; display: flex; flex-direction: column; gap: 14px; max-width: var(--readw); }
+  .calc h3 { font-size: 17px; }
+  .calc .row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  @media (max-width: 560px) { .calc .row { grid-template-columns: 1fr; } }
+  .calc label { display: flex; flex-direction: column; gap: 6px; font-family: var(--mono); font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-faint); }
+  .calc input[type="number"] { font-family: var(--body); font-size: 16px; color: var(--text); background: var(--ink); border: 1px solid var(--line); border-radius: 3px; padding: 10px 11px; width: 100%; min-width: 0; }
+  .calc input:focus { outline: none; border-color: var(--brass); }
+  .calc .hint { font-family: var(--body); font-size: 12.5px; letter-spacing: 0; text-transform: none; color: var(--text-faint); line-height: 1.4; }
+  .result { border-top: 1px solid var(--line); padding-top: 14px; display: flex; flex-direction: column; gap: 6px; }
+  .result .big { font-family: var(--display); font-weight: 800; font-size: clamp(30px, 7vw, 42px); letter-spacing: -0.03em; line-height: 1; font-variant-numeric: tabular-nums; }
+  .result .sub { font-size: 14px; color: var(--text-dim); }
+  .rtable { width: 100%; border-collapse: collapse; font-size: 14px; font-variant-numeric: tabular-nums; }
+  .rtable th, .rtable td { text-align: left; padding: 8px 6px; border-bottom: 1px solid var(--line); vertical-align: top; }
+  .rtable th { font-family: var(--mono); font-size: 10.5px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-faint); font-weight: 500; }
+  .tablewrap { overflow-x: auto; max-width: var(--readw); }
+  .prose ul, .prose ol { margin: 0; padding-left: 20px; display: flex; flex-direction: column; gap: 8px; color: var(--text-dim); }
+  .prose li strong { color: var(--text); }
+  .prose a { color: var(--brass); }
+</style>
+</head>
+<body>
+
+<header class="masthead">
+  <div class="masthead-in wrap">
+    <a class="wordmark" href="/"><span class="off">OFF-SCRIPT</span> <span class="rich">RICH</span></a>
+    <nav class="navlinks">
+      <a href="/guides/" aria-current="page">guides</a>
+      <a href="/guides/stocks.html">the tape</a>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap stack">
+
+  <p class="eyebrow"><span class="chip" data-pillar="ai">ai</span> <span class="keyword">MAPS</span></p>
+
+  <h1>google maps + claude, the walkthrough</h1>
+
+  <p class="lede">hey, it's KP. you commented <strong>MAPS</strong>, so here it is. here's the full walkthrough from the reel with the exact claude prompt for the one-page site, the message i'd send with the preview, and the part that's actually hard.</p>
+
+  <section class="prose">
+    <h2>who this is for</h2>
+    <p>you, if you want a first paying client without an audience. skip it if you want passive income. this is a service, and the hard part is talking to people.</p>
+  </section>
+  <section class="prose">
+    <h2>step one: find them</h2>
+    <ol>
+      <li>open google maps and search a service near you. barbers, taco spots, nail salons, mechanics.</li>
+      <li>open each listing. you're looking for <strong>lots of good reviews</strong> and either <strong>no website link</strong> or a site that's clearly old or broken.</li>
+      <li>keep a list: name, phone, rating, number of reviews, what their site is missing.</li>
+    </ol>
+  </section>
+  <section class="prose">
+    <h2>step two: build the preview</h2>
+    <p>screenshot their maps listing (name, hours, a few reviews, photos) and give it to claude with this:</p>
+<pre><code>Build a one-page website for this local business using only the information in the screenshot I&#x27;ve attached.
+Include: business name, a one-line description, hours, address with a &quot;get directions&quot; link, a click-to-call phone button, 3 real reviews quoted exactly from the screenshot with the reviewer&#x27;s first name, and a simple photo section using placeholders I can swap.
+Mobile-first, fast, clean, one HTML file. Colours that fit the type of business.
+Do not invent reviews, prices, services or awards. If something isn&#x27;t in the screenshot, leave a clearly marked placeholder.</code></pre>
+  </section>
+  <section class="prose">
+    <h2>step three: put it online</h2>
+    <p>you need a link you can send. if you're using claude, you can publish the page and share the link. or drop the HTML file into a free static host. keep the preview private to that one business until they say yes.</p>
+  </section>
+  <section class="prose">
+    <h2>step four: show it first</h2>
+<pre><code>Hey [name], I&#x27;m [your name], I live nearby and love [business].
+I noticed you don&#x27;t have a website, so I made you a quick preview using your Google reviews: [link]
+If you like it, I can make it live on your own domain this week for $[price]. If not, no worries at all, it&#x27;s yours to look at either way.</code></pre>
+    <p>so what's the hard part? it isn't the building. it's walking in or messaging and showing it to them. send ten. expect most to ignore you. one yes is the whole point.</p>
+    <p>that's Off-Script Rich: build first, ask second.</p>
+  </section>
+  <section class="prose">
+    <h2>good to know</h2>
+<ul><li><strong>don't invent anything on their site.</strong> real reviews, real hours, no fake services or prices. the prompt says this for a reason.</li><li><strong>reach out like a person.</strong> one message per business, in person or a direct message. mass cold email has legal rules (the FTC's CAN-SPAM guide below) and it also just works worse.</li><li><strong>price it simply.</strong> one setup fee plus an optional small monthly fee for hosting and edits. agree it in writing before you buy them a domain.</li><li><strong>check claude's code on your phone</strong> before you send it. tap every button.</li></ul>
+  </section>
+  <section class="prose">
+    <h2>proof</h2>
+    <ul><li><a href="https://www.ftc.gov/business-guidance/resources/can-spam-act-compliance-guide-business" rel="noopener">FTC: CAN-SPAM Act compliance guide for business</a> · rules for commercial email</li></ul>
+  </section>
+  <section class="prose">
+    <h2>the rest of the library</h2>
+    <p>every guide is free and there's no email wall. take what you need.</p>
+    <p><a class="btn btn-primary" href="/guides/">all free guides</a></p>
+  </section>
+
+</main>
+
+<footer class="foot wrap">
+  <p><strong>Off-Script Rich.</strong> rich isn't the money. rich is the life the script said you couldn't have.</p>
+  <p><a href="/">home</a> · <a href="/guides/">guides</a> · <a href="https://instagram.com/livinxkp">@livinxkp</a></p>
+  <p class="mono">last checked 8 November 2026 · if something here has gone stale, comment MAPS again and i'll have fixed it</p>
+  <p class="copyright">&copy; 2026 Off-Script Rich. all rights reserved. the guides, text and design on this site may not be copied, reproduced or republished without written permission.</p>
+</footer>
+
+<style>
+  .prose pre { position: relative; padding-top: 36px; }
+  .copypre {
+    position: absolute; top: 8px; right: 8px;
+    font-family: var(--mono); font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase;
+    background: var(--surface); color: var(--text-dim); border: 1px solid var(--line);
+    border-radius: 2px; padding: 4px 9px; cursor: pointer;
+  }
+  .copypre:hover { color: var(--text); border-color: var(--brass); }
+  .copypre[data-done="1"] { color: var(--buy); border-color: var(--buy); }
+</style>
+<script>
+(function () {
+  "use strict";
+  function fallback(text, done) {
+    var ta = document.createElement("textarea");
+    ta.value = text; ta.setAttribute("readonly", "");
+    ta.style.position = "fixed"; ta.style.top = "-1000px";
+    document.body.appendChild(ta); ta.select();
+    try { document.execCommand("copy"); done(); } catch (e) {}
+    document.body.removeChild(ta);
+  }
+  document.querySelectorAll(".prose pre").forEach(function (pre) {
+    var btn = document.createElement("button");
+    btn.type = "button"; btn.className = "copypre"; btn.textContent = "copy";
+    btn.addEventListener("click", function () {
+      var code = pre.querySelector("code");
+      var text = (code || pre).textContent;
+      var done = function () {
+        btn.textContent = "copied"; btn.setAttribute("data-done", "1");
+        setTimeout(function () { btn.textContent = "copy"; btn.removeAttribute("data-done"); }, 1800);
+      };
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(text).then(done, function () { fallback(text, done); });
+      } else { fallback(text, done); }
+    });
+    pre.appendChild(btn);
+  });
+})();
+</script>
+
+</body>
+</html>

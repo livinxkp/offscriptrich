@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>The Notion Content System · Off-Script Rich</title>
+<meta name="description" content="my one-database notion content system: the exact properties, the four views, and the notion agent prompt that plans a week of reels. works on any plan, the agent needs business. not sponsored.">
+<link rel="stylesheet" href="../assets/style.css">
+<style>
+  main.stack { gap: 30px; }
+  .calc { border: 1px solid var(--line); border-left: 3px solid var(--brass); border-radius: 3px; background: var(--surface); padding: 20px 18px; display: flex; flex-direction: column; gap: 14px; max-width: var(--readw); }
+  .calc h3 { font-size: 17px; }
+  .calc .row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  @media (max-width: 560px) { .calc .row { grid-template-columns: 1fr; } }
+  .calc label { display: flex; flex-direction: column; gap: 6px; font-family: var(--mono); font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-faint); }
+  .calc input[type="number"] { font-family: var(--body); font-size: 16px; color: var(--text); background: var(--ink); border: 1px solid var(--line); border-radius: 3px; padding: 10px 11px; width: 100%; min-width: 0; }
+  .calc input:focus { outline: none; border-color: var(--brass); }
+  .calc .hint { font-family: var(--body); font-size: 12.5px; letter-spacing: 0; text-transform: none; color: var(--text-faint); line-height: 1.4; }
+  .result { border-top: 1px solid var(--line); padding-top: 14px; display: flex; flex-direction: column; gap: 6px; }
+  .result .big { font-family: var(--display); font-weight: 800; font-size: clamp(30px, 7vw, 42px); letter-spacing: -0.03em; line-height: 1; font-variant-numeric: tabular-nums; }
+  .result .sub { font-size: 14px; color: var(--text-dim); }
+  .rtable { width: 100%; border-collapse: collapse; font-size: 14px; font-variant-numeric: tabular-nums; }
+  .rtable th, .rtable td { text-align: left; padding: 8px 6px; border-bottom: 1px solid var(--line); vertical-align: top; }
+  .rtable th { font-family: var(--mono); font-size: 10.5px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-faint); font-weight: 500; }
+  .tablewrap { overflow-x: auto; max-width: var(--readw); }
+  .prose ul, .prose ol { margin: 0; padding-left: 20px; display: flex; flex-direction: column; gap: 8px; color: var(--text-dim); }
+  .prose li strong { color: var(--text); }
+  .prose a { color: var(--brass); }
+</style>
+</head>
+<body>
+
+<header class="masthead">
+  <div class="masthead-in wrap">
+    <a class="wordmark" href="/"><span class="off">OFF-SCRIPT</span> <span class="rich">RICH</span></a>
+    <nav class="navlinks">
+      <a href="/guides/" aria-current="page">guides</a>
+      <a href="/guides/stocks.html">the tape</a>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap stack">
+
+  <p class="eyebrow"><span class="chip" data-pillar="ai">ai</span> <span class="keyword">SYSTEM</span></p>
+
+  <h1>the notion content system</h1>
+
+  <p class="lede">hey, it's KP. you commented <strong>SYSTEM</strong>, so here it is. here's the system from the reel: one database for every idea and script, the exact properties to add, the four views i use, and the agent prompt that plans the week. not sponsored, it's just how i run the page.</p>
+
+  <section class="prose">
+    <h2>the database</h2>
+    <p>make one full-page database called <strong>content</strong>. add these properties exactly:</p>
+<div class="tablewrap"><table class="rtable"><thead><tr><th>property</th><th>type</th><th>what goes in it</th></tr></thead><tbody><tr><td>title</td><td>title</td><td>the on-screen hook, 3 to 6 words</td></tr><tr><td>status</td><td>status</td><td>idea → scripted → filmed → edited → posted</td></tr><tr><td>pillar</td><td>select</td><td>ai / money / life (or yours)</td></tr><tr><td>reference</td><td>url</td><td>the reel you're borrowing the topic from</td></tr><tr><td>keyword</td><td>text</td><td>the comment keyword</td></tr><tr><td>shoot date</td><td>date</td><td>the day it gets filmed</td></tr><tr><td>post date</td><td>date</td><td>the day it goes live</td></tr><tr><td>hook</td><td>text</td><td>the spoken first line</td></tr><tr><td>script</td><td>text</td><td>the full script (or put it in the page body)</td></tr><tr><td>result</td><td>number</td><td>views after 7 days</td></tr></tbody></table></div>
+  </section>
+  <section class="prose">
+    <h2>the four views</h2>
+    <ol>
+      <li><strong>board by status.</strong> the pipeline at a glance.</li>
+      <li><strong>shoot list.</strong> a table filtered to status = scripted, sorted by pillar. this is what you open on shoot day.</li>
+      <li><strong>calendar by post date.</strong> so you can see gaps.</li>
+      <li><strong>winners.</strong> filtered to posted, sorted by result. what to make more of.</li>
+    </ol>
+  </section>
+  <section class="prose">
+    <h2>the agent prompt</h2>
+    <p>on the business plan, open the notion agent and give it this:</p>
+<pre><code>Look at my &quot;content&quot; database.
+1. Take every item with status &quot;idea&quot; and draft a hook and a script outline for each, written in a casual spoken voice.
+2. Plan next week: pick [7] ideas, balanced across pillars, and set a shoot date of [day] and one post date per day from [date].
+3. Change their status to &quot;scripted&quot;.
+4. Make a page called &quot;shoot list [date]&quot; listing them in shooting order with the hook for each.
+Don&#x27;t delete anything. Don&#x27;t change items that are already filmed or posted.</code></pre>
+    <p>on free or plus, you get the same system, you just fill in the plan yourself. that's Off-Script Rich: one page runs the week.</p>
+  </section>
+  <section class="prose">
+    <h2>good to know</h2>
+<ul><li><strong>the agent needs the business plan.</strong> notion's pricing page lists the notion agent and ai meeting notes on business. free and plus get a limited trial.</li><li><strong>check what it changed.</strong> agents can edit a lot of pages fast. look at the database after the first run before you trust it with the next one.</li><li><strong>keep it to one database.</strong> the moment ideas live in three places, the system stops working.</li></ul>
+  </section>
+  <section class="prose">
+    <h2>proof</h2>
+    <ul><li><a href="https://www.notion.com/pricing" rel="noopener">Notion pricing</a> · free $0, plus $10, business $20 per member a month, notion agent on business, limited trial on free and plus</li></ul>
+  </section>
+  <section class="prose">
+    <h2>the rest of the library</h2>
+    <p>every guide is free and there's no email wall. take what you need.</p>
+    <p><a class="btn btn-primary" href="/guides/">all free guides</a></p>
+  </section>
+
+</main>
+
+<footer class="foot wrap">
+  <p><strong>Off-Script Rich.</strong> rich isn't the money. rich is the life the script said you couldn't have.</p>
+  <p><a href="/">home</a> · <a href="/guides/">guides</a> · <a href="https://instagram.com/livinxkp">@livinxkp</a></p>
+  <p class="mono">last checked 8 November 2026 · if something here has gone stale, comment SYSTEM again and i'll have fixed it</p>
+  <p class="copyright">&copy; 2026 Off-Script Rich. all rights reserved. the guides, text and design on this site may not be copied, reproduced or republished without written permission.</p>
+</footer>
+
+<style>
+  .prose pre { position: relative; padding-top: 36px; }
+  .copypre {
+    position: absolute; top: 8px; right: 8px;
+    font-family: var(--mono); font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase;
+    background: var(--surface); color: var(--text-dim); border: 1px solid var(--line);
+    border-radius: 2px; padding: 4px 9px; cursor: pointer;
+  }
+  .copypre:hover { color: var(--text); border-color: var(--brass); }
+  .copypre[data-done="1"] { color: var(--buy); border-color: var(--buy); }
+</style>
+<script>
+(function () {
+  "use strict";
+  function fallback(text, done) {
+    var ta = document.createElement("textarea");
+    ta.value = text; ta.setAttribute("readonly", "");
+    ta.style.position = "fixed"; ta.style.top = "-1000px";
+    document.body.appendChild(ta); ta.select();
+    try { document.execCommand("copy"); done(); } catch (e) {}
+    document.body.removeChild(ta);
+  }
+  document.querySelectorAll(".prose pre").forEach(function (pre) {
+    var btn = document.createElement("button");
+    btn.type = "button"; btn.className = "copypre"; btn.textContent = "copy";
+    btn.addEventListener("click", function () {
+      var code = pre.querySelector("code");
+      var text = (code || pre).textContent;
+      var done = function () {
+        btn.textContent = "copied"; btn.setAttribute("data-done", "1");
+        setTimeout(function () { btn.textContent = "copy"; btn.removeAttribute("data-done"); }, 1800);
+      };
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(text).then(done, function () { fallback(text, done); });
+      } else { fallback(text, done); }
+    });
+    pre.appendChild(btn);
+  });
+})();
+</script>
+
+</body>
+</html>

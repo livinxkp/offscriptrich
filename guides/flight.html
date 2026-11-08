@@ -1,0 +1,152 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>The Bumped-Flight Script · Off-Script Rich</title>
+<meta name="description" content="exactly what to say at the gate if you&#x27;re bumped off an oversold flight: the DOT compensation rules (200% or 400% of your one-way fare up to $1,075 or $2,150), who qualifies, and why you can turn down the voucher.">
+<link rel="stylesheet" href="../assets/style.css">
+<style>
+  main.stack { gap: 30px; }
+  .calc { border: 1px solid var(--line); border-left: 3px solid var(--brass); border-radius: 3px; background: var(--surface); padding: 20px 18px; display: flex; flex-direction: column; gap: 14px; max-width: var(--readw); }
+  .calc h3 { font-size: 17px; }
+  .calc .row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  @media (max-width: 560px) { .calc .row { grid-template-columns: 1fr; } }
+  .calc label { display: flex; flex-direction: column; gap: 6px; font-family: var(--mono); font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-faint); }
+  .calc input[type="number"] { font-family: var(--body); font-size: 16px; color: var(--text); background: var(--ink); border: 1px solid var(--line); border-radius: 3px; padding: 10px 11px; width: 100%; min-width: 0; }
+  .calc input:focus { outline: none; border-color: var(--brass); }
+  .calc .hint { font-family: var(--body); font-size: 12.5px; letter-spacing: 0; text-transform: none; color: var(--text-faint); line-height: 1.4; }
+  .result { border-top: 1px solid var(--line); padding-top: 14px; display: flex; flex-direction: column; gap: 6px; }
+  .result .big { font-family: var(--display); font-weight: 800; font-size: clamp(30px, 7vw, 42px); letter-spacing: -0.03em; line-height: 1; font-variant-numeric: tabular-nums; }
+  .result .sub { font-size: 14px; color: var(--text-dim); }
+  .rtable { width: 100%; border-collapse: collapse; font-size: 14px; font-variant-numeric: tabular-nums; }
+  .rtable th, .rtable td { text-align: left; padding: 8px 6px; border-bottom: 1px solid var(--line); vertical-align: top; }
+  .rtable th { font-family: var(--mono); font-size: 10.5px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-faint); font-weight: 500; }
+  .tablewrap { overflow-x: auto; max-width: var(--readw); }
+  .prose ul, .prose ol { margin: 0; padding-left: 20px; display: flex; flex-direction: column; gap: 8px; color: var(--text-dim); }
+  .prose li strong { color: var(--text); }
+  .prose a { color: var(--brass); }
+</style>
+</head>
+<body>
+
+<header class="masthead">
+  <div class="masthead-in wrap">
+    <a class="wordmark" href="/"><span class="off">OFF-SCRIPT</span> <span class="rich">RICH</span></a>
+    <nav class="navlinks">
+      <a href="/guides/" aria-current="page">guides</a>
+      <a href="/guides/stocks.html">the tape</a>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap stack">
+
+  <p class="eyebrow"><span class="chip" data-pillar="money">money</span> <span class="keyword">FLIGHT</span></p>
+
+  <h1>the bumped-flight script</h1>
+
+  <p class="lede">hey, it's KP. you commented <strong>FLIGHT</strong>, so here it is. here's the script from the skit, the exact words to say at the gate, plus the actual DOT rules behind them so you know what you're owed before the agent tells you.</p>
+
+  <section class="prose">
+    <h2>the rules, domestic flights from the US</h2>
+<div class="tablewrap"><table class="rtable"><thead><tr><th>you arrive</th><th>you're owed</th></tr></thead><tbody><tr><td>less than 1 hour late</td><td>nothing</td></tr><tr><td>1 to 2 hours late</td><td>200% of your one-way fare, up to $1,075</td></tr><tr><td>more than 2 hours late</td><td>400% of your one-way fare, up to $2,150</td></tr></tbody></table></div>
+    <p>international flights leaving the US use 1 to 4 hours for the 200% tier and more than 4 hours for the 400% tier, with the same caps. a $300 one-way ticket, more than 2 hours late, domestic: <strong>$1,200</strong>.</p>
+  </section>
+  <section class="prose">
+    <h2>you only qualify if</h2>
+    <ul>
+      <li>you were bumped <strong>against your will</strong>. if you volunteer, you're negotiating instead, and the rules above don't apply.</li>
+      <li>you had a confirmed reservation.</li>
+      <li>you checked in on time and were at the gate on time.</li>
+      <li>you're flying from a US airport.</li>
+    </ul>
+    <p>a few situations aren't covered, like a swap to a smaller plane or very small aircraft. check the DOT page if that's your situation.</p>
+  </section>
+  <section class="prose">
+    <h2>the voucher</h2>
+    <p>the law treats cash or a check as the default. an airline can offer a travel voucher instead, but it has to tell you that you can <strong>decline the voucher and take the cash or check</strong>. airlines have to pay at the airport the same day, or within 24 hours if your new flight leaves before they can.</p>
+  </section>
+  <section class="prose">
+    <h2>the script</h2>
+<pre><code>AGENT: we&#x27;ve moved you to the next flight.
+YOU:   did i volunteer to give up my seat?
+AGENT: no.
+YOU:   then this is involuntary denied boarding.
+       when does the new flight arrive compared to my original arrival?
+AGENT: [x] hours later.
+YOU:   my one-way fare was $[fare]. under DOT rules that&#x27;s [200 / 400]%
+       of the fare, so $[amount]. i&#x27;d like that as a check, please,
+       not a voucher. can i also get the written statement of my rights?</code></pre>
+    <p>stay polite. the agent didn't oversell the flight. that's Off-Script Rich: know the rule before they tell you the rule.</p>
+  </section>
+  <section class="prose">
+    <h2>good to know</h2>
+<ul><li><strong>volunteering can pay more.</strong> if they're asking for volunteers, you can name your price. once they pick you involuntarily, the table above is your floor.</li><li><strong>the caps change.</strong> the DOT adjusts the dollar caps for inflation. check the current numbers on transportation.gov before you fly.</li><li><strong>keep your receipt.</strong> you'll need your fare amount, and it's on your booking confirmation.</li></ul>
+  </section>
+  <section class="prose">
+    <h2>proof</h2>
+    <ul><li><a href="https://www.transportation.gov/individuals/aviation-consumer-protection/bumping-oversales" rel="noopener">U.S. Department of Transportation: bumping and oversales</a> · 200% up to $1,075, 400% up to $2,150, eligibility, same-day payment</li><li><a href="https://www.ecfr.gov/current/title-14/chapter-II/subchapter-A/part-250/section-250.5" rel="noopener">14 CFR 250.5: amount of denied boarding compensation</a> · passengers may decline a transportation benefit and receive the cash or check payment</li></ul>
+  </section>
+  <section class="prose">
+    <h2>the boring but necessary part</h2>
+    <p>i'm not a financial adviser and this isn't personalised advice. it's what i've read, what i do, and where i got it from, all linked above so you can check my work. what you do with your money is on you.</p>
+  </section>
+  <section class="prose">
+    <h2>the rest of the library</h2>
+    <p>every guide is free and there's no email wall. take what you need.</p>
+    <p><a class="btn btn-primary" href="/guides/">all free guides</a></p>
+  </section>
+
+</main>
+
+<footer class="foot wrap">
+  <p><strong>Off-Script Rich.</strong> rich isn't the money. rich is the life the script said you couldn't have.</p>
+  <p><a href="/">home</a> · <a href="/guides/">guides</a> · <a href="https://instagram.com/livinxkp">@livinxkp</a></p>
+  <p class="mono">last checked 8 November 2026 · if something here has gone stale, comment FLIGHT again and i'll have fixed it</p>
+  <p class="copyright">&copy; 2026 Off-Script Rich. all rights reserved. the guides, text and design on this site may not be copied, reproduced or republished without written permission.</p>
+</footer>
+
+<style>
+  .prose pre { position: relative; padding-top: 36px; }
+  .copypre {
+    position: absolute; top: 8px; right: 8px;
+    font-family: var(--mono); font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase;
+    background: var(--surface); color: var(--text-dim); border: 1px solid var(--line);
+    border-radius: 2px; padding: 4px 9px; cursor: pointer;
+  }
+  .copypre:hover { color: var(--text); border-color: var(--brass); }
+  .copypre[data-done="1"] { color: var(--buy); border-color: var(--buy); }
+</style>
+<script>
+(function () {
+  "use strict";
+  function fallback(text, done) {
+    var ta = document.createElement("textarea");
+    ta.value = text; ta.setAttribute("readonly", "");
+    ta.style.position = "fixed"; ta.style.top = "-1000px";
+    document.body.appendChild(ta); ta.select();
+    try { document.execCommand("copy"); done(); } catch (e) {}
+    document.body.removeChild(ta);
+  }
+  document.querySelectorAll(".prose pre").forEach(function (pre) {
+    var btn = document.createElement("button");
+    btn.type = "button"; btn.className = "copypre"; btn.textContent = "copy";
+    btn.addEventListener("click", function () {
+      var code = pre.querySelector("code");
+      var text = (code || pre).textContent;
+      var done = function () {
+        btn.textContent = "copied"; btn.setAttribute("data-done", "1");
+        setTimeout(function () { btn.textContent = "copy"; btn.removeAttribute("data-done"); }, 1800);
+      };
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(text).then(done, function () { fallback(text, done); });
+      } else { fallback(text, done); }
+    });
+    pre.appendChild(btn);
+  });
+})();
+</script>
+
+</body>
+</html>
